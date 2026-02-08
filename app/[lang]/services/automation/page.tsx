@@ -1,15 +1,11 @@
-import { Metadata } from 'next'
+'use client'
+
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import { Zap, Workflow, Bot, Link2, GitBranch, Repeat } from 'lucide-react'
-
-export const metadata: Metadata = {
-    title: 'Automation & Integration | Nexus Logic',
-    description: 'n8n workflows, API integration, and intelligent chatbots',
-}
 
 const content = {
     ar: {

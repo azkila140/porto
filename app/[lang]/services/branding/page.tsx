@@ -1,15 +1,11 @@
-import { Metadata } from 'next'
+'use client'
+
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import { Palette, Sparkles, FileText, Image, Package, Printer } from 'lucide-react'
-
-export const metadata: Metadata = {
-    title: 'Branding & Design | Nexus Logic',
-    description: 'Visual identity, logos, and launch materials for your brand',
-}
 
 const content = {
     ar: {

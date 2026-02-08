@@ -1,15 +1,11 @@
-import { Metadata } from 'next'
+'use client'
+
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import { Code, Smartphone, Cloud, Database, Zap, Shield } from 'lucide-react'
-
-export const metadata: Metadata = {
-    title: 'Digital Engineering | Nexus Logic',
-    description: 'Custom web and mobile development with modern technologies',
-}
 
 const content = {
     ar: {

@@ -1,15 +1,11 @@
-import { Metadata } from 'next'
+'use client'
+
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import { Video, FileText, TrendingUp, Target, BarChart3, Megaphone } from 'lucide-react'
-
-export const metadata: Metadata = {
-    title: 'Growth & Content Marketing | Nexus Logic',
-    description: 'Video production, content strategy, and growth campaigns',
-}
 
 const content = {
     ar: {

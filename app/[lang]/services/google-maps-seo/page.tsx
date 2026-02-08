@@ -1,15 +1,11 @@
-import { Metadata } from 'next'
+'use client'
+
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import { MapPin, Search, Star, TrendingUp, Users, Award } from 'lucide-react'
-
-export const metadata: Metadata = {
-    title: 'Google Maps & SEO | Nexus Logic',
-    description: 'Local SEO and Google Business Profile optimization',
-}
 
 const content = {
     ar: {

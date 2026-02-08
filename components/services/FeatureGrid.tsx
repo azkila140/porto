@@ -1,10 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { LucideIcon } from 'lucide-react'
+import { type FC } from 'react'
 
 interface Feature {
-    icon: LucideIcon
+    icon: FC<{ className?: string }>
     title: string
     description: string
 }
