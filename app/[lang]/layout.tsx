@@ -1,6 +1,8 @@
 import { Tajawal } from 'next/font/google'
 import type { Locale } from '@/lib/i18n/config'
 import { isRTL, locales } from '@/lib/i18n/config'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 import '@/app/globals.css'
 
 const tajawal = Tajawal({
@@ -30,7 +32,11 @@ export default function RootLayout({
                 <meta name="description" content="Transform your ideas into integrated digital solutions" />
             </head>
             <body className="min-h-screen bg-brand-dark font-sans antialiased">
-                {children}
+                <Header lang={params.lang} />
+                <main className="pt-20">
+                    {children}
+                </main>
+                <Footer lang={params.lang} />
             </body>
         </html>
     )
