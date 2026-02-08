@@ -66,7 +66,7 @@ export default function ServiceCTA({ title, description, lang }: ServiceCTAProps
 
                         {/* WhatsApp */}
                         <a
-                            href="https://wa.me/1234567890"
+                            href="https://wa.me/212708080440"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group inline-flex items-center gap-2 px-8 py-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-all duration-300 shadow-2xl hover:scale-105"
@@ -79,7 +79,7 @@ export default function ServiceCTA({ title, description, lang }: ServiceCTAProps
 
                         {/* Email */}
                         <a
-                            href="mailto:hello@nexuslogic.com"
+                            href="mailto:contact@newuslogic.online"
                             className="group inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800 transition-all duration-300 shadow-2xl hover:scale-105"
                         >
                             <Mail className="w-5 h-5" />

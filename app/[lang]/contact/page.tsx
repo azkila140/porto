@@ -62,15 +62,15 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
                         <div className="space-y-8">
                             <div className="p-6 rounded-xl bg-white/5 border border-white/10">
                                 <h3 className="text-xl font-bold mb-2 text-white">{current.email}</h3>
-                                <a href="mailto:info@nexuslogic.agency" className="text-brand-emerald hover:underline">
-                                    info@nexuslogic.agency
+                                <a href="mailto:contact@newuslogic.online" className="text-brand-emerald hover:underline">
+                                    contact@newuslogic.online
                                 </a>
                             </div>
 
                             <div className="p-6 rounded-xl bg-white/5 border border-white/10">
                                 <h3 className="text-xl font-bold mb-2 text-white">{current.phone}</h3>
-                                <a href="tel:+1234567890" className="text-brand-emerald hover:underline">
-                                    +123 456 7890
+                                <a href="tel:+212708080440" className="text-brand-emerald hover:underline">
+                                    +212 708 080 440
                                 </a>
                             </div>
 

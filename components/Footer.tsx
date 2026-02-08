@@ -213,13 +213,13 @@ export default function Footer({ lang }: FooterProps) {
 
                         {/* Contact Info */}
                         <div className="space-y-2 text-sm">
-                            <a href="mailto:info@nexuslogic.com" className="flex items-center gap-2 text-gray-400 hover:text-brand-emerald transition-colors">
+                            <a href="mailto:contact@newuslogic.online" className="flex items-center gap-2 text-gray-400 hover:text-brand-emerald transition-colors">
                                 <Mail className="w-4 h-4" />
-                                info@nexuslogic.com
+                                contact@newuslogic.online
                             </a>
-                            <a href="tel:+1234567890" className="flex items-center gap-2 text-gray-400 hover:text-brand-emerald transition-colors">
+                            <a href="tel:+212708080440" className="flex items-center gap-2 text-gray-400 hover:text-brand-emerald transition-colors">
                                 <Phone className="w-4 h-4" />
-                                +123 456 7890
+                                +212 708 080 440
                             </a>
                         </div>
                     </div>

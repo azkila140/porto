@@ -205,7 +205,7 @@ export function LeadForm({ lang }: LeadFormProps) {
                                 id="whatsapp"
                                 name="whatsapp"
                                 required
-                                placeholder="+1234567890"
+                                placeholder="+212 708 080 440"
                                 className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-emerald focus:border-transparent"
                             />
                         </div>

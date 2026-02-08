@@ -16,7 +16,7 @@ function getLocale(pathname: string): string | undefined {
 
 // Check if path is protected (requires auth)
 function isProtectedPath(pathname: string): boolean {
-    const protectedPaths = ['/dashboard', '/portal']
+    const protectedPaths = ['/portal']
     const pathWithoutLocale = pathname.replace(/^\/(ar|fr|en)/, '')
     return protectedPaths.some(path => pathWithoutLocale.startsWith(path))
 }

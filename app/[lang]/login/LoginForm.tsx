@@ -99,7 +99,7 @@ export default function LoginForm({ params }: LoginFormProps) {
             }
 
             if (data.user) {
-                const redirectTo = searchParams.get('redirect') || `/${params.lang}/dashboard`
+                const redirectTo = searchParams.get('redirect') || `/${params.lang}/portal`
                 router.push(redirectTo)
                 router.refresh()
             }
