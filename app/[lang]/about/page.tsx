@@ -98,10 +98,10 @@ const content = {
 
 export default function AboutPage({ params }: AboutPageProps) {
     const { lang } = params
-    const t = content[lang]
+    const t = content[lang] || content.en
 
     return (
-        <main className="min-h-screen bg-slate-950 pt-20">
+        <div className="min-h-screen bg-slate-950">
             {/* Hero Section */}
             <section className="relative py-20 px-4 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-emerald/5 to-transparent" />
@@ -226,6 +226,6 @@ export default function AboutPage({ params }: AboutPageProps) {
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
     )
 }

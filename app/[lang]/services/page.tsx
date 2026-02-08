@@ -176,10 +176,10 @@ const content = {
 
 export default function ServicesPage({ params }: ServicesPageProps) {
     const { lang } = params
-    const t = content[lang]
+    const t = content[lang] || content.en
 
     return (
-        <main className="min-h-screen bg-slate-950 pt-20">
+        <div className="min-h-screen bg-slate-950">
             {/* Hero Section */}
             <section className="relative py-20 px-4 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
@@ -240,6 +240,6 @@ export default function ServicesPage({ params }: ServicesPageProps) {
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
     )
 }
