@@ -1,0 +1,5 @@
+
+> nexus-logic@1.0.0 lint
+> next lint
+
+ ⨯ ESLint must be installed: npm install --save-dev eslint

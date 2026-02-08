@@ -1,0 +1,17 @@
+export const industries = [
+    'medical',
+    'real-estate',
+    'horeca',
+    'retail',
+    'education',
+    'automotive',
+    'finance',
+    'construction',
+    'technology',
+    'manufacturing',
+    'logistics',
+    'services',
+    'other'
+] as const
+
+export type Industry = typeof industries[number]
