@@ -14,8 +14,8 @@ export function generateOrganizationSchema() {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         'name': 'Nexus Logic',
-        'url': 'https://porto-two-blue.vercel.app',
-        'logo': 'https://porto-two-blue.vercel.app/logo.png',
+        'url': 'https://nexuslogic.online',
+        'logo': 'https://nexuslogic.online/logo.png',
         'description': 'Full-stack digital marketing and development agency specializing in web development, branding, automation, and growth strategies.',
         'address': {
             '@type': 'PostalAddress',

@@ -30,6 +30,14 @@ export const metadata: Metadata = {
     creator: siteConfig.name,
     publisher: siteConfig.name,
     metadataBase: new URL(siteConfig.url),
+    icons: {
+        icon: [
+            { url: '/favicon.jpg', type: 'image/jpeg' },
+        ],
+        apple: [
+            { url: '/favicon.jpg', type: 'image/jpeg', sizes: '180x180' },
+        ],
+    },
     alternates: {
         canonical: siteConfig.url,
         languages: {

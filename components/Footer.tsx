@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import NextImage from 'next/image'
 import type { Locale } from '@/lib/i18n/config'
 import {
     Mail,

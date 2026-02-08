@@ -3,7 +3,7 @@ export const siteConfig = {
     description: 'Full-Stack Marketing & Digital Agency',
     domain: 'nexuslogic.online',
     url: 'https://nexuslogic.online',
-    ogImage: 'https://nexuslogic.online/og-image.jpg',
+    ogImage: '/logo.png',
     links: {
         twitter: 'https://twitter.com/nexuslogic',
         github: 'https://github.com/nexuslogic',

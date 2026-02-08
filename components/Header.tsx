@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import NextImage from 'next/image'
 import { usePathname } from 'next/navigation'
 import type { Locale } from '@/lib/i18n/config'
 import { Menu, X, ChevronDown, Sparkles } from 'lucide-react'
