@@ -90,6 +90,8 @@ export default function RootLayout({
     return (
         <html lang={params.lang} dir={direction} className={tajawal.variable}>
             <head>
+                <link rel="preconnect" href="https://res.cloudinary.com" />
+                <link rel="preconnect" href="https://images.unsplash.com" />
                 <link rel="manifest" href="/manifest.json" />
                 <meta name="theme-color" content="#10b981" />
                 <script

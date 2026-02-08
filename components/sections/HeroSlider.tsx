@@ -7,8 +7,6 @@ import { ChevronLeft, ChevronRight, Code, Zap, Palette, MapPin, TrendingUp } fro
 import Link from 'next/link'
 import { useSlider } from '@/lib/contexts/SliderContext'
 
-import { createClient } from '@/lib/supabase/client'
-
 interface Slide {
     id: number
     title: { ar: string; fr: string; en: string }
@@ -85,42 +83,33 @@ const fallbackSlides: Slide[] = [
 
 interface HeroSliderProps {
     lang: 'ar' | 'fr' | 'en'
+    initialSlides?: any[]
 }
 
-export default function HeroSlider({ lang }: HeroSliderProps) {
-    const supabase = createClient()
+export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps) {
     const [currentSlide, setCurrentSlide] = useState(0)
     const [direction, setDirection] = useState(0)
-    const [dynamicSlides, setDynamicSlides] = useState<Slide[]>([])
+    const [transformedSlides, setTransformedSlides] = useState<Slide[]>([])
     const { setCurrentGradient } = useSlider()
 
     useEffect(() => {
-        async function fetchDynamicSlides() {
-            const { data, error } = await supabase
-                .from('dynamic_hero_slides')
-                .select('*')
-                .eq('active', true)
-                .order('order_index', { ascending: true })
-
-            if (data && data.length > 0) {
-                const transformed = data.map((d: any) => ({
-                    id: d.id,
-                    title: { ar: d.title_ar, fr: d.title_fr, en: d.title_en },
-                    subtitle: { ar: d.subtitle_ar, fr: d.subtitle_fr, en: d.subtitle_en },
-                    description: { ar: d.description_ar, fr: d.description_fr, en: d.description_en },
-                    cta: { ar: d.cta_ar, fr: d.cta_fr, en: d.cta_en },
-                    link: d.link,
-                    icon: iconMap[d.icon_name] || Zap,
-                    gradient: d.gradient_class,
-                    imageUrl: d.image_url
-                }))
-                setDynamicSlides(transformed)
-            }
+        if (initialSlides && initialSlides.length > 0) {
+            const transformed = initialSlides.map((d: any) => ({
+                id: d.id,
+                title: { ar: d.title_ar, fr: d.title_fr, en: d.title_en },
+                subtitle: { ar: d.subtitle_ar, fr: d.subtitle_fr, en: d.subtitle_en },
+                description: { ar: d.description_ar, fr: d.description_fr, en: d.description_en },
+                cta: { ar: d.cta_ar, fr: d.cta_fr, en: d.cta_en },
+                link: d.link,
+                icon: iconMap[d.icon_name] || Zap,
+                gradient: d.gradient_class,
+                imageUrl: d.image_url
+            }))
+            setTransformedSlides(transformed)
         }
-        fetchDynamicSlides()
-    }, [supabase])
+    }, [initialSlides])
 
-    const activeSlides = dynamicSlides.length > 0 ? dynamicSlides : fallbackSlides
+    const activeSlides = transformedSlides.length > 0 ? transformedSlides : fallbackSlides
 
     useEffect(() => {
         if (activeSlides.length > 0) {

@@ -24,27 +24,25 @@ function isProtectedPath(pathname: string): boolean {
 export async function middleware(request: NextRequest) {
     const { pathname, hostname } = request.nextUrl
 
-    // Redirect www to non-www
+    // 1. Redirect www to non-www (Fast Exit)
     if (hostname.startsWith('www.')) {
         const newUrl = new URL(request.url)
         newUrl.hostname = hostname.replace('www.', '')
         return NextResponse.redirect(newUrl, 301)
     }
 
-    // Update Supabase session first
-    let response = await updateSession(request)
-
-    // Check if pathname already has a locale
+    // 2. Check if pathname already has a locale (Fast Exit for redirection)
     const pathnameHasLocale = locales.some(
         (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     )
 
-    // Redirect to default locale if no locale in pathname
     if (!pathnameHasLocale) {
-        const locale = defaultLocale
-        request.nextUrl.pathname = `/${locale}${pathname}`
+        request.nextUrl.pathname = `/${defaultLocale}${pathname}`
         return NextResponse.redirect(request.nextUrl)
     }
+
+    // 3. Update Supabase session (Expensive)
+    let response = await updateSession(request)
 
     // Check if this is a protected route
     if (isProtectedPath(pathname)) {

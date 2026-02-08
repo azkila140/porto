@@ -5,7 +5,6 @@ import { useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import type { Locale } from '@/lib/i18n/config'
-import { createClient } from '@/lib/supabase/client'
 import {
     Code2,
     Workflow,
@@ -18,6 +17,7 @@ import {
 
 interface BentoGridProps {
     lang: Locale
+    initialServices?: any[]
 }
 
 // Icon mapping for dynamic loading
@@ -58,47 +58,31 @@ const fallbackServices = {
     ]
 }
 
-export function BentoGrid({ lang }: BentoGridProps) {
-    const supabase = createClient()
+export function BentoGrid({ lang, initialServices = [] }: BentoGridProps) {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-100px' })
-    const [services, setServices] = useState<any[]>([])
+    const [transformedServices, setTransformedServices] = useState<any[]>([])
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        async function fetchServices() {
-            try {
-                // Try Supabase first
-                const { data, error } = await supabase
-                    .from('dynamic_services')
-                    .select('*')
-                    .eq('active', true)
-                    .order('order_index', { ascending: true })
-
-                if (data && data.length > 0) {
-                    const transformed = data.map((s: any) => ({
-                        icon: iconMap[s.icon_name] || Code2,
-                        title: s[`title_${lang}` as keyof any] || s.title_en,
-                        description: s[`description_${lang}` as keyof any] || s.description_en,
-                        gradient: s.gradient_class,
-                        imageUrl: s.image_url
-                    }))
-                    setServices(transformed)
-                } else {
-                    // Fallback to static data
-                    const staticData = (fallbackServices as any)[lang] || fallbackServices.en
-                    setServices(staticData)
-                }
-            } catch (error) {
-                console.log('Using fallback services data')
-                setServices((fallbackServices as any)[lang] || fallbackServices.en)
-            } finally {
-                setIsLoading(false)
-            }
+        if (initialServices && initialServices.length > 0) {
+            const transformed = initialServices.map((s: any) => ({
+                icon: iconMap[s.icon_name] || Code2,
+                title: s[`title_${lang}` as keyof any] || s.title_en,
+                description: s[`description_${lang}` as keyof any] || s.description_en,
+                gradient: s.gradient_class,
+                imageUrl: s.image_url
+            }))
+            setTransformedServices(transformed)
+            setIsLoading(false)
+        } else {
+            const staticData = (fallbackServices as any)[lang] || fallbackServices.en
+            setTransformedServices(staticData)
+            setIsLoading(false)
         }
+    }, [lang, initialServices])
 
-        fetchServices()
-    }, [lang, supabase])
+    const services = transformedServices
 
     return (
         <section ref={ref} className="py-24 px-4 bg-slate-950 relative overflow-hidden">
