@@ -22,7 +22,7 @@ import { industries, type Industry } from '@/lib/data/solutions'
 const industryIcons: Record<Industry, any> = {
     medical: Stethoscope,
     'real-estate': Building2,
-    horeca: UtensilsCrossed,
+    restaurants: UtensilsCrossed,
     retail: ShoppingCart,
     education: GraduationCap,
     automotive: Car,
@@ -73,7 +73,7 @@ const industryContent = {
                 'وصول أوسع للسوق',
             ],
         },
-        horeca: {
+        restaurants: {
             title: 'حلول المطاعم والفنادق',
             subtitle: 'تحويل رقمي لقطاع الضيافة',
             description: 'أنظمة متكاملة لإدارة المطاعم والفنادق',
