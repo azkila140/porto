@@ -15,11 +15,25 @@ const content = {
         subtitle: 'نبتكر للمستقبل',
         description: 'نحن شركة تقنية رائدة نسعى لتمكين الشركات من خلال حلول رقمية مبتكرة واستراتيجيات نمو ذكية.',
         stats: [
-            { label: 'عام من الخبرة', value: '+10', icon: Award },
-            { label: 'مشروع ناجح', value: '+200', icon: Rocket },
-            { label: 'عميل سعيد', value: '+150', icon: Users },
+            { label: 'عام من الخبرة', value: '+15', icon: Award },
+            { label: 'مشروع ناجح', value: '+20', icon: Rocket },
+            { label: 'عميل سعيد', value: '+50', icon: Users },
             { label: 'دولة', value: '8', icon: Globe },
         ],
+        leadership: {
+            title: 'القيادة',
+            ceo: {
+                name: 'المهدي نور الدين',
+                role: 'المدير التنفيذي ومؤسس الشركة',
+                bio: 'مع أكثر من 15 عاماً من الخبرة في تطوير Full Stack وإدارة البنية التحتية لتكنولوجيا المعلومات، يقود المهدي Nexus Logic برؤية واضحة لتقديم حلول رقمية عالية الأداء. صمم ونشر أكثر من 20 تطبيق ويب مخصص باستخدام MERN stack و Next.js، مع التركيز بشدة على تحسين التحويل والسرعة.',
+                expertise: [
+                    'تطوير تطبيقات الويب الكاملة',
+                    'إدارة البنية التحتية السحابية',
+                    'هندسة الأداء',
+                    'استراتيجيات تحسين محركات البحث والتحويل'
+                ]
+            }
+        },
         story: {
             title: 'قصتنا',
             text: 'تأسست Nexus Logic برؤية واضحة: سد الفجوة بين التكنولوجيا المعقدة واحتياجات الأعمال العملية. بدأنا كفريق صغير من المطورين والمصممين الشغوفين، ونمونا لنصبح شريكاً استراتيجياً للعديد من المؤسسات في الشرق الأوسط وأوروبا.',
@@ -43,11 +57,25 @@ const content = {
         subtitle: 'Innover pour le futur',
         description: 'Nous sommes une entreprise technologique leader dédiée à l\'autonomisation des entreprises grâce à des solutions numériques innovantes.',
         stats: [
-            { label: 'Années d\'expérience', value: '+10', icon: Award },
-            { label: 'Projets réussis', value: '+200', icon: Rocket },
-            { label: 'Clients satisfaits', value: '+150', icon: Users },
+            { label: 'Années d\'expérience', value: '+15', icon: Award },
+            { label: 'Projets réussis', value: '+20', icon: Rocket },
+            { label: 'Clients satisfaits', value: '+50', icon: Users },
             { label: 'Pays', value: '8', icon: Globe },
         ],
+        leadership: {
+            title: 'Leadership',
+            ceo: {
+                name: 'El Mehdi Noreddine',
+                role: 'PDG et Fondateur',
+                bio: 'Avec plus de 15 ans d\'expérience en développement Full Stack et en gestion d\'infrastructure IT, El Mehdi dirige Nexus Logic avec une vision claire de fournir des solutions numériques haute performance. Il a conçu et déployé plus de 20 applications web sur mesure utilisant MERN stack et Next.js, avec un fort accent sur l\'optimisation des conversions et la vitesse.',
+                expertise: [
+                    'Développement d\'applications web complètes',
+                    'Gestion d\'infrastructure cloud',
+                    'Architecture de performance',
+                    'Stratégies SEO et d\'optimisation des conversions'
+                ]
+            }
+        },
         story: {
             title: 'Notre Histoire',
             text: 'Nexus Logic a été fondée avec une vision claire : combler le fossé entre la technologie complexe et les besoins pratiques des entreprises. Nous avons commencé comme une petite équipe de développeurs passionnés et nous sommes devenus un partenaire stratégique pour de nombreuses organisations.',
@@ -71,11 +99,25 @@ const content = {
         subtitle: 'Innovating for the Future',
         description: 'We are a leading tech company dedicated to empowering businesses through innovative digital solutions and smart growth strategies.',
         stats: [
-            { label: 'Years Experience', value: '+10', icon: Award },
-            { label: 'Successful Projects', value: '+200', icon: Rocket },
-            { label: 'Happy Clients', value: '+150', icon: Users },
+            { label: 'Years Experience', value: '+15', icon: Award },
+            { label: 'Successful Projects', value: '+20', icon: Rocket },
+            { label: 'Happy Clients', value: '+50', icon: Users },
             { label: 'Countries', value: '8', icon: Globe },
         ],
+        leadership: {
+            title: 'Leadership',
+            ceo: {
+                name: 'El Mehdi Noreddine',
+                role: 'CEO & Founder',
+                bio: 'With over 15 years of experience in Full Stack development and IT infrastructure management, El Mehdi leads Nexus Logic with a clear vision to deliver high-performance digital solutions. He designed and deployed 20+ custom web applications using MERN stack and Next.js, focusing heavily on conversion optimization and speed.',
+                expertise: [
+                    'Full Stack Web Application Development',
+                    'Cloud Infrastructure Management',
+                    'Performance Engineering',
+                    'SEO & Conversion Optimization Strategies'
+                ]
+            }
+        },
         story: {
             title: 'Our Story',
             text: 'Nexus Logic was founded with a clear vision: to bridge the gap between complex technology and practical business needs. We started as a small team of passionate developers and grew to become a strategic partner for many organizations across the Middle East and Europe.',
@@ -179,6 +221,55 @@ export default function AboutPage({ params }: AboutPageProps) {
                             {/* Placeholder for About Image - could use a real image later */}
                             <div className="absolute inset-0 flex items-center justify-center text-white/20">
                                 <Rocket className="w-32 h-32" />
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Leadership Section */}
+            <section className="py-20 px-4">
+                <div className="container mx-auto max-w-7xl">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-bold text-white mb-4">{t.leadership.title}</h2>
+                    </div>
+                    <div className="max-w-4xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="p-8 rounded-2xl bg-gradient-to-br from-[#C5A059]/10 to-white/5 border border-[#C5A059]/20"
+                        >
+                            <div className="flex flex-col md:flex-row gap-8 items-start">
+                                <div className="flex-shrink-0">
+                                    <div className="w-32 h-32 rounded-full overflow-hidden ring-4 ring-[#C5A059]/20">
+                                        <Image
+                                            src="/images/team/ceo-profile.jpg"
+                                            alt={t.leadership.ceo.name}
+                                            width={128}
+                                            height={128}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="text-2xl font-bold text-white mb-2">{t.leadership.ceo.name}</h3>
+                                    <p className="text-[#C5A059] font-semibold mb-4">{t.leadership.ceo.role}</p>
+                                    <p className="text-gray-300 leading-relaxed mb-6">{t.leadership.ceo.bio}</p>
+                                    <div>
+                                        <h4 className="text-white font-semibold mb-3">
+                                            {lang === 'ar' ? 'مجالات الخبرة:' : lang === 'fr' ? 'Expertise:' : 'Expertise:'}
+                                        </h4>
+                                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                            {t.leadership.ceo.expertise.map((item: string, index: number) => (
+                                                <li key={index} className="flex items-center gap-2 text-gray-300">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </motion.div>
                     </div>

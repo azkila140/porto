@@ -247,12 +247,14 @@ export default function HeroSlider({ lang }: HeroSliderProps) {
                     }}
                     className="absolute inset-0"
                 >
-                    {/* Background Image with Overlay */}
-                    <div className="absolute inset-0">
+                    {/* Dynamic Rich Background with Images & Luxury Gold Accents */}
+                    <div className="absolute inset-0 overflow-hidden">
+                        {/* Background Image Layer */}
                         <motion.div
-                            initial={{ scale: 1.1 }}
-                            animate={{ scale: 1 }}
-                            transition={{ duration: 5 }}
+                            key={`img-${currentSlide}`}
+                            initial={{ scale: 1.1, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 1.2 }}
                             className="absolute inset-0"
                         >
                             <Image
@@ -264,8 +266,107 @@ export default function HeroSlider({ lang }: HeroSliderProps) {
                                 sizes="100vw"
                             />
                         </motion.div>
-                        <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} opacity-80`} />
-                        <div className="absolute inset-0 bg-black/40" />
+
+                        {/* Base Layer - Strong Themed Gradients */}
+                        <motion.div
+                            key={`bg-${currentSlide}`}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8 }}
+                            className="absolute inset-0"
+                            style={{
+                                background: currentSlide === 0
+                                    ? 'linear-gradient(135deg, rgba(30, 58, 138, 0.7) 0%, rgba(30, 64, 175, 0.7) 25%, rgba(59, 130, 246, 0.6) 50%, rgba(96, 165, 250, 0.5) 100%)'
+                                    : currentSlide === 1
+                                        ? 'linear-gradient(135deg, rgba(88, 28, 135, 0.7) 0%, rgba(126, 34, 206, 0.7) 25%, rgba(168, 85, 247, 0.6) 50%, rgba(192, 132, 252, 0.5) 100%)'
+                                        : currentSlide === 2
+                                            ? 'linear-gradient(135deg, rgba(154, 52, 18, 0.7) 0%, rgba(234, 88, 12, 0.7) 25%, rgba(249, 115, 22, 0.6) 50%, rgba(251, 146, 60, 0.5) 100%)'
+                                            : currentSlide === 3
+                                                ? 'linear-gradient(135deg, rgba(6, 95, 70, 0.7) 0%, rgba(5, 150, 105, 0.7) 25%, rgba(16, 185, 129, 0.6) 50%, rgba(52, 211, 153, 0.5) 100%)'
+                                                : 'linear-gradient(135deg, rgba(67, 56, 202, 0.7) 0%, rgba(79, 70, 229, 0.7) 25%, rgba(99, 102, 241, 0.6) 50%, rgba(129, 140, 248, 0.5) 100%)'
+                            }}
+                        />
+
+                        {/* Geometric Grid Pattern Overlay */}
+                        <div
+                            className="absolute inset-0 opacity-20"
+                            style={{
+                                backgroundImage: `
+                                    linear-gradient(rgba(197, 160, 89, 0.3) 1px, transparent 1px),
+                                    linear-gradient(90deg, rgba(197, 160, 89, 0.3) 1px, transparent 1px)
+                                `,
+                                backgroundSize: '50px 50px'
+                            }}
+                        />
+
+                        {/* Luxury Gold Accent Shapes */}
+                        <motion.div
+                            animate={{
+                                scale: [1, 1.1, 1],
+                                rotate: [0, 5, 0],
+                                opacity: [0.3, 0.5, 0.3]
+                            }}
+                            transition={{
+                                duration: 6,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                            className="absolute top-20 right-20 w-64 h-64"
+                            style={{
+                                background: 'radial-gradient(circle, rgba(197, 160, 89, 0.4) 0%, rgba(197, 160, 89, 0.1) 50%, transparent 100%)',
+                                filter: 'blur(30px)'
+                            }}
+                        />
+
+                        <motion.div
+                            animate={{
+                                scale: [1, 1.2, 1],
+                                rotate: [0, -10, 0],
+                                opacity: [0.25, 0.45, 0.25]
+                            }}
+                            transition={{
+                                duration: 8,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                            className="absolute bottom-32 left-32 w-96 h-96"
+                            style={{
+                                background: 'radial-gradient(circle, rgba(197, 160, 89, 0.35) 0%, rgba(197, 160, 89, 0.08) 50%, transparent 100%)',
+                                filter: 'blur(40px)'
+                            }}
+                        />
+
+                        {/* Animated Theme Color Orbs */}
+                        <motion.div
+                            animate={{
+                                x: [0, 100, 0],
+                                y: [0, -50, 0],
+                                scale: [1, 1.3, 1],
+                                opacity: [0.4, 0.6, 0.4]
+                            }}
+                            transition={{
+                                duration: 10,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                            className="absolute top-1/3 left-1/4 w-[36rem] h-[36rem]"
+                            style={{
+                                background: currentSlide === 0
+                                    ? 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%)'
+                                    : currentSlide === 1
+                                        ? 'radial-gradient(circle, rgba(192, 132, 252, 0.3) 0%, transparent 70%)'
+                                        : currentSlide === 2
+                                            ? 'radial-gradient(circle, rgba(251, 146, 60, 0.3) 0%, transparent 70%)'
+                                            : currentSlide === 3
+                                                ? 'radial-gradient(circle, rgba(52, 211, 153, 0.3) 0%, transparent 70%)'
+                                                : 'radial-gradient(circle, rgba(129, 140, 248, 0.3) 0%, transparent 70%)',
+                                filter: 'blur(50px)'
+                            }}
+                        />
+
+                        {/* Dark Vignette Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
                     </div>
 
                     {/* Content */}

@@ -26,7 +26,7 @@ const showcaseItems = {
             title: 'منصة طبية متكاملة',
             description: 'نظام حجز وإدارة عيادات مع تكامل كامل مع الدفع الإلكتروني',
             category: 'قطاع طبي',
-            image: 'https://images.unsplash.com/photo-1576091160550-217359f47f8a?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80',
             gradient: 'from-blue-500 to-cyan-500',
         },
         {
@@ -34,7 +34,7 @@ const showcaseItems = {
             title: 'تطبيق عقاري فاخر',
             description: 'منصة عرض وبيع العقارات الفاخرة مع جولات افتراضية 360',
             category: 'عقارات',
-            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
             gradient: 'from-purple-500 to-pink-500',
         },
         {
@@ -42,7 +42,7 @@ const showcaseItems = {
             title: 'نظام مطاعم ذكي',
             description: 'إدارة متكاملة للطلبات والحجوزات مع قائمة رقمية تفاعلية',
             category: 'مطاعم وفنادق',
-            image: 'https://images.unsplash.com/photo-1517248135467-4c7ed9d42339?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80',
             gradient: 'from-orange-500 to-red-500',
         },
         {
@@ -50,7 +50,7 @@ const showcaseItems = {
             title: 'متجر إلكتروني متقدم',
             description: 'منصة تجارة إلكترونية مع نظام دفع آمن وإدارة مخزون ذكية',
             category: 'تجارة إلكترونية',
-            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=80',
             gradient: 'from-green-500 to-emerald-500',
         },
     ],
@@ -60,7 +60,7 @@ const showcaseItems = {
             title: 'Plateforme Médicale Complète',
             description: 'Système de réservation et gestion de cliniques avec paiement intégré',
             category: 'Secteur Médical',
-            image: 'https://images.unsplash.com/photo-1576091160550-217359f47f8a?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80',
             gradient: 'from-blue-500 to-cyan-500',
         },
         {
@@ -68,7 +68,7 @@ const showcaseItems = {
             title: 'Application Immobilière de Luxe',
             description: 'Plateforme de vente immobilière haut de gamme avec visites virtuelles 360',
             category: 'Immobilier',
-            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
             gradient: 'from-purple-500 to-pink-500',
         },
         {
@@ -76,7 +76,7 @@ const showcaseItems = {
             title: 'Système Restaurant Intelligent',
             description: 'Gestion complète des commandes et réservations avec menu digital interactif',
             category: 'Hôtellerie-Restauration',
-            image: 'https://images.unsplash.com/photo-1517248135467-4c7ed9d42339?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80',
             gradient: 'from-orange-500 to-red-500',
         },
         {
@@ -84,7 +84,7 @@ const showcaseItems = {
             title: 'E-commerce Avancé',
             description: 'Plateforme e-commerce avec paiement sécurisé et gestion intelligente du stock',
             category: 'E-commerce',
-            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=80',
             gradient: 'from-green-500 to-emerald-500',
         },
     ],
@@ -94,7 +94,7 @@ const showcaseItems = {
             title: 'Complete Medical Platform',
             description: 'Clinic booking and management system with integrated payment gateway',
             category: 'Medical Sector',
-            image: 'https://images.unsplash.com/photo-1576091160550-217359f47f8a?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80',
             gradient: 'from-blue-500 to-cyan-500',
         },
         {
@@ -102,7 +102,7 @@ const showcaseItems = {
             title: 'Luxury Real Estate App',
             description: 'Premium property showcase platform with 360° virtual tours',
             category: 'Real Estate',
-            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
             gradient: 'from-purple-500 to-pink-500',
         },
         {
@@ -110,7 +110,7 @@ const showcaseItems = {
             title: 'Smart Restaurant System',
             description: 'Complete order and reservation management with interactive digital menu',
             category: 'Hospitality',
-            image: 'https://images.unsplash.com/photo-1517248135467-4c7ed9d42339?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80',
             gradient: 'from-orange-500 to-red-500',
         },
         {
@@ -118,7 +118,7 @@ const showcaseItems = {
             title: 'Advanced E-commerce',
             description: 'E-commerce platform with secure payment and smart inventory management',
             category: 'E-commerce',
-            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=80',
             gradient: 'from-green-500 to-emerald-500',
         },
     ],
