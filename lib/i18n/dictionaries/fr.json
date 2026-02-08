@@ -1,0 +1,20 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "services": "Services",
+        "solutions": "Solutions",
+        "work": "Nos Travaux",
+        "contact": "Contact",
+        "portal": "Portail Client"
+    },
+    "hero": {
+        "title": "Nexus Logic - Agence Marketing Digitale Complète",
+        "subtitle": "Nous transformons vos idées en solutions digitales intégrées qui propulsent votre croissance",
+        "cta": "Démarrer Votre Projet"
+    },
+    "common": {
+        "learnMore": "En Savoir Plus",
+        "getStarted": "Commencer",
+        "contactUs": "Nous Contacter"
+    }
+}
