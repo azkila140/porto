@@ -1,0 +1,7 @@
+const { loadEnvConfig
+} = require('@next/env')
+const nextConfig = require('./next.config.js')
+
+loadEnvConfig(process.cwd())
+
+module.exports = nextConfig

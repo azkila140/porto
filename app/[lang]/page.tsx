@@ -16,10 +16,39 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
         fr: 'Transformez vos idées en solutions numériques. Développement Web, Automatisation, Branding et Marketing de Croissance.',
         en: 'Transform your ideas into integrated digital solutions. Web Development, Automation, Branding, and Growth Marketing.'
     }
+    const keywords = {
+        ar: 'تطوير ويب, تسويق رقمي, هوية بصرية, أتمتة, SEO, تونس, وكالة تسويق',
+        fr: 'développement web, marketing digital, branding, automatisation, SEO, Tunisie, agence digitale',
+        en: 'web development, digital marketing, branding, automation, SEO, growth hacking, Tunisia, digital agency'
+    }
+
+    const baseUrl = 'https://porto-two-blue.vercel.app'
 
     return {
         title: titles[params.lang],
         description: descriptions[params.lang],
+        keywords: keywords[params.lang],
+        alternates: {
+            canonical: `${baseUrl}/${params.lang}`,
+            languages: {
+                en: `${baseUrl}/en`,
+                ar: `${baseUrl}/ar`,
+                fr: `${baseUrl}/fr`,
+            },
+        },
+        openGraph: {
+            title: titles[params.lang],
+            description: descriptions[params.lang],
+            url: `${baseUrl}/${params.lang}`,
+            siteName: 'Nexus Logic',
+            locale: params.lang === 'ar' ? 'ar_TN' : params.lang === 'fr' ? 'fr_FR' : 'en_US',
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: titles[params.lang],
+            description: descriptions[params.lang],
+        },
     }
 }
 
