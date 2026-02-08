@@ -79,12 +79,8 @@ export default function Header({ lang }: HeaderProps) {
             transition={{ duration: 0.6, type: 'spring' }}
             className="fixed top-0 left-0 right-0 z-50"
         >
-            {/* Dynamic Gradient Background */}
-            <div
-                className={`absolute inset-0 bg-gradient-to-r ${currentGradient} transition-all duration-1000 ${isScrolled ? 'opacity-90' : 'opacity-70'
-                    }`}
-            />
-            <div className="absolute inset-0 backdrop-blur-xl border-b border-white/10" />
+            {/* Glassmorphic Background - Transparent with Blur */}
+            <div className="absolute inset-0 bg-black/20 backdrop-blur-2xl border-b border-white/20" />
 
             <div className="relative container mx-auto px-4">
                 <div className="flex items-center justify-between h-20">
