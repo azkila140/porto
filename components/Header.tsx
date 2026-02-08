@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { Locale } from '@/lib/i18n/config'
 import { Menu, X, ChevronDown, Sparkles } from 'lucide-react'
+import { useSlider } from '@/lib/contexts/SliderContext'
 
 interface HeaderProps {
     lang: Locale
@@ -46,6 +47,7 @@ export default function Header({ lang }: HeaderProps) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const pathname = usePathname()
     const t = translations[lang]
+    const { currentGradient } = useSlider()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -75,12 +77,16 @@ export default function Header({ lang }: HeaderProps) {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.6, type: 'spring' }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? 'bg-slate-900/80 backdrop-blur-xl border-b border-white/10 shadow-2xl'
-                : 'bg-transparent'
-                }`}
+            className="fixed top-0 left-0 right-0 z-50"
         >
-            <div className="container mx-auto px-4">
+            {/* Dynamic Gradient Background */}
+            <div
+                className={`absolute inset-0 bg-gradient-to-r ${currentGradient} transition-all duration-1000 ${isScrolled ? 'opacity-90' : 'opacity-70'
+                    }`}
+            />
+            <div className="absolute inset-0 backdrop-blur-xl border-b border-white/10" />
+
+            <div className="relative container mx-auto px-4">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <Link href={`/${lang}`} className="flex items-center gap-2 group">
