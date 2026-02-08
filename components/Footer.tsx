@@ -131,10 +131,10 @@ export default function Footer({ lang }: FooterProps) {
                         {/* Social Links */}
                         <div className="flex gap-3">
                             {[
-                                { icon: Linkedin, href: '#' },
-                                { icon: Twitter, href: '#' },
-                                { icon: Instagram, href: '#' },
-                                { icon: Facebook, href: '#' },
+                                { icon: Linkedin, href: 'https://linkedin.com/company/nexuslogic' },
+                                { icon: Twitter, href: 'https://twitter.com/nexuslogic' },
+                                { icon: Instagram, href: 'https://instagram.com/nexuslogic' },
+                                { icon: Facebook, href: 'https://facebook.com/nexuslogic' },
                             ].map((social, index) => (
                                 <a
                                     key={index}
@@ -201,7 +201,7 @@ export default function Footer({ lang }: FooterProps) {
                             {Object.entries(t.companyLinks).map(([key, label]) => (
                                 <li key={key}>
                                     <Link
-                                        href={`/${lang}/${key}`}
+                                        href={`/${lang}/${key === 'portal' ? 'portal' : key}`}
                                         className="text-gray-400 hover:text-brand-emerald transition-colors flex items-center gap-2 group"
                                     >
                                         <ArrowRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all" />
@@ -213,9 +213,9 @@ export default function Footer({ lang }: FooterProps) {
 
                         {/* Contact Info */}
                         <div className="space-y-2 text-sm">
-                            <a href="mailto:contact@newuslogic.online" className="flex items-center gap-2 text-gray-400 hover:text-brand-emerald transition-colors">
+                            <a href="mailto:contact@nexuslogic.online" className="flex items-center gap-2 text-gray-400 hover:text-brand-emerald transition-colors">
                                 <Mail className="w-4 h-4" />
-                                contact@newuslogic.online
+                                contact@nexuslogic.online
                             </a>
                             <a href="tel:+212708080440" className="flex items-center gap-2 text-gray-400 hover:text-brand-emerald transition-colors">
                                 <Phone className="w-4 h-4" />

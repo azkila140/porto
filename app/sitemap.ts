@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             sitemap.push({
                 url: `${domain}/${lang}${route}`,
                 lastModified: new Date(),
-                changeFrequency: 'monthly' as const,
+                changeFrequency: 'weekly' as const,
                 priority: route === '' ? 1 : 0.8,
             })
         })
@@ -37,8 +37,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
             sitemap.push({
                 url: `${domain}/${lang}/solutions/${industry}`,
                 lastModified: new Date(),
-                changeFrequency: 'monthly' as const,
-                priority: 0.6,
+                changeFrequency: 'weekly' as const,
+                priority: 0.7,
             })
         })
     })

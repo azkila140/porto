@@ -62,8 +62,8 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
                         <div className="space-y-8">
                             <div className="p-6 rounded-xl bg-white/5 border border-white/10">
                                 <h3 className="text-xl font-bold mb-2 text-white">{current.email}</h3>
-                                <a href="mailto:contact@newuslogic.online" className="text-brand-emerald hover:underline">
-                                    contact@newuslogic.online
+                                <a href="mailto:contact@nexuslogic.online" className="text-brand-emerald hover:underline">
+                                    contact@nexuslogic.online
                                 </a>
                             </div>
 
@@ -82,16 +82,16 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
                             <div className="p-6 rounded-xl bg-white/5 border border-white/10">
                                 <h3 className="text-xl font-bold mb-4 text-white">{current.social}</h3>
                                 <div className="flex gap-4">
-                                    <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-emerald transition-colors">
+                                    <a href="https://facebook.com/nexuslogic" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-emerald transition-colors">
                                         <span className="text-xl">📘</span>
                                     </a>
-                                    <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-emerald transition-colors">
+                                    <a href="https://instagram.com/nexuslogic" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-emerald transition-colors">
                                         <span className="text-xl">📷</span>
                                     </a>
-                                    <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-emerald transition-colors">
+                                    <a href="https://twitter.com/nexuslogic" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-emerald transition-colors">
                                         <span className="text-xl">🐦</span>
                                     </a>
-                                    <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-emerald transition-colors">
+                                    <a href="https://linkedin.com/company/nexuslogic" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-emerald transition-colors">
                                         <span className="text-xl">💼</span>
                                     </a>
                                 </div>

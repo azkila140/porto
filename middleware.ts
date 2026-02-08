@@ -16,13 +16,20 @@ function getLocale(pathname: string): string | undefined {
 
 // Check if path is protected (requires auth)
 function isProtectedPath(pathname: string): boolean {
-    const protectedPaths = ['/portal']
+    const protectedPaths = ['/portal', '/admin']
     const pathWithoutLocale = pathname.replace(/^\/(ar|fr|en)/, '')
     return protectedPaths.some(path => pathWithoutLocale.startsWith(path))
 }
 
 export async function middleware(request: NextRequest) {
-    const { pathname } = request.nextUrl
+    const { pathname, hostname } = request.nextUrl
+
+    // Redirect www to non-www
+    if (hostname.startsWith('www.')) {
+        const newUrl = new URL(request.url)
+        newUrl.hostname = hostname.replace('www.', '')
+        return NextResponse.redirect(newUrl, 301)
+    }
 
     // Update Supabase session first
     let response = await updateSession(request)

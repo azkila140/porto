@@ -7,57 +7,31 @@ import { ChevronLeft, ChevronRight, Code, Zap, Palette, MapPin, TrendingUp } fro
 import Link from 'next/link'
 import { useSlider } from '@/lib/contexts/SliderContext'
 
+import { createClient } from '@/lib/supabase/client'
+
 interface Slide {
     id: number
-    title: {
-        ar: string
-        fr: string
-        en: string
-    }
-    subtitle: {
-        ar: string
-        fr: string
-        en: string
-    }
-    description: {
-        ar: string
-        fr: string
-        en: string
-    }
-    cta: {
-        ar: string
-        fr: string
-        en: string
-    }
+    title: { ar: string; fr: string; en: string }
+    subtitle: { ar: string; fr: string; en: string }
+    description: { ar: string; fr: string; en: string }
+    cta: { ar: string; fr: string; en: string }
     link: string
     icon: any
     gradient: string
     imageUrl: string
 }
 
-const slides: Slide[] = [
+const iconMap: Record<string, any> = {
+    Code, Zap, Palette, MapPin, TrendingUp
+}
+
+const fallbackSlides: Slide[] = [
     {
         id: 1,
-        title: {
-            ar: 'الهندسة الرقمية',
-            fr: 'Ingénierie Numérique',
-            en: 'Digital Engineering'
-        },
-        subtitle: {
-            ar: 'نبني أنظمة ويب وتطبيقات متطورة',
-            fr: 'Systèmes web et applications avancées',
-            en: 'Advanced web systems and applications'
-        },
-        description: {
-            ar: 'تطوير مواقع وتطبيقات مخصصة بتقنيات حديثة لتحويل أعمالك رقمياً',
-            fr: 'Développement sur mesure avec technologies modernes pour digitaliser votre entreprise',
-            en: 'Custom development with modern tech to digitalize your business'
-        },
-        cta: {
-            ar: 'استكشف الحلول',
-            fr: 'Découvrir',
-            en: 'Explore Solutions'
-        },
+        title: { ar: 'الهندسة الرقمية', fr: 'Ingénierie Numérique', en: 'Digital Engineering' },
+        subtitle: { ar: 'نبني أنظمة ويب وتطبيقات متطورة', fr: 'Systèmes web et applications avancées', en: 'Advanced web systems and applications' },
+        description: { ar: 'تطوير مواقع وتطبيقات مخصصة بتقنيات حديثة لتحويل أعمالك رقمياً', fr: 'Développement sur mesure avec technologies modernes pour digitaliser votre entreprise', en: 'Custom development with modern tech to digitalize your business' },
+        cta: { ar: 'استكشف الحلول', fr: 'Découvrir', en: 'Explore Solutions' },
         link: '/services/digital-engineering',
         icon: Code,
         gradient: 'from-blue-600 to-cyan-500',
@@ -65,26 +39,10 @@ const slides: Slide[] = [
     },
     {
         id: 2,
-        title: {
-            ar: 'الأتمتة والربط',
-            fr: 'Automatisation',
-            en: 'Automation & Integration'
-        },
-        subtitle: {
-            ar: 'نربط أنظمتك ونؤتمت عملياتك',
-            fr: 'Connectez vos systèmes et automatisez',
-            en: 'Connect systems and automate processes'
-        },
-        description: {
-            ar: 'حلول n8n، ربط APIs، شات بوت ذكي، وأتمتة سير العمل',
-            fr: 'Solutions n8n, APIs, chatbots intelligents et workflows',
-            en: 'n8n solutions, APIs, smart chatbots and workflows'
-        },
-        cta: {
-            ar: 'اكتشف المزيد',
-            fr: 'En savoir plus',
-            en: 'Learn More'
-        },
+        title: { ar: 'الأتمتة والربط', fr: 'Automatisation', en: 'Automation & Integration' },
+        subtitle: { ar: 'نربط أنظمتك ونؤتمت عملياتك', fr: 'Connectez vos systèmes et automatisez', en: 'Connect systems and automate processes' },
+        description: { ar: 'حلول n8n، ربط APIs، شات بوت ذكي، وأتمتة سير العمل', fr: 'Solutions n8n, APIs, chatbots intelligents et workflows', en: 'n8n solutions, APIs, smart chatbots and workflows' },
+        cta: { ar: 'اكتشف المزيد', fr: 'En savoir plus', en: 'Learn More' },
         link: '/services/automation',
         icon: Zap,
         gradient: 'from-purple-600 to-pink-500',
@@ -92,26 +50,10 @@ const slides: Slide[] = [
     },
     {
         id: 3,
-        title: {
-            ar: 'الهوية والتصميم',
-            fr: 'Branding & Design',
-            en: 'Branding & Design'
-        },
-        subtitle: {
-            ar: 'نصمم هويتك البصرية الاحترافية',
-            fr: 'Identité visuelle professionnelle',
-            en: 'Professional visual identity'
-        },
-        description: {
-            ar: 'شعارات، هوية بصرية، تصاميم الافتتاح، وكل ما تحتاجه لعلامتك التجارية',
-            fr: 'Logos, identité visuelle, designs de lancement et plus',
-            en: 'Logos, visual identity, launch designs and more'
-        },
-        cta: {
-            ar: 'شاهد أعمالنا',
-            fr: 'Voir portfolio',
-            en: 'View Portfolio'
-        },
+        title: { ar: 'الهوية والتصميم', fr: 'Branding & Design', en: 'Branding & Design' },
+        subtitle: { ar: 'نصمم هويتك البصرية الاحترافية', fr: 'Identité visuelle professionnelle', en: 'Professional visual identity' },
+        description: { ar: 'شعارات، هوية بصرية، تصاميم الافتتاح، وكل ما تحتاجه لعلامتك التجارية', fr: 'Logos, identité visuelle, designs de lancement et plus', en: 'Logos, visual identity, launch designs and more' },
+        cta: { ar: 'شاهد أعمالنا', fr: 'Voir portfolio', en: 'View Portfolio' },
         link: '/services/branding',
         icon: Palette,
         gradient: 'from-orange-600 to-red-500',
@@ -119,26 +61,10 @@ const slides: Slide[] = [
     },
     {
         id: 4,
-        title: {
-            ar: 'خرائط جوجل والسيو',
-            fr: 'Google Maps & SEO',
-            en: 'Google Maps & SEO'
-        },
-        subtitle: {
-            ar: 'اظهر في نتائج البحث المحلية',
-            fr: 'Apparaissez dans les recherches locales',
-            en: 'Appear in local search results'
-        },
-        description: {
-            ar: 'توثيق خرائط جوجل، تحسين السيو المحلي، والرقمنة الكاملة',
-            fr: 'Certification Google Maps, SEO local et digitalisation',
-            en: 'Google Maps verification, local SEO and digitalization'
-        },
-        cta: {
-            ar: 'ابدأ الآن',
-            fr: 'Commencer',
-            en: 'Get Started'
-        },
+        title: { ar: 'خرائط جوجل والسيو', fr: 'Google Maps & SEO', en: 'Google Maps & SEO' },
+        subtitle: { ar: 'اظهر في نتائج البحث المحلية', fr: 'Apparaissez dans les recherches locales', en: 'Appear in local search results' },
+        description: { ar: 'توثيق خرائط جوجل، تحسين السيو المحلي، والرقمنة الكاملة', fr: 'Certification Google Maps, SEO local et digitalisation', en: 'Google Maps verification, local SEO and digitalization' },
+        cta: { ar: 'ابدأ الآن', fr: 'Commencer', en: 'Get Started' },
         link: '/services/google-maps-seo',
         icon: MapPin,
         gradient: 'from-green-600 to-emerald-500',
@@ -146,26 +72,10 @@ const slides: Slide[] = [
     },
     {
         id: 5,
-        title: {
-            ar: 'النمو والمحتوى',
-            fr: 'Croissance & Contenu',
-            en: 'Growth & Content'
-        },
-        subtitle: {
-            ar: 'نساعدك على النمو والانتشار',
-            fr: 'Croissance et visibilité',
-            en: 'Growth and visibility'
-        },
-        description: {
-            ar: 'إنتاج فيديو، إدارة حملات، سيو تقني، وتسويق محتوى',
-            fr: 'Production vidéo, campagnes, SEO technique et marketing',
-            en: 'Video production, campaigns, technical SEO and marketing'
-        },
-        cta: {
-            ar: 'تواصل معنا',
-            fr: 'Contactez-nous',
-            en: 'Contact Us'
-        },
+        title: { ar: 'النمو والمحتوى', fr: 'Croissance & Contenu', en: 'Growth & Content' },
+        subtitle: { ar: 'نساعدك على النمو والانتشار', fr: 'Croissance et visibilité', en: 'Growth and visibility' },
+        description: { ar: 'إنتاج فيديو، إدارة حملات، سيو تقني، وتسويق محتوى', fr: 'Production vidéo, campagnes, SEO technique et marketing', en: 'Video production, campaigns, technical SEO and marketing' },
+        cta: { ar: 'تواصل معنا', fr: 'Contactez-nous', en: 'Contact Us' },
         link: '/services/growth-content',
         icon: TrendingUp,
         gradient: 'from-indigo-600 to-blue-500',
@@ -178,40 +88,77 @@ interface HeroSliderProps {
 }
 
 export default function HeroSlider({ lang }: HeroSliderProps) {
+    const supabase = createClient()
     const [currentSlide, setCurrentSlide] = useState(0)
     const [direction, setDirection] = useState(0)
+    const [dynamicSlides, setDynamicSlides] = useState<Slide[]>([])
     const { setCurrentGradient } = useSlider()
 
     useEffect(() => {
-        // Update header gradient whenever slide changes
-        setCurrentGradient(slides[currentSlide].gradient)
-    }, [currentSlide, setCurrentGradient])
+        async function fetchDynamicSlides() {
+            const { data, error } = await supabase
+                .from('dynamic_hero_slides')
+                .select('*')
+                .eq('active', true)
+                .order('order_index', { ascending: true })
+
+            if (data && data.length > 0) {
+                const transformed = data.map((d: any) => ({
+                    id: d.id,
+                    title: { ar: d.title_ar, fr: d.title_fr, en: d.title_en },
+                    subtitle: { ar: d.subtitle_ar, fr: d.subtitle_fr, en: d.subtitle_en },
+                    description: { ar: d.description_ar, fr: d.description_fr, en: d.description_en },
+                    cta: { ar: d.cta_ar, fr: d.cta_fr, en: d.cta_en },
+                    link: d.link,
+                    icon: iconMap[d.icon_name] || Zap,
+                    gradient: d.gradient_class,
+                    imageUrl: d.image_url
+                }))
+                setDynamicSlides(transformed)
+            }
+        }
+        fetchDynamicSlides()
+    }, [supabase])
+
+    const activeSlides = dynamicSlides.length > 0 ? dynamicSlides : fallbackSlides
 
     useEffect(() => {
+        if (activeSlides.length > 0) {
+            setCurrentGradient(activeSlides[currentSlide].gradient)
+        }
+    }, [currentSlide, activeSlides, setCurrentGradient])
+
+    useEffect(() => {
+        if (activeSlides.length === 0) return
         const timer = setInterval(() => {
             setDirection(1)
-            setCurrentSlide((prev) => (prev + 1) % slides.length)
+            setCurrentSlide((prev) => (prev + 1) % activeSlides.length)
         }, 5000)
 
         return () => clearInterval(timer)
-    }, [])
+    }, [activeSlides.length])
 
     const goToSlide = (index: number) => {
+        if (activeSlides.length === 0) return
         setDirection(index > currentSlide ? 1 : -1)
         setCurrentSlide(index)
     }
 
     const nextSlide = () => {
+        if (activeSlides.length === 0) return
         setDirection(1)
-        setCurrentSlide((prev) => (prev + 1) % slides.length)
+        setCurrentSlide((prev) => (prev + 1) % activeSlides.length)
     }
 
     const prevSlide = () => {
+        if (activeSlides.length === 0) return
         setDirection(-1)
-        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+        setCurrentSlide((prev) => (prev - 1 + activeSlides.length) % activeSlides.length)
     }
 
-    const slide = slides[currentSlide]
+    if (activeSlides.length === 0) return null
+
+    const slide = activeSlides[currentSlide]
     const Icon = slide.icon
 
     const variants = {
@@ -459,7 +406,7 @@ export default function HeroSlider({ lang }: HeroSliderProps) {
 
             {/* Dots Indicator */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-3">
-                {slides.map((_, index) => (
+                {activeSlides.map((_, index: number) => (
                     <button
                         key={index}
                         onClick={() => goToSlide(index)}

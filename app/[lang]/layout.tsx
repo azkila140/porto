@@ -40,17 +40,18 @@ export const metadata: Metadata = {
     },
     openGraph: {
         type: 'website',
-        locale: 'en_US',
+        locale: 'en_US', // Default, will be overridden by generateMetadata if needed
         url: siteConfig.url,
         siteName: siteConfig.name,
         title: `${siteConfig.name} - Full-Stack Marketing Agency`,
         description: siteConfig.description,
         images: [
             {
-                url: '/og-image.png',
+                url: `${siteConfig.url}/og-image.png`,
                 width: 1200,
                 height: 630,
                 alt: `${siteConfig.name} - Digital Marketing & Development Agency`,
+                type: 'image/png',
             },
         ],
     },
@@ -97,10 +98,10 @@ export default function RootLayout({
                         __html: JSON.stringify({
                             '@context': 'https://schema.org',
                             '@type': 'Organization',
-                            'name': 'Nexus Logic',
-                            'url': 'https://porto-two-blue.vercel.app',
-                            'logo': 'https://porto-two-blue.vercel.app/logo.png',
-                            'description': 'Full-stack digital marketing and development agency',
+                            'name': siteConfig.name,
+                            'url': siteConfig.url,
+                            'logo': `${siteConfig.url}/logo.png`,
+                            'description': siteConfig.description,
                             'address': {
                                 '@type': 'PostalAddress',
                                 'addressCountry': 'TN'
@@ -108,6 +109,8 @@ export default function RootLayout({
                             'contactPoint': {
                                 '@type': 'ContactPoint',
                                 'contactType': 'customer service',
+                                'email': 'contact@nexuslogic.online',
+                                'telephone': '+212708080440',
                                 'availableLanguage': ['en', 'ar', 'fr']
                             }
                         })
