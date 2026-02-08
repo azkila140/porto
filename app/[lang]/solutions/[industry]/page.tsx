@@ -177,7 +177,9 @@ export default function SolutionPage({ params }: SolutionPageProps) {
         notFound()
     }
 
-    const content = industryContent[lang]?.[industry as Industry] || industryContent.en.medical
+    // Safe access with fallback to medical content
+    const langContent = industryContent[lang] as Record<string, any> | undefined
+    const content = langContent?.[industry] || industryContent.en.medical
     const Icon = industryIcons[industry as Industry]
 
     return (
@@ -222,7 +224,7 @@ export default function SolutionPage({ params }: SolutionPageProps) {
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {content.features.map((feature, index) => (
+                        {content.features.map((feature: string, index: number) => (
                             <div
                                 key={index}
                                 className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-brand-emerald/50 transition-all"
@@ -245,7 +247,7 @@ export default function SolutionPage({ params }: SolutionPageProps) {
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {content.benefits.map((benefit, index) => (
+                        {content.benefits.map((benefit: string, index: number) => (
                             <div
                                 key={index}
                                 className="p-6 rounded-xl bg-gradient-to-br from-brand-emerald/10 to-blue-500/10 border border-brand-emerald/20 text-center"

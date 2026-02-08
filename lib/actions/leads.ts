@@ -1,7 +1,7 @@
 'use server'
 
 import { z } from 'zod'
-import { supabase } from '@/lib/supabase/client'
+import { createClient } from '@/lib/supabase/server'
 
 // Lead form validation schema
 const leadSchema = z.object({
@@ -44,6 +44,9 @@ export async function submitLead(data: LeadFormData) {
     try {
         // Validate form data
         const validatedData = leadSchema.parse(data)
+
+        // Create Supabase client
+        const supabase = createClient()
 
         // Insert into Supabase
         const { data: leadData, error: dbError } = await supabase
