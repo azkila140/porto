@@ -1,0 +1,22 @@
+{
+    "name": "Nexus Logic",
+    "short_name": "Nexus",
+    "description": "Nexus Logic - Full-Stack Marketing & Digital Agency",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#020617",
+    "theme_color": "#10b981",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "any",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/nexus_logic_logo_favicon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

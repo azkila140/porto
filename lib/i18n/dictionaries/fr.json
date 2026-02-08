@@ -15,6 +15,18 @@
     "common": {
         "learnMore": "En Savoir Plus",
         "getStarted": "Commencer",
-        "contactUs": "Nous Contacter"
+        "contactUs": "Nous Contacter",
+        "backToHome": "Retour à l'accueil",
+        "previousPage": "Page précédente",
+        "tryAgain": "Réessayer"
+    },
+    "error": {
+        "title": "Une erreur s'est produite !",
+        "description": "Nous avons rencontré une erreur inattendue. Notre équipe a été informée et nous travaillons à la résoudre."
+    },
+    "notFound": {
+        "title": "Page Non Trouvée",
+        "description": "La page que vous recherchez a peut-être été déplacée, supprimée ou n'a jamais existé.",
+        "lost": "Perdu ?"
     }
 }

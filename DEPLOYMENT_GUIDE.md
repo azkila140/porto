@@ -58,6 +58,12 @@ Click **"Add New"** and add these one by one:
 - **Environment**: ✅ Production
 - Click **Save**
 
+#### Variable 4 (Required for Email Notifications):
+- **Key**: `RESEND_API_KEY`
+- **Value**: `re_123456...` (Your actual Resend API Key)
+- **Environment**: ✅ Production, ✅ Preview, ✅ Development
+- Click **Save**
+
 ### 2.3 Redeploy
 1. Go to **Deployments** tab
 2. Click the **⋮** (three dots) on the latest deployment
@@ -74,7 +80,12 @@ Visit your Vercel URL and check:
 - ✅ Services page works
 - ✅ Work/portfolio page loads
 - ✅ Contact page displays
+- ✅ Homepage loads with hero section
+- ✅ Services page works
+- ✅ Work/portfolio page loads
+- ✅ Contact page displays
 - ✅ Language switcher works (AR/FR/EN)
+- ✅ **SEO Metadata:** Check page title and description change with language.
 
 ### 3.2 Test Client Portal
 1. Go to `/ar/login` on your deployed site

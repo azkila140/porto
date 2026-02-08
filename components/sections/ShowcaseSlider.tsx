@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Image from 'next/image'
 import type { Locale } from '@/lib/i18n/config'
 
 interface ShowcaseItem {
@@ -25,7 +26,7 @@ const showcaseItems = {
             title: 'منصة طبية متكاملة',
             description: 'نظام حجز وإدارة عيادات مع تكامل كامل مع الدفع الإلكتروني',
             category: 'قطاع طبي',
-            image: '/showcase/medical.jpg',
+            image: 'https://images.unsplash.com/photo-1576091160550-217359f47f8a?w=800&q=80',
             gradient: 'from-blue-500 to-cyan-500',
         },
         {
@@ -33,7 +34,7 @@ const showcaseItems = {
             title: 'تطبيق عقاري فاخر',
             description: 'منصة عرض وبيع العقارات الفاخرة مع جولات افتراضية 360',
             category: 'عقارات',
-            image: '/showcase/realestate.jpg',
+            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
             gradient: 'from-purple-500 to-pink-500',
         },
         {
@@ -41,7 +42,7 @@ const showcaseItems = {
             title: 'نظام مطاعم ذكي',
             description: 'إدارة متكاملة للطلبات والحجوزات مع قائمة رقمية تفاعلية',
             category: 'مطاعم وفنادق',
-            image: '/showcase/restaurant.jpg',
+            image: 'https://images.unsplash.com/photo-1517248135467-4c7ed9d42339?w=800&q=80',
             gradient: 'from-orange-500 to-red-500',
         },
         {
@@ -49,7 +50,7 @@ const showcaseItems = {
             title: 'متجر إلكتروني متقدم',
             description: 'منصة تجارة إلكترونية مع نظام دفع آمن وإدارة مخزون ذكية',
             category: 'تجارة إلكترونية',
-            image: '/showcase/ecommerce.jpg',
+            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80',
             gradient: 'from-green-500 to-emerald-500',
         },
     ],
@@ -59,7 +60,7 @@ const showcaseItems = {
             title: 'Plateforme Médicale Complète',
             description: 'Système de réservation et gestion de cliniques avec paiement intégré',
             category: 'Secteur Médical',
-            image: '/showcase/medical.jpg',
+            image: 'https://images.unsplash.com/photo-1576091160550-217359f47f8a?w=800&q=80',
             gradient: 'from-blue-500 to-cyan-500',
         },
         {
@@ -67,7 +68,7 @@ const showcaseItems = {
             title: 'Application Immobilière de Luxe',
             description: 'Plateforme de vente immobilière haut de gamme avec visites virtuelles 360',
             category: 'Immobilier',
-            image: '/showcase/realestate.jpg',
+            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
             gradient: 'from-purple-500 to-pink-500',
         },
         {
@@ -75,7 +76,7 @@ const showcaseItems = {
             title: 'Système Restaurant Intelligent',
             description: 'Gestion complète des commandes et réservations avec menu digital interactif',
             category: 'Hôtellerie-Restauration',
-            image: '/showcase/restaurant.jpg',
+            image: 'https://images.unsplash.com/photo-1517248135467-4c7ed9d42339?w=800&q=80',
             gradient: 'from-orange-500 to-red-500',
         },
         {
@@ -83,7 +84,7 @@ const showcaseItems = {
             title: 'E-commerce Avancé',
             description: 'Plateforme e-commerce avec paiement sécurisé et gestion intelligente du stock',
             category: 'E-commerce',
-            image: '/showcase/ecommerce.jpg',
+            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80',
             gradient: 'from-green-500 to-emerald-500',
         },
     ],
@@ -93,7 +94,7 @@ const showcaseItems = {
             title: 'Complete Medical Platform',
             description: 'Clinic booking and management system with integrated payment gateway',
             category: 'Medical Sector',
-            image: '/showcase/medical.jpg',
+            image: 'https://images.unsplash.com/photo-1576091160550-217359f47f8a?w=800&q=80',
             gradient: 'from-blue-500 to-cyan-500',
         },
         {
@@ -101,7 +102,7 @@ const showcaseItems = {
             title: 'Luxury Real Estate App',
             description: 'Premium property showcase platform with 360° virtual tours',
             category: 'Real Estate',
-            image: '/showcase/realestate.jpg',
+            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
             gradient: 'from-purple-500 to-pink-500',
         },
         {
@@ -109,7 +110,7 @@ const showcaseItems = {
             title: 'Smart Restaurant System',
             description: 'Complete order and reservation management with interactive digital menu',
             category: 'Hospitality',
-            image: '/showcase/restaurant.jpg',
+            image: 'https://images.unsplash.com/photo-1517248135467-4c7ed9d42339?w=800&q=80',
             gradient: 'from-orange-500 to-red-500',
         },
         {
@@ -117,7 +118,7 @@ const showcaseItems = {
             title: 'Advanced E-commerce',
             description: 'E-commerce platform with secure payment and smart inventory management',
             category: 'E-commerce',
-            image: '/showcase/ecommerce.jpg',
+            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80',
             gradient: 'from-green-500 to-emerald-500',
         },
     ],
@@ -256,16 +257,21 @@ export function ShowcaseSlider({ lang }: ShowcaseSliderProps) {
                                         </motion.p>
                                     </div>
 
-                                    {/* Placeholder for Image */}
+                                    {/* Optimization for Image */}
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: 0.3 }}
-                                        className="flex-1 flex items-center justify-center"
+                                        className="flex-1 w-full flex items-center justify-center relative min-h-[300px]"
                                     >
-                                        <div className={`w-full max-w-md h-64 md:h-96 rounded-xl bg-gradient-to-br ${currentItem.gradient} opacity-30 flex items-center justify-center border-2 border-white/20`}>
-                                            <span className="text-white/60 text-lg">Project Preview</span>
-                                        </div>
+                                        <Image
+                                            src={currentItem.image}
+                                            alt={currentItem.title}
+                                            fill
+                                            className="object-cover rounded-xl border-2 border-white/20"
+                                            priority
+                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                        />
                                     </motion.div>
                                 </div>
                             </motion.div>
@@ -298,8 +304,8 @@ export function ShowcaseSlider({ lang }: ShowcaseSliderProps) {
                                     setCurrentIndex(index)
                                 }}
                                 className={`h-2 rounded-full transition-all ${index === currentIndex
-                                        ? 'w-8 bg-brand-emerald'
-                                        : 'w-2 bg-white/30 hover:bg-white/50'
+                                    ? 'w-8 bg-brand-emerald'
+                                    : 'w-2 bg-white/30 hover:bg-white/50'
                                     }`}
                                 aria-label={`Go to slide ${index + 1}`}
                             />

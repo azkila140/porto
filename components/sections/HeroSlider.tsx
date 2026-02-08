@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Code, Zap, Palette, MapPin, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
@@ -248,11 +249,21 @@ export default function HeroSlider({ lang }: HeroSliderProps) {
                 >
                     {/* Background Image with Overlay */}
                     <div className="absolute inset-0">
-                        <img
-                            src={slide.imageUrl}
-                            alt={slide.title[lang]}
-                            className="w-full h-full object-cover"
-                        />
+                        <motion.div
+                            initial={{ scale: 1.1 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 5 }}
+                            className="absolute inset-0"
+                        >
+                            <Image
+                                src={slide.imageUrl}
+                                alt={slide.title[lang]}
+                                fill
+                                className="object-cover"
+                                priority={currentSlide === 0}
+                                sizes="100vw"
+                            />
+                        </motion.div>
                         <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} opacity-80`} />
                         <div className="absolute inset-0 bg-black/40" />
                     </div>
@@ -261,53 +272,66 @@ export default function HeroSlider({ lang }: HeroSliderProps) {
                     <div className="relative h-full flex items-center justify-center px-4">
                         <div className="max-w-5xl mx-auto text-center text-white">
                             <motion.div
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ delay: 0.2, type: 'spring' }}
+                                initial={{ scale: 0, rotate: -180 }}
+                                animate={{ scale: 1, rotate: 0 }}
+                                transition={{
+                                    delay: 0.2,
+                                    type: 'spring',
+                                    stiffness: 260,
+                                    damping: 20
+                                }}
                                 className="mb-8 inline-block"
                             >
-                                <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${slide.gradient} flex items-center justify-center`}>
+                                <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${slide.gradient} flex items-center justify-center shadow-2xl shadow-white/10`}>
                                     <Icon className="w-12 h-12" />
                                 </div>
                             </motion.div>
 
                             <motion.h1
-                                initial={{ y: 20, opacity: 0 }}
+                                initial={{ y: 30, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.3 }}
-                                className="text-5xl md:text-7xl font-bold mb-4"
+                                transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+                                className="text-5xl md:text-7xl font-bold mb-4 tracking-tight"
                             >
                                 {slide.title[lang]}
                             </motion.h1>
 
                             <motion.p
-                                initial={{ y: 20, opacity: 0 }}
+                                initial={{ y: 30, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.4 }}
-                                className="text-2xl md:text-3xl mb-6 font-semibold"
+                                transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+                                className="text-2xl md:text-3xl mb-6 font-semibold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
                             >
                                 {slide.subtitle[lang]}
                             </motion.p>
 
                             <motion.p
-                                initial={{ y: 20, opacity: 0 }}
+                                initial={{ y: 30, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.5 }}
-                                className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-90"
+                                transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                                className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-90 leading-relaxed"
                             >
                                 {slide.description[lang]}
                             </motion.p>
 
                             <motion.div
-                                initial={{ y: 20, opacity: 0 }}
+                                initial={{ y: 30, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.6 }}
+                                transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
+                                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                             >
                                 <Link
                                     href={slide.link}
-                                    className="inline-block px-8 py-4 bg-white text-gray-900 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105"
+                                    className="group relative inline-block px-8 py-4 bg-white text-gray-900 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 active:scale-95 overflow-hidden"
                                 >
-                                    {slide.cta[lang]}
+                                    <span className="relative z-10">{slide.cta[lang]}</span>
+                                    <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                                </Link>
+                                <Link
+                                    href="/contact"
+                                    className="px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-lg font-bold text-lg hover:bg-white/20 transition-all transform hover:scale-105 active:scale-95"
+                                >
+                                    {lang === 'ar' ? 'تواصل معنا' : lang === 'fr' ? 'Contactez-nous' : 'Contact Us'}
                                 </Link>
                             </motion.div>
                         </div>

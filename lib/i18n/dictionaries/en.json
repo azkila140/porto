@@ -15,6 +15,18 @@
     "common": {
         "learnMore": "Learn More",
         "getStarted": "Get Started",
-        "contactUs": "Contact Us"
+        "contactUs": "Contact Us",
+        "backToHome": "Back to Home",
+        "previousPage": "Previous Page",
+        "tryAgain": "Try Again"
+    },
+    "error": {
+        "title": "Something went wrong!",
+        "description": "We encountered an unexpected error. Our team has been notified and we are working to fix it."
+    },
+    "notFound": {
+        "title": "Page Not Found",
+        "description": "The page you are looking for might have been moved, deleted, or never existed.",
+        "lost": "Lost?"
     }
 }

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { submitLead, type LeadFormData } from '@/lib/actions/leads'
 import { cn } from '@/lib/utils'
 import type { Locale } from '@/lib/i18n/config'
+import { siteConfig } from '@/lib/config'
 
 interface LeadFormProps {
     lang: Locale
@@ -158,6 +159,24 @@ export function LeadForm({ lang }: LeadFormProps) {
         const result = await submitLead(data)
 
         if (result.success) {
+            // Send email notification
+            try {
+                await fetch('/api/send', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: data.name,
+                        email: siteConfig.adminEmail,
+                        phone: data.whatsapp,
+                        service: t.services[data.service as keyof typeof t.services],
+                        budget: t.budgets[data.budget as keyof typeof t.budgets],
+                        message: `Industry: ${t.industries[data.industry as keyof typeof t.industries]}`
+                    })
+                })
+            } catch (error) {
+                console.error('Failed to send email notification', error)
+            }
+
             setMessage({ type: 'success', text: t.success })
                 ; (e.target as HTMLFormElement).reset()
         } else {
