@@ -41,7 +41,7 @@ const translations = {
         },
         companyLinks: {
             about: 'من نحن',
-            portfolio: 'أعمالنا',
+            work: 'أعمالنا',
             contact: 'اتصل بنا',
             portal: 'بوابة العملاء',
         },
@@ -68,7 +68,7 @@ const translations = {
         },
         companyLinks: {
             about: 'À Propos',
-            portfolio: 'Portfolio',
+            work: 'Portfolio',
             contact: 'Contact',
             portal: 'Portail Client',
         },
@@ -95,7 +95,7 @@ const translations = {
         },
         companyLinks: {
             about: 'About Us',
-            portfolio: 'Portfolio',
+            work: 'Portfolio',
             contact: 'Contact',
             portal: 'Client Portal',
         },

@@ -1,148 +1,242 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { Code, Zap, Palette, MapPin, TrendingUp, ArrowRight } from 'lucide-react'
 import type { Locale } from '@/lib/i18n/config'
-import { getDictionary } from '@/lib/i18n/dictionaries'
 
-export default async function ServicesPage({ params }: { params: { lang: Locale } }) {
-    const dict = await getDictionary(params.lang)
+interface ServicesPageProps {
+    params: { lang: Locale }
+}
 
-    const services = {
-        ar: [
+const content = {
+    ar: {
+        title: 'خدماتنا',
+        subtitle: 'حلول رقمية متكاملة لتحويل أعمالك',
+        description: 'نقدم مجموعة شاملة من الخدمات التقنية والإبداعية لمساعدة مشروعك على النمو والنجاح في العالم الرقمي',
+        cta: 'تواصل معنا',
+        learnMore: 'اعرف المزيد',
+        services: [
             {
                 title: 'الهندسة الرقمية',
-                description: 'تطوير مواقع وتطبيقات ويب متقدمة باستخدام أحدث التقنيات مثل Next.js و React',
-                features: ['تطوير مواقع متجاوبة', 'تطبيقات ويب تقدمية (PWA)', 'تطبيقات موبايل', 'أنظمة إدارة محتوى'],
-                icon: '💻',
+                description: 'تطوير مواقع وتطبيقات ويب متقدمة باستخدام أحدث التقنيات',
+                icon: Code,
+                link: '/services/digital-engineering',
+                color: 'text-blue-500',
+                bg: 'bg-blue-500/10',
+                border: 'hover:border-blue-500/50'
             },
             {
-                title: 'الأتمتة الذكية',
-                description: 'أتمتة العمليات التجارية وتكاملات n8n لتحسين الكفاءة وتوفير الوقت',
-                features: ['تكاملات API', 'أتمتة سير العمل', 'روبوتات الدردشة', 'معالجة البيانات'],
-                icon: '⚙️',
+                title: 'الأتمتة والتكامل',
+                description: 'أتمتة العمليات وربط الأنظمة لتحسين الكفاءة',
+                icon: Zap,
+                link: '/services/automation',
+                color: 'text-purple-500',
+                bg: 'bg-purple-500/10',
+                border: 'hover:border-purple-500/50'
             },
             {
-                title: 'الهوية البصرية',
-                description: 'تصميم علامات تجارية مميزة تعكس قيم عملك وتجذب جمهورك المستهدف',
-                features: ['تصميم الشعارات', 'دليل الهوية البصرية', 'تصميم المطبوعات', 'تصميم واجهات المستخدم'],
-                icon: '🎨',
+                title: 'الهوية والتصميم',
+                description: 'تصميم هويات بصرية مميزة وعلامات تجارية قوية',
+                icon: Palette,
+                link: '/services/branding',
+                color: 'text-orange-500',
+                bg: 'bg-orange-500/10',
+                border: 'hover:border-orange-500/50'
             },
             {
-                title: 'خرائط جوجل',
-                description: 'تحسين ظهورك المحلي وإدارة احترافية لحساب Google Business الخاص بك',
-                features: ['تحسين محركات البحث المحلية', 'إدارة المراجعات', 'تحسين الملف التجاري', 'تتبع الأداء'],
-                icon: '📍',
+                title: 'خرائط جوجل والسيو',
+                description: 'تحسين الظهور المحلي وتصدر نتائج البحث',
+                icon: MapPin,
+                link: '/services/google-maps-seo',
+                color: 'text-green-500',
+                bg: 'bg-green-500/10',
+                border: 'hover:border-green-500/50'
             },
             {
-                title: 'النمو والتسويق',
-                description: 'استراتيجيات تسويقية شاملة لتنمية أعمالك وزيادة وصولك الرقمي',
-                features: ['التسويق عبر وسائل التواصل', 'إعلانات جوجل', 'تحسين محركات البحث', 'تسويق المحتوى'],
-                icon: '📈',
-            },
-        ],
-        fr: [
+                title: 'النمو والمحتوى',
+                description: 'استراتيجيات نمو وتسويق بالمحتوى لزيادة المبيعات',
+                icon: TrendingUp,
+                link: '/services/growth-content',
+                color: 'text-indigo-500',
+                bg: 'bg-indigo-500/10',
+                border: 'hover:border-indigo-500/50'
+            }
+        ]
+    },
+    fr: {
+        title: 'Nos Services',
+        subtitle: 'Solutions numériques complètes',
+        description: 'Nous offrons une gamme complète de services techniques et créatifs pour aider votre entreprise à croître',
+        cta: 'Contactez-nous',
+        learnMore: 'En savoir plus',
+        services: [
             {
                 title: 'Ingénierie Digitale',
-                description: 'Développement de sites et applications web avancés avec les dernières technologies comme Next.js et React',
-                features: ['Sites web responsifs', 'Applications web progressives (PWA)', 'Applications mobiles', 'Systèmes de gestion de contenu'],
-                icon: '💻',
+                description: 'Développement web et mobile avancé avec les dernières technologies',
+                icon: Code,
+                link: '/services/digital-engineering',
+                color: 'text-blue-500',
+                bg: 'bg-blue-500/10',
+                border: 'hover:border-blue-500/50'
             },
             {
-                title: 'Automatisation Intelligente',
-                description: 'Automatisation des processus métier et intégrations n8n pour améliorer l\'efficacité et gagner du temps',
-                features: ['Intégrations API', 'Automatisation des workflows', 'Chatbots', 'Traitement des données'],
-                icon: '⚙️',
+                title: 'Automatisation',
+                description: 'Automatisation des processus et intégration de systèmes',
+                icon: Zap,
+                link: '/services/automation',
+                color: 'text-purple-500',
+                bg: 'bg-purple-500/10',
+                border: 'hover:border-purple-500/50'
             },
             {
-                title: 'Identité Visuelle',
-                description: 'Conception de marques distinctives qui reflètent vos valeurs et attirent votre public cible',
-                features: ['Conception de logos', 'Guide d\'identité visuelle', 'Design d\'impression', 'Design d\'interface utilisateur'],
-                icon: '🎨',
+                title: 'Branding & Design',
+                description: 'Conception d\'identités visuelles distinctives et marques fortes',
+                icon: Palette,
+                link: '/services/branding',
+                color: 'text-orange-500',
+                bg: 'bg-orange-500/10',
+                border: 'hover:border-orange-500/50'
             },
             {
-                title: 'Google Maps',
-                description: 'Optimisation de votre visibilité locale et gestion professionnelle de votre compte Google Business',
-                features: ['SEO local', 'Gestion des avis', 'Optimisation du profil', 'Suivi des performances'],
-                icon: '📍',
+                title: 'Google Maps & SEO',
+                description: 'Optimisation de la visibilité locale et des résultats de recherche',
+                icon: MapPin,
+                link: '/services/google-maps-seo',
+                color: 'text-green-500',
+                bg: 'bg-green-500/10',
+                border: 'hover:border-green-500/50'
             },
             {
-                title: 'Croissance & Marketing',
-                description: 'Stratégies marketing complètes pour développer votre entreprise et augmenter votre portée digitale',
-                features: ['Marketing sur les réseaux sociaux', 'Publicités Google', 'Optimisation SEO', 'Marketing de contenu'],
-                icon: '📈',
-            },
-        ],
-        en: [
+                title: 'Croissance & Contenu',
+                description: 'Stratégies de croissance et marketing de contenu',
+                icon: TrendingUp,
+                link: '/services/growth-content',
+                color: 'text-indigo-500',
+                bg: 'bg-indigo-500/10',
+                border: 'hover:border-indigo-500/50'
+            }
+        ]
+    },
+    en: {
+        title: 'Our Services',
+        subtitle: 'Comprehensive Digital Solutions',
+        description: 'We offer a full range of technical and creative services to help your business grow and succeed digitally',
+        cta: 'Contact Us',
+        learnMore: 'Learn more',
+        services: [
             {
                 title: 'Digital Engineering',
-                description: 'Advanced website and web application development using the latest technologies like Next.js and React',
-                features: ['Responsive websites', 'Progressive Web Apps (PWA)', 'Mobile applications', 'Content management systems'],
-                icon: '💻',
+                description: 'Advanced web and mobile development using latest technologies',
+                icon: Code,
+                link: '/services/digital-engineering',
+                color: 'text-blue-500',
+                bg: 'bg-blue-500/10',
+                border: 'hover:border-blue-500/50'
             },
             {
-                title: 'Smart Automation',
-                description: 'Business process automation and n8n integrations to improve efficiency and save time',
-                features: ['API integrations', 'Workflow automation', 'Chatbots', 'Data processing'],
-                icon: '⚙️',
+                title: 'Automation',
+                description: 'Process automation and system integration for efficiency',
+                icon: Zap,
+                link: '/services/automation',
+                color: 'text-purple-500',
+                bg: 'bg-purple-500/10',
+                border: 'hover:border-purple-500/50'
             },
             {
-                title: 'Brand Identity',
-                description: 'Distinctive brand design that reflects your values and attracts your target audience',
-                features: ['Logo design', 'Visual identity guide', 'Print design', 'User interface design'],
-                icon: '🎨',
+                title: 'Branding & Design',
+                description: 'Distinctive visual identity design and strong branding',
+                icon: Palette,
+                link: '/services/branding',
+                color: 'text-orange-500',
+                bg: 'bg-orange-500/10',
+                border: 'hover:border-orange-500/50'
             },
             {
-                title: 'Google Maps',
-                description: 'Optimize your local visibility and professional management of your Google Business account',
-                features: ['Local SEO', 'Review management', 'Profile optimization', 'Performance tracking'],
-                icon: '📍',
+                title: 'Google Maps & SEO',
+                description: 'Local visibility optimization and search rankings',
+                icon: MapPin,
+                link: '/services/google-maps-seo',
+                color: 'text-green-500',
+                bg: 'bg-green-500/10',
+                border: 'hover:border-green-500/50'
             },
             {
-                title: 'Growth & Marketing',
-                description: 'Comprehensive marketing strategies to grow your business and increase your digital reach',
-                features: ['Social media marketing', 'Google Ads', 'SEO optimization', 'Content marketing'],
-                icon: '📈',
-            },
-        ],
+                title: 'Growth & Content',
+                description: 'Growth strategies and content marketing for sales',
+                icon: TrendingUp,
+                link: '/services/growth-content',
+                color: 'text-indigo-500',
+                bg: 'bg-indigo-500/10',
+                border: 'hover:border-indigo-500/50'
+            }
+        ]
     }
+}
 
-    const currentServices = services[params.lang]
+export default function ServicesPage({ params }: ServicesPageProps) {
+    const { lang } = params
+    const t = content[lang]
 
     return (
-        <main className="min-h-screen bg-brand-dark">
-            {/* Header */}
-            <section className="py-24 px-4">
-                <div className="container mx-auto max-w-7xl">
-                    <div className="text-center mb-16">
-                        <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                            {params.lang === 'ar' ? 'خدماتنا' : params.lang === 'fr' ? 'Nos Services' : 'Our Services'}
+        <main className="min-h-screen bg-slate-950 pt-20">
+            {/* Hero Section */}
+            <section className="relative py-20 px-4 overflow-hidden">
+                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+                <div className="container mx-auto max-w-7xl relative z-10 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+                            {t.title}
                         </h1>
-                        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-                            {params.lang === 'ar'
-                                ? 'حلول متكاملة لتحويل أعمالك رقمياً'
-                                : params.lang === 'fr'
-                                    ? 'Solutions complètes pour transformer votre entreprise numériquement'
-                                    : 'Complete solutions to digitally transform your business'}
+                        <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+                            {t.description}
                         </p>
-                    </div>
+                    </motion.div>
+                </div>
+            </section>
 
-                    {/* Services Grid */}
+            {/* Services Grid */}
+            <section className="py-10 px-4">
+                <div className="container mx-auto max-w-7xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {currentServices.map((service, index) => (
-                            <div
-                                key={index}
-                                className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
-                            >
-                                <div className="text-6xl mb-6">{service.icon}</div>
-                                <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
-                                <p className="text-gray-400 mb-6">{service.description}</p>
-                                <ul className="space-y-2">
-                                    {service.features.map((feature, idx) => (
-                                        <li key={idx} className="flex items-start gap-2 text-gray-300">
-                                            <span className="text-brand-emerald mt-1">✓</span>
-                                            <span>{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
+                        {t.services.map((service, index) => {
+                            const Icon = service.icon
+                            return (
+                                <Link href={`/${lang}${service.link}`} key={index}>
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.1 }}
+                                        whileHover={{ y: -5 }}
+                                        className={`group h-full p-8 rounded-2xl bg-slate-900 border border-white/5 ${service.border} transition-all duration-300 relative overflow-hidden`}
+                                    >
+                                        <div className={`absolute inset-0 ${service.bg} opacity-0 group-hover:opacity-10 transition-opacity`} />
+
+                                        <div className={`w-12 h-12 rounded-lg ${service.bg} flex items-center justify-center mb-6`}>
+                                            <Icon className={`w-6 h-6 ${service.color}`} />
+                                        </div>
+
+                                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-brand-emerald transition-colors">
+                                            {service.title}
+                                        </h3>
+
+                                        <p className="text-gray-400 mb-6 line-clamp-2">
+                                            {service.description}
+                                        </p>
+
+                                        <div className="flex items-center gap-2 text-sm font-medium text-white/60 group-hover:text-white transition-colors">
+                                            {t.learnMore}
+                                            <ArrowRight className={`w-4 h-4 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                                        </div>
+                                    </motion.div>
+                                </Link>
+                            )
+                        })}
                     </div>
                 </div>
             </section>
