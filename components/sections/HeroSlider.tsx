@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Code, Zap, Palette, MapPin, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
+import { useSlider } from '@/lib/contexts/SliderContext'
 
 interface Slide {
     id: number
@@ -178,6 +179,12 @@ interface HeroSliderProps {
 export default function HeroSlider({ lang }: HeroSliderProps) {
     const [currentSlide, setCurrentSlide] = useState(0)
     const [direction, setDirection] = useState(0)
+    const { setCurrentGradient } = useSlider()
+
+    useEffect(() => {
+        // Update header gradient whenever slide changes
+        setCurrentGradient(slides[currentSlide].gradient)
+    }, [currentSlide, setCurrentGradient])
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -332,8 +339,8 @@ export default function HeroSlider({ lang }: HeroSliderProps) {
                         key={index}
                         onClick={() => goToSlide(index)}
                         className={`w-3 h-3 rounded-full transition-all ${index === currentSlide
-                                ? 'bg-white w-8'
-                                : 'bg-white/50 hover:bg-white/75'
+                            ? 'bg-white w-8'
+                            : 'bg-white/50 hover:bg-white/75'
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />
