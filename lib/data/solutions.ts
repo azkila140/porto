@@ -1,7 +1,6 @@
 export const industries = [
     'medical',
     'real-estate',
-    'real-estate',
     'restaurants',
     'retail',
     'education',
