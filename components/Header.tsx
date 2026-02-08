@@ -72,6 +72,9 @@ export default function Header({ lang }: HeaderProps) {
         { code: 'en' as Locale, label: 'English' },
     ]
 
+    // Check if we're on the home page
+    const isHomePage = pathname === `/${lang}` || pathname === `/${lang}/`
+
     return (
         <motion.header
             initial={{ y: -100 }}
@@ -79,8 +82,21 @@ export default function Header({ lang }: HeaderProps) {
             transition={{ duration: 0.6, type: 'spring' }}
             className="fixed top-0 left-0 right-0 z-50"
         >
-            {/* Glassmorphic Background - Transparent with Blur */}
-            <div className="absolute inset-0 bg-black/20 backdrop-blur-2xl border-b border-white/20" />
+            {isHomePage ? (
+                <>
+                    {/* Home Page: Show gradient with blur */}
+                    <div
+                        className={`absolute inset-0 bg-gradient-to-r ${currentGradient} transition-all duration-1000 ${isScrolled ? 'opacity-95' : 'opacity-85'
+                            }`}
+                    />
+                    <div className="absolute inset-0 backdrop-blur-md border-b border-white/20" />
+                </>
+            ) : (
+                <>
+                    {/* Other Pages: Transparent glassmorphic */}
+                    <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-xl border-b border-white/10" />
+                </>
+            )}
 
             <div className="relative container mx-auto px-4">
                 <div className="flex items-center justify-between h-20">
