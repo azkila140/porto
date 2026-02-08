@@ -1,0 +1,97 @@
+{
+  "uploadedAt": "2026-02-08T09:05:41.434Z",
+  "totalUploaded": 15,
+  "totalFailed": 0,
+  "images": [
+    {
+      "name": "service-digital-engineering",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541515/nexus-logic/services/service-digital-engineering.jpg",
+      "publicId": "nexus-logic/services/service-digital-engineering",
+      "folder": "nexus-logic/services"
+    },
+    {
+      "name": "service-automation",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541517/nexus-logic/services/service-automation.jpg",
+      "publicId": "nexus-logic/services/service-automation",
+      "folder": "nexus-logic/services"
+    },
+    {
+      "name": "service-branding",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541520/nexus-logic/services/service-branding.jpg",
+      "publicId": "nexus-logic/services/service-branding",
+      "folder": "nexus-logic/services"
+    },
+    {
+      "name": "service-google-maps",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541522/nexus-logic/services/service-google-maps.jpg",
+      "publicId": "nexus-logic/services/service-google-maps",
+      "folder": "nexus-logic/services"
+    },
+    {
+      "name": "service-growth-marketing",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541524/nexus-logic/services/service-growth-marketing.jpg",
+      "publicId": "nexus-logic/services/service-growth-marketing",
+      "folder": "nexus-logic/services"
+    },
+    {
+      "name": "service-innovation",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541525/nexus-logic/services/service-innovation.jpg",
+      "publicId": "nexus-logic/services/service-innovation",
+      "folder": "nexus-logic/services"
+    },
+    {
+      "name": "portfolio-medical-platform",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541527/nexus-logic/portfolio/portfolio-medical-platform.jpg",
+      "publicId": "nexus-logic/portfolio/portfolio-medical-platform",
+      "folder": "nexus-logic/portfolio"
+    },
+    {
+      "name": "portfolio-real-estate",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541528/nexus-logic/portfolio/portfolio-real-estate.jpg",
+      "publicId": "nexus-logic/portfolio/portfolio-real-estate",
+      "folder": "nexus-logic/portfolio"
+    },
+    {
+      "name": "portfolio-restaurant",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541530/nexus-logic/portfolio/portfolio-restaurant.jpg",
+      "publicId": "nexus-logic/portfolio/portfolio-restaurant",
+      "folder": "nexus-logic/portfolio"
+    },
+    {
+      "name": "portfolio-ecommerce",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541531/nexus-logic/portfolio/portfolio-ecommerce.jpg",
+      "publicId": "nexus-logic/portfolio/portfolio-ecommerce",
+      "folder": "nexus-logic/portfolio"
+    },
+    {
+      "name": "hero-digital-engineering",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541533/nexus-logic/hero/hero-digital-engineering.jpg",
+      "publicId": "nexus-logic/hero/hero-digital-engineering",
+      "folder": "nexus-logic/hero"
+    },
+    {
+      "name": "hero-automation",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541535/nexus-logic/hero/hero-automation.jpg",
+      "publicId": "nexus-logic/hero/hero-automation",
+      "folder": "nexus-logic/hero"
+    },
+    {
+      "name": "hero-branding",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541537/nexus-logic/hero/hero-branding.jpg",
+      "publicId": "nexus-logic/hero/hero-branding",
+      "folder": "nexus-logic/hero"
+    },
+    {
+      "name": "hero-google-maps",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541539/nexus-logic/hero/hero-google-maps.jpg",
+      "publicId": "nexus-logic/hero/hero-google-maps",
+      "folder": "nexus-logic/hero"
+    },
+    {
+      "name": "hero-growth",
+      "url": "https://res.cloudinary.com/dd2hhzhkq/image/upload/v1770541541/nexus-logic/hero/hero-growth.jpg",
+      "publicId": "nexus-logic/hero/hero-growth",
+      "folder": "nexus-logic/hero"
+    }
+  ]
+}
