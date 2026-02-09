@@ -23,7 +23,113 @@ const iconMap: Record<string, any> = {
     Code, Zap, Palette, MapPin, TrendingUp, Code2: Code, Workflow: Zap
 }
 
-const fallbackSlides: Slide[] = [] // Will be populated in render if needed
+const fallbackSlides: Record<string, Slide[]> = {
+    ar: [
+        {
+            id: 1,
+            title: 'الهندسة الرقمية والابتكار',
+            subtitle: 'نبني الأنظمة التي تقود المستقبل',
+            description: 'نحول أفكارك الطموحة إلى واقع رقمي ملموس من خلال تطوير تطبيقات ويب وتطبيقات برمجية متقدمة تعتمد على أحدث التقنيات العالمية.',
+            cta: 'اكتشف خدماتنا',
+            link: '/ar/services/digital-engineering',
+            icon: Code,
+            gradient: 'from-blue-600 to-cyan-500',
+            imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80'
+        },
+        {
+            id: 2,
+            title: 'الأتمتة والذكاء الاصطناعي',
+            subtitle: 'حرر طاقتك الإبداعية واترك الروتين لنا',
+            description: 'نقوم بتوظيف قوة الذكاء الاصطناعي وأدوات الأتمتة المتقدمة (Auto-CRM) لزيادة كفاءة فريقك وتقليل التكاليف التشغيلية.',
+            cta: 'ابدأ الأتمتة',
+            link: '/ar/services/automation',
+            icon: Zap,
+            gradient: 'from-purple-600 to-pink-500',
+            imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=80'
+        },
+        {
+            id: 3,
+            title: 'الهوية البصرية والبراندات',
+            subtitle: 'تصميم يروي قصة نجاحك الفريدة',
+            description: 'نحن لا نصمم شعارات فحسب، بل نبني هويات بصرية متكاملة تترك انطباعاً لا ينسى وتخلق رابطاً عاطفياً قوياً مع جمهورك المستهدف.',
+            cta: 'شاهد أعمالنا',
+            link: '/ar/services/branding',
+            icon: Palette,
+            gradient: 'from-orange-500 to-red-600',
+            imageUrl: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=1920&q=80'
+        }
+    ],
+    fr: [
+        {
+            id: 1,
+            title: 'Ingénierie Digitale & Innovation',
+            subtitle: 'Bâtir les systèmes du futur',
+            description: 'Nous transformons vos idées ambitieuses en réalité numérique grâce au développement d\'applications web et logicielles avancées.',
+            cta: 'Découvrir',
+            link: '/fr/services/digital-engineering',
+            icon: Code,
+            gradient: 'from-blue-600 to-cyan-500',
+            imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80'
+        },
+        {
+            id: 2,
+            title: 'Automatisation & IA',
+            subtitle: 'Libérez votre créativité, automatisez le reste',
+            description: 'Optimisez vos processus métier avec l\'intelligence artificielle et des solutions d\'automatisation intelligentes.',
+            cta: 'Automatiser',
+            link: '/fr/services/automation',
+            icon: Zap,
+            gradient: 'from-purple-600 to-pink-500',
+            imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=80'
+        },
+        {
+            id: 3,
+            title: 'Identité Visuelle & Branding',
+            subtitle: 'Un design qui raconte votre histoire',
+            description: 'Nous créons des identités visuelles fortes qui captivent votre audience et renforcent votre présence sur le marché.',
+            cta: 'Portfolio',
+            link: '/fr/services/branding',
+            icon: Palette,
+            gradient: 'from-orange-500 to-red-600',
+            imageUrl: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=1920&q=80'
+        }
+    ],
+    en: [
+        {
+            id: 1,
+            title: 'Digital Engineering & Innovation',
+            subtitle: 'Building the Systems of Tomorrow',
+            description: 'Transforming your ambitious ideas into digital reality through advanced web and software development.',
+            cta: 'Explore Services',
+            link: '/en/services/digital-engineering',
+            icon: Code,
+            gradient: 'from-blue-600 to-cyan-500',
+            imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80'
+        },
+        {
+            id: 2,
+            title: 'Smart Automation & AI',
+            subtitle: 'Free Your Creativity, Automate the Rest',
+            description: 'Leverage the power of AI and advanced automation tools to increase efficiency and reduce operational costs.',
+            cta: 'Start Automating',
+            link: '/en/services/automation',
+            icon: Zap,
+            gradient: 'from-purple-600 to-pink-500',
+            imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=80'
+        },
+        {
+            id: 3,
+            title: 'Brand Identity & Design',
+            subtitle: 'Design that Tells Your Unique Story',
+            description: 'We build comprehensive visual identities that leave a lasting impression and create emotional bonds with your audience.',
+            cta: 'View Work',
+            link: '/en/services/branding',
+            icon: Palette,
+            gradient: 'from-orange-500 to-red-600',
+            imageUrl: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=1920&q=80'
+        }
+    ]
+}
 
 interface HeroSliderProps {
     lang: 'ar' | 'fr' | 'en'
@@ -53,43 +159,43 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
         }
     }, [initialSlides])
 
-    const activeSlides = transformedSlides.length > 0 ? transformedSlides : fallbackSlides
+    const activeSlides = transformedSlides.length > 0 ? transformedSlides : (fallbackSlides[lang] || fallbackSlides.en)
 
     useEffect(() => {
-        if (activeSlides.length > 0) {
+        if (activeSlides && activeSlides.length > 0) {
             setCurrentGradient(activeSlides[currentSlide].gradient)
         }
     }, [currentSlide, activeSlides, setCurrentGradient])
 
     useEffect(() => {
-        if (activeSlides.length === 0) return
+        if (!activeSlides || activeSlides.length === 0) return
         const timer = setInterval(() => {
             setDirection(1)
             setCurrentSlide((prev) => (prev + 1) % activeSlides.length)
         }, 5000)
 
         return () => clearInterval(timer)
-    }, [activeSlides.length])
+    }, [activeSlides?.length])
 
     const goToSlide = (index: number) => {
-        if (activeSlides.length === 0) return
+        if (!activeSlides || activeSlides.length === 0) return
         setDirection(index > currentSlide ? 1 : -1)
         setCurrentSlide(index)
     }
 
     const nextSlide = () => {
-        if (activeSlides.length === 0) return
+        if (!activeSlides || activeSlides.length === 0) return
         setDirection(1)
         setCurrentSlide((prev) => (prev + 1) % activeSlides.length)
     }
 
     const prevSlide = () => {
-        if (activeSlides.length === 0) return
+        if (!activeSlides || activeSlides.length === 0) return
         setDirection(-1)
         setCurrentSlide((prev) => (prev - 1 + activeSlides.length) % activeSlides.length)
     }
 
-    if (activeSlides.length === 0) return null
+    if (!activeSlides || activeSlides.length === 0) return null
 
     const slide = activeSlides[currentSlide]
     const Icon = slide.icon
