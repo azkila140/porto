@@ -295,7 +295,7 @@ export function ShowcaseSlider({ lang }: ShowcaseSliderProps) {
                     </button>
 
                     {/* Dots Indicator */}
-                    <div className="flex justify-center gap-2 mt-8">
+                    <div className="flex justify-center gap-3 mt-8">
                         {items.map((_, index) => (
                             <button
                                 key={index}
@@ -303,12 +303,15 @@ export function ShowcaseSlider({ lang }: ShowcaseSliderProps) {
                                     setDirection(index > currentIndex ? 1 : -1)
                                     setCurrentIndex(index)
                                 }}
-                                className={`h-2 rounded-full transition-all ${index === currentIndex
-                                    ? 'w-8 bg-brand-emerald'
-                                    : 'w-2 bg-white/30 hover:bg-white/50'
-                                    }`}
+                                className="h-11 w-11 flex items-center justify-center group"
                                 aria-label={`Go to slide ${index + 1}`}
-                            />
+                            >
+                                <span className={`h-2 rounded-full transition-all ${index === currentIndex
+                                    ? 'w-8 bg-white'
+                                    : 'w-2 bg-white/30 group-hover:bg-white/50'
+                                    }`}
+                                />
+                            </button>
                         ))}
                     </div>
                 </div>

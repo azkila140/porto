@@ -394,18 +394,23 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
             </button>
 
             {/* Dots Indicator */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-3">
-                {activeSlides.map((_, index: number) => (
-                    <button
-                        key={index}
-                        onClick={() => goToSlide(index)}
-                        className={`w-3 h-3 rounded-full transition-all ${index === currentSlide
-                            ? 'bg-white w-8'
-                            : 'bg-white/50 hover:bg-white/75'
-                            }`}
-                        aria-label={`Go to slide ${index + 1}`}
-                    />
-                ))}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+                <div className="flex justify-center gap-3 mt-8">
+                    {activeSlides.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => goToSlide(index)}
+                            className="h-11 w-11 flex items-center justify-center group"
+                            aria-label={`Go to slide ${index + 1}`}
+                        >
+                            <span className={`h-2 rounded-full transition-all ${currentSlide === index
+                                ? 'w-8 bg-white'
+                                : 'w-2 bg-white/30 group-hover:bg-white/50'
+                                }`}
+                            />
+                        </button>
+                    ))}
+                </div>
             </div>
         </div>
     )

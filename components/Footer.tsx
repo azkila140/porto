@@ -131,22 +131,42 @@ export default function Footer({ lang }: FooterProps) {
 
                         {/* Social Links */}
                         <div className="flex gap-3">
-                            {[
-                                { icon: Linkedin, href: 'https://linkedin.com/company/nexuslogic' },
-                                { icon: Twitter, href: 'https://twitter.com/nexuslogic' },
-                                { icon: Instagram, href: 'https://instagram.com/nexuslogic' },
-                                { icon: Facebook, href: 'https://facebook.com/nexuslogic' },
-                            ].map((social, index) => (
-                                <a
-                                    key={index}
-                                    href={social.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-emerald/20 hover:border-brand-emerald/50 transition-all group"
-                                >
-                                    <social.icon className="w-5 h-5 text-gray-400 group-hover:text-brand-emerald transition-colors" />
-                                </a>
-                            ))}
+                            <Link
+                                href="https://linkedin.com/company/nexuslogic"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Visit our LinkedIn page"
+                                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-emerald hover:bg-brand-emerald/10 hover:border-brand-emerald/30 transition-all duration-300"
+                            >
+                                <Linkedin className="w-5 h-5" />
+                            </Link>
+                            <Link
+                                href="https://twitter.com/nexuslogic"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Follow us on Twitter"
+                                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-emerald hover:bg-brand-emerald/10 hover:border-brand-emerald/30 transition-all duration-300"
+                            >
+                                <Twitter className="w-5 h-5" />
+                            </Link>
+                            <Link
+                                href="https://instagram.com/nexuslogic"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Follow us on Instagram"
+                                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-emerald hover:bg-brand-emerald/10 hover:border-brand-emerald/30 transition-all duration-300"
+                            >
+                                <Instagram className="w-5 h-5" />
+                            </Link>
+                            <Link
+                                href="https://facebook.com/nexuslogic"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Like our Facebook page"
+                                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-emerald hover:bg-brand-emerald/10 hover:border-brand-emerald/30 transition-all duration-300"
+                            >
+                                <Facebook className="w-5 h-5" />
+                            </Link>
                         </div>
                     </div>
 
