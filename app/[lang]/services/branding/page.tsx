@@ -6,7 +6,6 @@ import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import ServiceDetails from '@/components/services/ServiceDetails'
-import { Palette, Sparkles, FileText, Image, Package, Printer } from 'lucide-react'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
 import { siteConfig } from '@/lib/config'
 
@@ -32,32 +31,32 @@ const content = {
             subtitle: 'حلول تصميم شاملة لبناء هوية بصرية قوية ومميزة',
             items: [
                 {
-                    icon: Sparkles,
+                    icon: 'Sparkles',
                     title: 'تصميم الشعار',
                     description: 'شعارات احترافية فريدة تعكس قيم علامتك التجارية وتبقى في ذاكرة العملاء'
                 },
                 {
-                    icon: Palette,
+                    icon: 'Palette',
                     title: 'الهوية البصرية',
                     description: 'دليل هوية كامل يشمل الألوان، الخطوط، والأنماط لاستخدام متسق عبر جميع المنصات'
                 },
                 {
-                    icon: FileText,
+                    icon: 'FileText',
                     title: 'القرطاسية',
                     description: 'بطاقات عمل، أوراق رسمية، أظرف، وجميع مستلزمات القرطاسية بتصميم احترافي'
                 },
                 {
-                    icon: Image,
+                    icon: 'Image',
                     title: 'تصاميم السوشيال ميديا',
                     description: 'قوالب منشورات، قصص، وأغلفة لجميع منصات التواصل الاجتماعي'
                 },
                 {
-                    icon: Package,
+                    icon: 'Package',
                     title: 'تصميم التغليف',
                     description: 'تصاميم تغليف جذابة للمنتجات تبرز على الرفوف وتجذب العملاء'
                 },
                 {
-                    icon: Printer,
+                    icon: 'Printer',
                     title: 'مواد الافتتاح',
                     description: 'بروشورات، لافتات، رول أب، وجميع المواد المطبوعة لافتتاح مشروعك'
                 }
@@ -151,32 +150,32 @@ const content = {
             subtitle: 'Solutions de design complètes pour construire une identité visuelle forte et distinctive',
             items: [
                 {
-                    icon: Sparkles,
+                    icon: 'Sparkles',
                     title: 'Design de Logo',
                     description: 'Logos professionnels uniques reflétant les valeurs de votre marque et restant dans la mémoire des clients'
                 },
                 {
-                    icon: Palette,
+                    icon: 'Palette',
                     title: 'Identité Visuelle',
                     description: 'Guide d\'identité complet incluant couleurs, polices et motifs pour une utilisation cohérente sur toutes les plateformes'
                 },
                 {
-                    icon: FileText,
+                    icon: 'FileText',
                     title: 'Papeterie',
                     description: 'Cartes de visite, papier à en-tête, enveloppes et tous les supports de papeterie avec design professionnel'
                 },
                 {
-                    icon: Image,
+                    icon: 'Image',
                     title: 'Designs Réseaux Sociaux',
                     description: 'Templates de posts, stories et couvertures pour toutes les plateformes de médias sociaux'
                 },
                 {
-                    icon: Package,
+                    icon: 'Package',
                     title: 'Design d\'Emballage',
                     description: 'Designs d\'emballage attractifs pour produits qui se démarquent sur les étagères et attirent les clients'
                 },
                 {
-                    icon: Printer,
+                    icon: 'Printer',
                     title: 'Supports de Lancement',
                     description: 'Brochures, bannières, roll-ups et tous les supports imprimés pour le lancement de votre projet'
                 }
@@ -266,32 +265,32 @@ const content = {
             subtitle: 'Comprehensive design solutions to build a strong and distinctive visual identity',
             items: [
                 {
-                    icon: Sparkles,
+                    icon: 'Sparkles',
                     title: 'Logo Design',
                     description: 'Unique professional logos reflecting your brand values and staying in customers\' memory'
                 },
                 {
-                    icon: Palette,
+                    icon: 'Palette',
                     title: 'Visual Identity',
                     description: 'Complete identity guide including colors, fonts, and patterns for consistent use across all platforms'
                 },
                 {
-                    icon: FileText,
+                    icon: 'FileText',
                     title: 'Stationery',
                     description: 'Business cards, letterheads, envelopes, and all stationery supplies with professional design'
                 },
                 {
-                    icon: Image,
+                    icon: 'Image',
                     title: 'Social Media Designs',
                     description: 'Post templates, stories, and covers for all social media platforms'
                 },
                 {
-                    icon: Package,
+                    icon: 'Package',
                     title: 'Packaging Design',
                     description: 'Attractive packaging designs for products that stand out on shelves and attract customers'
                 },
                 {
-                    icon: Printer,
+                    icon: 'Printer',
                     title: 'Launch Materials',
                     description: 'Brochures, banners, roll-ups, and all printed materials for your project launch'
                 }

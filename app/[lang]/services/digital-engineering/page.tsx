@@ -33,32 +33,32 @@ const content = {
             subtitle: 'حلول تقنية شاملة ومبتكرة لتحويل رؤيتك إلى واقع رقمي ملموس',
             items: [
                 {
-                    icon: Code,
+                    icon: 'Code',
                     title: 'تطوير مواقع الويب المتقدمة',
                     description: 'بناء مواقع ويب سريعة جداً ومتجاوبة بالكامل باستخدام إطار العمل Next.js. نركز على تحسين محركات البحث التقني (Technical SEO) لضمان ظهورك في المراكز الأولى.'
                 },
                 {
-                    icon: Smartphone,
+                    icon: 'Smartphone',
                     title: 'تطبيقات الجوال العصرية',
                     description: 'تطوير تطبيقات iOS و Android أصلية أو عابرة للمنصات (Cross-platform) تمنح مستخدميك تجربة سلسة تشبه التطبيقات المثبتة مسبقاً على أجهزتهم.'
                 },
                 {
-                    icon: Cloud,
+                    icon: 'Cloud',
                     title: 'البنية التحتية السحابية',
                     description: 'تصميم وإدارة بيئات سحابية متطورة على AWS و Google Cloud لضمان توفر الخدمة بنسبة 99.9% وقابلية التوسع الفوري مع نمو قاعدة المستخدمين.'
                 },
                 {
-                    icon: Database,
+                    icon: 'Database',
                     title: 'إدارة البيانات الضخمة',
                     description: 'تصميم قواعد بيانات متطورة تضمن سلامة البيانات وسرعة الوصول إليها ومعالجتها، مع تكامل كامل مع أنظمة التحليلات والذكاء الاصطناعي.'
                 },
                 {
-                    icon: Zap,
+                    icon: 'Zap',
                     title: 'APIs و Microservices',
                     description: 'بناء واجهات برمجية قوية وخدمات مصغرة تتيح لأنظمتك التواصل بسلاسة، مما يسهل عملية الصيانة والتطوير المستقبلي دون الحاجة لإعادة بناء النظام بالكامل.'
                 },
                 {
-                    icon: Shield,
+                    icon: 'Shield',
                     title: 'الأمن السيبراني وحماية البيانات',
                     description: 'تطبيق أحدث بروتوكولات الأمان والتشفير لحماية معلوماتك ومعلومات عملائك من التهديدات السيبرانية المتزايدة، وضمان الامتثال لمعايير الخصوصية العالمية.'
                 }
@@ -160,32 +160,32 @@ const content = {
             subtitle: 'Solutions techniques complètes pour digitaliser votre entreprise',
             items: [
                 {
-                    icon: Code,
+                    icon: 'Code',
                     title: 'Développement Web',
                     description: 'Sites rapides et responsives avec Next.js et React, design moderne et expérience utilisateur exceptionnelle'
                 },
                 {
-                    icon: Smartphone,
+                    icon: 'Smartphone',
                     title: 'Applications Mobiles',
                     description: 'Applications iOS et Android natives ou cross-platform avec React Native et Flutter'
                 },
                 {
-                    icon: Cloud,
+                    icon: 'Cloud',
                     title: 'Solutions Cloud',
                     description: 'Infrastructure cloud évolutive sur AWS, Google Cloud et Azure'
                 },
                 {
-                    icon: Database,
+                    icon: 'Database',
                     title: 'Bases de Données',
                     description: 'Conception et gestion de bases de données efficaces avec PostgreSQL, MongoDB et Supabase'
                 },
                 {
-                    icon: Zap,
+                    icon: 'Zap',
                     title: 'APIs & Microservices',
                     description: 'Construction d\'APIs robustes et microservices avec Node.js et Python'
                 },
                 {
-                    icon: Shield,
+                    icon: 'Shield',
                     title: 'Sécurité',
                     description: 'Application des meilleures pratiques de cybersécurité et protection des données'
                 }
@@ -275,32 +275,32 @@ const content = {
             subtitle: 'Comprehensive technical solutions to digitalize your business',
             items: [
                 {
-                    icon: Code,
+                    icon: 'Code',
                     title: 'Web Development',
                     description: 'Fast and responsive websites using Next.js and React with modern design and exceptional user experience'
                 },
                 {
-                    icon: Smartphone,
+                    icon: 'Smartphone',
                     title: 'Mobile Apps',
                     description: 'Native or cross-platform iOS and Android apps using React Native and Flutter'
                 },
                 {
-                    icon: Cloud,
+                    icon: 'Cloud',
                     title: 'Cloud Solutions',
                     description: 'Scalable cloud infrastructure on AWS, Google Cloud, and Azure'
                 },
                 {
-                    icon: Database,
+                    icon: 'Database',
                     title: 'Databases',
                     description: 'Efficient database design and management using PostgreSQL, MongoDB, and Supabase'
                 },
                 {
-                    icon: Zap,
+                    icon: 'Zap',
                     title: 'APIs & Microservices',
                     description: 'Building robust APIs and microservices with Node.js and Python'
                 },
                 {
-                    icon: Shield,
+                    icon: 'Shield',
                     title: 'Security',
                     description: 'Implementing cybersecurity best practices and data protection'
                 }

@@ -32,32 +32,32 @@ const content = {
             subtitle: 'حلول تسويقية متكاملة لبناء جمهورك وزيادة مبيعاتك',
             items: [
                 {
-                    icon: Video,
+                    icon: 'Video',
                     title: 'إنتاج الفيديو',
                     description: 'فيديوهات تسويقية احترافية، ريلز، شورتس، وفيديوهات تعريفية تجذب الانتباه وتزيد التفاعل'
                 },
                 {
-                    icon: FileText,
+                    icon: 'FileText',
                     title: 'كتابة المحتوى',
                     description: 'محتوى تسويقي مقنع، مقالات SEO، نصوص إعلانية، ومحتوى سوشيال ميديا يحقق نتائج'
                 },
                 {
-                    icon: TrendingUp,
+                    icon: 'TrendingUp',
                     title: 'استراتيجية النمو',
                     description: 'خطط نمو مخصصة تجمع بين التسويق الرقمي، المحتوى، والإعلانات لتحقيق أهدافك'
                 },
                 {
-                    icon: Target,
+                    icon: 'Target',
                     title: 'حملات إعلانية',
                     description: 'إدارة حملات Google Ads و Facebook Ads مع استهداف دقيق وتحسين مستمر للعائد'
                 },
                 {
-                    icon: BarChart3,
+                    icon: 'BarChart3',
                     title: 'تحليل وتحسين',
                     description: 'تتبع الأداء، تحليل البيانات، وتحسين الحملات بناءً على النتائج الفعلية'
                 },
                 {
-                    icon: Megaphone,
+                    icon: 'Megaphone',
                     title: 'إدارة السوشيال ميديا',
                     description: 'إدارة كاملة لحساباتك على منصات التواصل مع محتوى يومي وتفاعل مع الجمهور'
                 }
@@ -142,32 +142,32 @@ const content = {
             subtitle: 'Solutions marketing intégrées pour construire votre audience et augmenter vos ventes',
             items: [
                 {
-                    icon: Video,
+                    icon: 'Video',
                     title: 'Production Vidéo',
                     description: 'Vidéos marketing professionnelles, reels, shorts et vidéos de présentation qui attirent l\'attention et augmentent l\'engagement'
                 },
                 {
-                    icon: FileText,
+                    icon: 'FileText',
                     title: 'Rédaction de Contenu',
                     description: 'Contenu marketing convaincant, articles SEO, textes publicitaires et contenu réseaux sociaux qui génère des résultats'
                 },
                 {
-                    icon: TrendingUp,
+                    icon: 'TrendingUp',
                     title: 'Stratégie de Croissance',
                     description: 'Plans de croissance personnalisés combinant marketing digital, contenu et publicités pour atteindre vos objectifs'
                 },
                 {
-                    icon: Target,
+                    icon: 'Target',
                     title: 'Campagnes Publicitaires',
                     description: 'Gestion de campagnes Google Ads et Facebook Ads avec ciblage précis et optimisation continue du retour'
                 },
                 {
-                    icon: BarChart3,
+                    icon: 'BarChart3',
                     title: 'Analyse & Optimisation',
                     description: 'Suivi des performances, analyse des données et optimisation des campagnes basée sur les résultats réels'
                 },
                 {
-                    icon: Megaphone,
+                    icon: 'Megaphone',
                     title: 'Gestion Réseaux Sociaux',
                     description: 'Gestion complète de vos comptes sur les plateformes sociales avec contenu quotidien et interaction avec l\'audience'
                 }
@@ -249,32 +249,32 @@ const content = {
             subtitle: 'Integrated marketing solutions to build your audience and increase sales',
             items: [
                 {
-                    icon: Video,
+                    icon: 'Video',
                     title: 'Video Production',
                     description: 'Professional marketing videos, reels, shorts, and explainer videos that grab attention and increase engagement'
                 },
                 {
-                    icon: FileText,
+                    icon: 'FileText',
                     title: 'Content Writing',
                     description: 'Compelling marketing content, SEO articles, ad copy, and social media content that delivers results'
                 },
                 {
-                    icon: TrendingUp,
+                    icon: 'TrendingUp',
                     title: 'Growth Strategy',
                     description: 'Custom growth plans combining digital marketing, content, and advertising to achieve your goals'
                 },
                 {
-                    icon: Target,
+                    icon: 'Target',
                     title: 'Ad Campaigns',
                     description: 'Google Ads and Facebook Ads campaign management with precise targeting and continuous ROI optimization'
                 },
                 {
-                    icon: BarChart3,
+                    icon: 'BarChart3',
                     title: 'Analytics & Optimization',
                     description: 'Performance tracking, data analysis, and campaign optimization based on actual results'
                 },
                 {
-                    icon: Megaphone,
+                    icon: 'Megaphone',
                     title: 'Social Media Management',
                     description: 'Complete management of your social platform accounts with daily content and audience engagement'
                 }

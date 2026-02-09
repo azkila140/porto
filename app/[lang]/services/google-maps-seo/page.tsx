@@ -32,32 +32,32 @@ const content = {
             subtitle: 'حلول متكاملة لتصدر نتائج البحث المحلية وجذب عملاء جدد',
             items: [
                 {
-                    icon: MapPin,
+                    icon: 'MapPin',
                     title: 'تحسين Google Business',
                     description: 'إنشاء وتحسين ملف نشاطك التجاري على Google مع معلومات كاملة وصور احترافية'
                 },
                 {
-                    icon: Search,
+                    icon: 'Search',
                     title: 'السيو المحلي',
                     description: 'تحسين موقعك للظهور في نتائج البحث المحلية "بالقرب مني" وجذب عملاء المنطقة'
                 },
                 {
-                    icon: Star,
+                    icon: 'Star',
                     title: 'إدارة التقييمات',
                     description: 'استراتيجية للحصول على تقييمات إيجابية والرد على المراجعات بشكل احترافي'
                 },
                 {
-                    icon: TrendingUp,
+                    icon: 'TrendingUp',
                     title: 'تحليل المنافسين',
                     description: 'دراسة منافسيك المحليين وتطوير استراتيجية للتفوق عليهم في النتائج'
                 },
                 {
-                    icon: Users,
+                    icon: 'Users',
                     title: 'بناء الاستشهادات',
                     description: 'إضافة نشاطك إلى أدلة الأعمال المحلية والمنصات ذات الصلة'
                 },
                 {
-                    icon: Award,
+                    icon: 'Award',
                     title: 'تقارير الأداء',
                     description: 'تقارير شهرية تفصيلية عن الترتيب، الزيارات، والمكالمات من خرائط جوجل'
                 }
@@ -151,32 +151,32 @@ const content = {
             subtitle: 'Solutions complètes pour dominer les résultats de recherche locaux et attirer de nouveaux clients',
             items: [
                 {
-                    icon: MapPin,
+                    icon: 'MapPin',
                     title: 'Optimisation Google Business',
                     description: 'Création et optimisation de votre profil d\'entreprise Google avec informations complètes et photos professionnelles'
                 },
                 {
-                    icon: Search,
+                    icon: 'Search',
                     title: 'SEO Local',
                     description: 'Optimisation de votre site pour apparaître dans les résultats de recherche locaux "près de moi" et attirer les clients de la région'
                 },
                 {
-                    icon: Star,
+                    icon: 'Star',
                     title: 'Gestion des Avis',
                     description: 'Stratégie pour obtenir des avis positifs et répondre aux commentaires de manière professionnelle'
                 },
                 {
-                    icon: TrendingUp,
+                    icon: 'TrendingUp',
                     title: 'Analyse Concurrentielle',
                     description: 'Étude de vos concurrents locaux et développement d\'une stratégie pour les surpasser dans les résultats'
                 },
                 {
-                    icon: Users,
+                    icon: 'Users',
                     title: 'Construction Citations',
                     description: 'Ajout de votre entreprise aux annuaires d\'entreprises locales et plateformes pertinentes'
                 },
                 {
-                    icon: Award,
+                    icon: 'Award',
                     title: 'Rapports Performance',
                     description: 'Rapports mensuels détaillés sur le classement, les visites et les appels depuis Google Maps'
                 }
@@ -266,32 +266,32 @@ const content = {
             subtitle: 'Comprehensive solutions to dominate local search results and attract new customers',
             items: [
                 {
-                    icon: MapPin,
+                    icon: 'MapPin',
                     title: 'Google Business Optimization',
                     description: 'Create and optimize your Google Business profile with complete information and professional photos'
                 },
                 {
-                    icon: Search,
+                    icon: 'Search',
                     title: 'Local SEO',
                     description: 'Optimize your website to appear in "near me" local search results and attract area customers'
                 },
                 {
-                    icon: Star,
+                    icon: 'Star',
                     title: 'Review Management',
                     description: 'Strategy to get positive reviews and respond to feedback professionally'
                 },
                 {
-                    icon: TrendingUp,
+                    icon: 'TrendingUp',
                     title: 'Competitor Analysis',
                     description: 'Study your local competitors and develop strategy to outrank them in results'
                 },
                 {
-                    icon: Users,
+                    icon: 'Users',
                     title: 'Citation Building',
                     description: 'Add your business to local business directories and relevant platforms'
                 },
                 {
-                    icon: Award,
+                    icon: 'Award',
                     title: 'Performance Reports',
                     description: 'Detailed monthly reports on rankings, visits, and calls from Google Maps'
                 }
