@@ -1,14 +1,12 @@
 import type { Metadata } from 'next'
-import { serviceMetadata } from '@/lib/seo/service-metadata'
+import { generateServiceMetadata } from '@/lib/seo/service-metadata'
 
-type Props = {
-    params: { lang: 'ar' | 'en' | 'fr' }
+export async function generateMetadata({ params }: { params: Promise<{ lang: 'ar' | 'en' | 'fr' }> }) {
+    const { lang } = await params
+    return generateServiceMetadata('digital-engineering', lang)
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    return serviceMetadata.architecture(params.lang)
-}
-
-export default function DigitalEngineeringLayout({ children }: { children: React.ReactNode }) {
+export default function DigitalEngineeringLayout({
+    children }: { children: React.ReactNode }) {
     return children
 }
