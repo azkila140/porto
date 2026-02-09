@@ -1,11 +1,20 @@
 'use client'
 
+import type { Metadata } from 'next'
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import { MapPin, Search, Star, TrendingUp, Users, Award } from 'lucide-react'
+import { serviceMetadata } from '@/lib/seo/service-metadata'
+import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
+import { siteConfig } from '@/lib/config'
+
+// SEO Metadata
+export async function generateMetadata({ params }: { params: { lang: 'ar' | 'en' | 'fr' } }): Promise<Metadata> {
+    return serviceMetadata.digitalization(params.lang)
+}
 
 const content = {
     ar: {
@@ -112,6 +121,16 @@ const content = {
                 }
             ]
         },
+        faq: [
+            {
+                q: 'كم تكلفة خدمات تحسين Google Maps؟',
+                a: 'تبدأ باقات السيو المحلي من 3,000 ريال شهرياً وتشمل: إعداد وتحسين ملف Google Business، إضافة محتوى أسبوعي، إدارة التقييمات، وتقارير أداء شهرية.'
+            },
+            {
+                q: 'كم يستغرق الظهور في خرائط جوجل؟',
+                a: 'بعد إنشاء وتحسين ملف Google Business، عادة تظهر في النتائج خلال 1-2 أسبوع. التصدر في المراكز الأولى يحتاج 2-3 أشهر من التحسين المستمر والحصول على تقييمات إيجابية.'
+            }
+        ],
         cta: {
             title: 'جاهز للظهور في خرائط جوجل؟',
             description: 'احصل على تدقيق مجاني لملفك على Google Business واكتشف فرص التحسين'
@@ -221,6 +240,12 @@ const content = {
                 }
             ]
         },
+        faq: [
+            {
+                q: 'Combien coûtent les services d\'optimisation Google Maps?',
+                a: 'Forfaits SEO local à partir de 3 000 SAR/mois incluant: configuration Google Business, contenu hebdomadaire, gestion avis, rapports mensuels.'
+            }
+        ],
         cta: {
             title: 'Prêt à Apparaître sur Google Maps?',
             description: 'Obtenez un audit gratuit de votre profil Google Business et découvrez les opportunités d\'amélioration'
@@ -330,6 +355,16 @@ const content = {
                 }
             ]
         },
+        faq: [
+            {
+                q: 'How much do Google Maps optimization services cost?',
+                a: 'Local SEO packages start from 3,000 SAR monthly including: Google Business setup and optimization, weekly content additions, review management, and monthly performance reports.'
+            },
+            {
+                q: 'How long does it take to appear on Google Maps?',
+                a: 'After creating and optimizing your Google Business profile, you typically appear in results within 1-2 weeks. Ranking in top positions requires 2-3 months of continuous optimization and positive reviews.'
+            }
+        ],
         cta: {
             title: 'Ready to Appear on Google Maps?',
             description: 'Get a free audit of your Google Business profile and discover improvement opportunities'
@@ -341,8 +376,19 @@ export default function GoogleMapsSEOPage({ params }: { params: { lang: 'ar' | '
     const { lang } = params
     const t = content[lang]
 
+    // JSON-LD Schemas
+    const breadcrumbSchema = getBreadcrumbSchema([
+        { name: lang === 'ar' ? 'الرئيسية' : 'Home', url: `${siteConfig.url}/${lang}` },
+        { name: lang === 'ar' ? 'الخدمات' : 'Services', url: `${siteConfig.url}/${lang}/services` },
+        { name: lang === 'ar' ? 'خرائط جوجل' : 'Google Maps', url: `${siteConfig.url}/${lang}/services/google-maps-seo` },
+    ])
+    const faqSchema = getFAQSchema(t.faq.map((item: any) => ({ question: item.q, answer: item.a })))
+
     return (
         <main>
+            {/* JSON-LD Structured Data */}
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <ServiceHero
                 title={t.hero.title}
                 subtitle={t.hero.subtitle}

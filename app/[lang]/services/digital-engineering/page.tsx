@@ -1,11 +1,19 @@
 'use client'
 
+import type { Metadata } from 'next'
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import { Code, Smartphone, Cloud, Database, Zap, Shield } from 'lucide-react'
+import { serviceMetadata } from '@/lib/seo/service-metadata'
+import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
+import { siteConfig } from '@/lib/config'
+
+export async function generateMetadata({ params }: { params: { lang: 'ar' | 'en' | 'fr' } }): Promise<Metadata> {
+    return serviceMetadata.architecture(params.lang)
+}
 
 const content = {
     ar: {
@@ -112,6 +120,16 @@ const content = {
                 }
             ]
         },
+        faq: [
+            {
+                q: 'كم تكلفة تطوير منصة ويب مخصصة بـNext.js؟',
+                a: 'تبدأ مشاريع Next.js المخصصة من 80,000 ريال للمنصات البسيطة، 150,000-300,000 ريال للمنصات متوسطة التعقيد (CRM، حجوزات)، و500,000+ ريال للمنصات Enterprise الكاملة.'
+            },
+            {
+                q: 'كم يستغرق تطوير منصة ويب كاملة؟',
+                a: 'عادة 8-16 أسبوع حسب التعقيد: أسبوعين للتخطيط والتصميم، 4-8 أسابيع للتطوير، وأسبوعين للاختبار والإطلاق.'
+            }
+        ],
         cta: {
             title: 'جاهز لبدء مشروعك؟',
             description: 'تواصل معنا اليوم للحصول على استشارة مجانية وعرض سعر مخصص'
@@ -221,10 +239,8 @@ const content = {
                 }
             ]
         },
-        cta: {
-            title: 'Prêt à Démarrer Votre Projet?',
-            description: 'Contactez-nous aujourd\'hui pour une consultation gratuite et un devis personnalisé'
-        }
+        faq: [{ q: 'Combien coûte plateforme web Next.js personnalisée?', a: 'Projets Next.js: 80 000 SAR (simple), 150 000-300 000 SAR (moyen), 500 000+ SAR (enterprise).' }],
+        cta: { title: 'Prêt à Démarrer Votre Projet?', description: 'Contactez-nous aujourd\'hui pour une consultation gratuite et un devis personnalisé' }
     },
     en: {
         hero: {
@@ -330,19 +346,23 @@ const content = {
                 }
             ]
         },
-        cta: {
-            title: 'Ready to Start Your Project?',
-            description: 'Contact us today for a free consultation and custom quote'
-        }
+        faq: [
+            { q: 'How much does a custom Next.js web platform cost?', a: 'Custom Next.js projects start from 80,000 SAR for simple platforms, 150,000-300,000 SAR for medium complexity (CRM, booking systems), and 500,000+ SAR for full Enterprise platforms.' },
+            { q: 'How long does it take to develop a complete web platform?', a: 'Typically 8-16 weeks depending on complexity: 2 weeks for planning and design, 4-8 weeks for development, and 2 weeks for testing and launch.' }
+        ],
+        cta: { title: 'Ready to Start Your Project?', description: 'Contact us today for a free consultation and custom quote' }
     }
 }
 
 export default function DigitalEngineeringPage({ params }: { params: { lang: 'ar' | 'fr' | 'en' } }) {
     const { lang } = params
     const t = content[lang]
-
+    const breadcrumbSchema = getBreadcrumbSchema([{ name: lang === 'ar' ? 'الرئيسية' : 'Home', url: `${siteConfig.url}/${lang}` }, { name: lang === 'ar' ? 'الخدمات' : 'Services', url: `${siteConfig.url}/${lang}/services` }, { name: lang === 'ar' ? 'الهندسة الرقمية' : 'Engineering', url: `${siteConfig.url}/${lang}/services/digital-engineering` }])
+    const faqSchema = getFAQSchema(t.faq.map((item: any) => ({ question: item.q, answer: item.a })))
     return (
         <main>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <ServiceHero
                 title={t.hero.title}
                 subtitle={t.hero.subtitle}

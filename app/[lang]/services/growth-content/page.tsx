@@ -1,11 +1,19 @@
 'use client'
 
+import type { Metadata } from 'next'
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import { Video, FileText, TrendingUp, Target, BarChart3, Megaphone } from 'lucide-react'
+import { serviceMetadata } from '@/lib/seo/service-metadata'
+import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
+import { siteConfig } from '@/lib/config'
+
+export async function generateMetadata({ params }: { params: { lang: 'ar' | 'en' | 'fr' } }): Promise<Metadata> {
+    return serviceMetadata.growth(params.lang)
+}
 
 const content = {
     ar: {
@@ -112,10 +120,11 @@ const content = {
                 }
             ]
         },
-        cta: {
-            title: 'جاهز لتنمية أعمالك؟',
-            description: 'احصل على استشارة مجانية واستراتيجية نمو مخصصة لمشروعك'
-        }
+        faq: [
+            { q: 'كم تكلفة خدمات التسويق والمحتوى الشاملة؟', a: 'باقات النمو تبدأ من 8,000 ريال شهرياً (إدارة سوشيال ميديا + محتوى)، 18,000 ريال (إضافة حملات إعلانية وفيديو)، و35,000+ ريال (استراتيجية شاملة + SEO + إنتاج متقدم).' },
+            { q: 'ما العائد المتوقع من استثمار التسويق بالمحتوى؟', a: 'عادة ROI يصل 3-5x خلال 6-12 شهر من الاستثمار المستمر. شركاتنا تحقق معدل نمو 150-300% في العملاء الجدد خلال السنة الأولى.' }
+        ],
+        cta: { title: 'جاهز لتنمية أعمالك؟', description: 'احصل على استشارة مجانية واستراتيجية نمو مخصصة لمشروعك' }
     },
     fr: {
         hero: {
@@ -221,10 +230,8 @@ const content = {
                 }
             ]
         },
-        cta: {
-            title: 'Prêt à Développer Votre Entreprise?',
-            description: 'Obtenez une consultation gratuite et une stratégie de croissance personnalisée pour votre projet'
-        }
+        faq: [{ q: 'Combien coûtent services marketing et contenu?', a: 'Forfaits: 8 000 SAR/mois (social media), 18 000 SAR (+ ads + vidéo), 35 000+ SAR (stratégie complète + SEO).' }],
+        cta: { title: 'Prêt à Développer Votre Entreprise?', description: 'Obtenez une consultation gratuite et une stratégie de croissance personnalisée pour votre projet' }
     },
     en: {
         hero: {
@@ -330,19 +337,23 @@ const content = {
                 }
             ]
         },
-        cta: {
-            title: 'Ready to Grow Your Business?',
-            description: 'Get a free consultation and custom growth strategy for your project'
-        }
+        faq: [
+            { q: 'How much do comprehensive marketing and content services cost?', a: 'Growth packages start from 8,000 SAR monthly (social media management + content), 18,000 SAR (adding ad campaigns and video), and 35,000+ SAR (comprehensive strategy + SEO + advanced production).' },
+            { q: 'What ROI can I expect from content marketing investment?', a: 'Typically ROI reaches 3-5x within 6-12 months of consistent investment. Our clients achieve 150-300% growth in new customers during the first year.' }
+        ],
+        cta: { title: 'Ready to Grow Your Business?', description: 'Get a free consultation and custom growth strategy for your project' }
     }
 }
 
 export default function GrowthContentPage({ params }: { params: { lang: 'ar' | 'fr' | 'en' } }) {
     const { lang } = params
     const t = content[lang]
-
+    const breadcrumbSchema = getBreadcrumbSchema([{ name: lang === 'ar' ? 'الرئيسية' : 'Home', url: `${siteConfig.url}/${lang}` }, { name: lang === 'ar' ? 'الخدمات' : 'Services', url: `${siteConfig.url}/${lang}/services` }, { name: lang === 'ar' ? 'النمو والمحتوى' : 'Growth', url: `${siteConfig.url}/${lang}/services/growth-content` }])
+    const faqSchema = getFAQSchema(t.faq.map((item: any) => ({ question: item.q, answer: item.a })))
     return (
         <main>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <ServiceHero
                 title={t.hero.title}
                 subtitle={t.hero.subtitle}

@@ -1,11 +1,19 @@
 'use client'
 
+import type { Metadata } from 'next'
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import { Zap, Workflow, Bot, Link2, GitBranch, Repeat } from 'lucide-react'
+import { serviceMetadata } from '@/lib/seo/service-metadata'
+import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
+import { siteConfig } from '@/lib/config'
+
+export async function generateMetadata({ params }: { params: { lang: 'ar' | 'en' | 'fr' } }): Promise<Metadata> {
+    return serviceMetadata.automation(params.lang)
+}
 
 const content = {
     ar: {
@@ -112,10 +120,11 @@ const content = {
                 }
             ]
         },
-        cta: {
-            title: 'جاهز لأتمتة عملياتك؟',
-            description: 'احصل على تحليل مجاني لعملياتك واكتشف كم يمكنك توفير من الوقت والمال'
-        }
+        faq: [
+            { q: 'كم تكلفة أتمتة العمليات باستخدام n8n؟', a: 'مشاريع الأتمتة البسيطة تبدأ من 15,000 ريال (2-3 workflows)، المتوسطة 35,000-60,000 ريال (5-10 workflows + تكاملات)، والمشاريع المعقدة 100,000+ ريال (chatbot + CRM + ERP integration).' },
+            { q: 'كم أوفر من الوقت بعد الأتمتة؟', a: 'عادة توفر الشركات 30-50 ساعة عمل شهرياً بعد أتمتة العمليات الأساسية. ROI يتحقق خلال 3-6 أشهر من التوفير في التكاليف وتقليل الأخطاء.' }
+        ],
+        cta: { title: 'جاهز لأتمتة عملياتك؟', description: 'احصل على تحليل مجاني لعملياتك واكتشف كم يمكنك توفير من الوقت والمال' }
     },
     fr: {
         hero: {
@@ -221,10 +230,8 @@ const content = {
                 }
             ]
         },
-        cta: {
-            title: 'Prêt à Automatiser Vos Processus?',
-            description: 'Obtenez une analyse gratuite de vos processus et découvrez combien vous pouvez économiser en temps et argent'
-        }
+        faq: [{ q: 'Combien coûte automatisation avec n8n?', a: 'Projets: 15 000 SAR (simple), 35 000-60 000 SAR (moyen), 100 000+ SAR (chatbot + CRM/ERP integration).' }],
+        cta: { title: 'Prêt à Automatiser Vos Processus?', description: 'Obtenez une analyse gratuite de vos processus et découvrez combien vous pouvez économiser en temps et argent' }
     },
     en: {
         hero: {
@@ -330,19 +337,23 @@ const content = {
                 }
             ]
         },
-        cta: {
-            title: 'Ready to Automate Your Processes?',
-            description: 'Get a free analysis of your processes and discover how much you can save in time and money'
-        }
+        faq: [
+            { q: 'How much does process automation with n8n cost?', a: 'Simple automation projects start from 15,000 SAR (2-3 workflows), medium 35,000-60,000 SAR (5-10 workflows + integrations), complex 100,000+ SAR (chatbot + CRM + ERP integration).' },
+            { q: 'How much time will I save after automation?', a: 'Companies typically save 30-50 hours monthly after automating basic processes. ROI is achieved within 3-6 months from cost savings and error reduction.' }
+        ],
+        cta: { title: 'Ready to Automate Your Processes?', description: 'Get a free analysis of your processes and discover how much you can save in time and money' }
     }
 }
 
 export default function AutomationPage({ params }: { params: { lang: 'ar' | 'fr' | 'en' } }) {
     const { lang } = params
     const t = content[lang]
-
+    const breadcrumbSchema = getBreadcrumbSchema([{ name: lang === 'ar' ? 'الرئيسية' : 'Home', url: `${siteConfig.url}/${lang}` }, { name: lang === 'ar' ? 'الخدمات' : 'Services', url: `${siteConfig.url}/${lang}/services` }, { name: lang === 'ar' ? 'الأتمتة' : 'Automation', url: `${siteConfig.url}/${lang}/services/automation` }])
+    const faqSchema = getFAQSchema(t.faq.map((item: any) => ({ question: item.q, answer: item.a })))
     return (
         <main>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <ServiceHero
                 title={t.hero.title}
                 subtitle={t.hero.subtitle}
