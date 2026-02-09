@@ -22,10 +22,42 @@ export async function generateStaticParams() {
 export const metadata: Metadata = {
     title: {
         template: `%s | ${siteConfig.name}`,
-        default: `${siteConfig.name} - Full-Stack Marketing Agency`,
+        default: `Nexus Logic - Digital Transformation Partner | شريك التحول الرقمي`,
     },
-    description: siteConfig.description,
-    keywords: ['digital agency', 'web development', 'marketing', 'branding', 'automation', 'SEO', 'growth hacking', 'Tunisia', 'full-stack agency'],
+    description: 'Strategic Digital Ecosystem Partner for MENA: KSA, UAE, Morocco & Qatar. Enterprise solutions: Brand Identity, Custom Architecture, Intelligent Automation, Growth Acceleration. بناء النظام البيئي الرقمي للمؤسسات في الأسواق العربية.',
+    keywords: [
+        // Strategic Core
+        'Digital Transformation Partner KSA',
+        'Digital Ecosystem UAE',
+        'شريك التحول الرقمي السعودية',
+        'نظام بيئي رقمي متكامل',
+
+        // Enterprise & ROI
+        'Enterprise Web Development',
+        'Business Automation Middle East',
+        'ROI-driven Solutions',
+        'حلول رقمية متكاملة للشركات',
+
+        // Technology Stack
+        'Next.js 16 Agency MENA',
+        'Custom Software Development KSA',
+        'System Integration Morocco',
+
+        // Compliance & Enterprise
+        'ZATCA E-invoicing',
+        'الفوترة الإلكترونية',
+        'Odoo Customization KSA',
+        'SAP Integration UAE',
+        'ERP Implementation Qatar',
+
+        // Service Pillars
+        'GEO Services Riyadh',
+        'Marketing Automation MENA',
+        'CRM Integration',
+        'تصميم هوية تجارية كاملة',
+        'أتمتة العمليات في الشركة',
+        'وكالة تحول رقمي شاملة',
+    ],
     authors: [{ name: siteConfig.name }],
     creator: siteConfig.name,
     publisher: siteConfig.name,
@@ -41,32 +73,32 @@ export const metadata: Metadata = {
     alternates: {
         canonical: siteConfig.url,
         languages: {
-            'en': '/en',
-            'ar': '/ar',
-            'fr': '/fr',
+            'ar-SA': '/ar', // Primary market: Arabic Saudi
+            'en-US': '/en',
+            'fr-FR': '/fr', // Strategic for Morocco
         },
     },
     openGraph: {
         type: 'website',
-        locale: 'en_US', // Default, will be overridden by generateMetadata if needed
+        locale: 'ar_SA', // Arabic Saudi as primary for MENA markets
         url: siteConfig.url,
-        siteName: siteConfig.name,
-        title: `${siteConfig.name} - Full-Stack Marketing Agency`,
-        description: siteConfig.description,
+        siteName: 'Nexus Logic - Digital Transformation Partner',
+        title: 'Nexus Logic | شريك التحول الرقمي في السعودية، الإمارات، المغرب وقطر',
+        description: 'نبني النظام البيئي الرقمي لمؤسستك في الأسواق العربية. حلول Enterprise شاملة من التأسيس إلى الأتمتة الذكية والنمو المستدام.',
         images: [
             {
                 url: `${siteConfig.url}/og-image.png`,
                 width: 1200,
                 height: 630,
-                alt: `${siteConfig.name} - Digital Marketing & Development Agency`,
+                alt: 'Nexus Logic - شريك التحول الرقمي للمؤسسات',
                 type: 'image/png',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: `${siteConfig.name} - Full-Stack Marketing Agency`,
-        description: siteConfig.description,
+        title: 'Nexus Logic | Digital Transformation Partner MENA',
+        description: 'Enterprise Digital Ecosystem Solutions for KSA, UAE, Morocco & Qatar. From Brand Identity to Intelligent Automation.',
         images: ['/og-image.png'],
         creator: '@nexuslogic',
     },
