@@ -67,11 +67,11 @@ export function BentoGrid({ lang, initialServices = [] }: BentoGridProps) {
     useEffect(() => {
         if (initialServices && initialServices.length > 0) {
             const transformed = initialServices.map((s: any) => ({
-                icon: iconMap[s.icon_name] || Code2,
-                title: s[`title_${lang}` as keyof any] || s.title_en,
-                description: s[`description_${lang}` as keyof any] || s.description_en,
-                gradient: s.gradient_class,
-                imageUrl: s.image_url
+                icon: iconMap[s.icon] || Code2,
+                title: s.title,
+                description: s.description,
+                gradient: s.gradient,
+                imageUrl: s.imageUrl
             }))
             setTransformedServices(transformed)
             setIsLoading(false)

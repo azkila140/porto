@@ -5,6 +5,7 @@ import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
+import ServiceDetails from '@/components/services/ServiceDetails'
 import { Video, FileText, TrendingUp, Target, BarChart3, Megaphone } from 'lucide-react'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
 import { siteConfig } from '@/lib/config'
@@ -12,11 +13,19 @@ import { siteConfig } from '@/lib/config'
 const content = {
     ar: {
         hero: {
-            title: 'النمو والمحتوى',
-            subtitle: 'تسويق محتوى فعّال',
-            description: 'نبني استراتيجيات محتوى شاملة مع إنتاج فيديو احترافي وحملات نمو لزيادة عملائك وإيراداتك',
+            title: 'استوديو النمو وصناعة المحتوى الإبداعي',
+            subtitle: 'استراتيجيات نمو متكاملة وتسويق رقمي',
+            description: 'نحن نبني حضورك الرقمي من خلال استراتيجيات محتوى مدروسة، إنتاج فيديو احترافي، وحملات نمو ذكية تهدف لتحويل المشاهدين إلى عملاء دائمين.',
             ctaText: 'احصل على عرض سعر',
             ctaLink: '/ar/contact'
+        },
+        details: {
+            title: 'كيف نقود نمو أعمالك من خلال المحتوى الاستراتيجي؟',
+            paragraphs: [
+                'في عصر الاقتصاد الرقمي، المحتوى هو الوقود الذي يحرك ماكينة النمو. في استوديو النمو التابع لنيكسس لوجيك، نتجاوز مجرد النشر العشوائي لنصمم رحلة كاملة يمر بها العميل. نحن نؤمن أن الفيديو القصير (Reels & Shorts) وكتابة المحتوى المتوافق مع محركات البحث (SEO) هما المفتاحان الأساسيان لجذب انتباه الجمهور المستهدف وبناء الثقة في علامتك التجارية.',
+                'استراتيجية النمو لدينا تعتمد على البيانات وليست التخمينات. نقوم بتحليل سلوك جمهورك على منصات السوشيال ميديا وتطوير محتوى يلمس احتياجاتهم ويحفزهم على اتخاذ القرار. من خلال الجمع بين الإبداع الفني والتحليل التقني، نضمن أن كل حملة إعلانية أو قطعة محتوى ننتجها تساهم بشكل مباشر في زيادة معدل التحويل (Conversion Rate) وتحقيق عائد حقيقي على الاستثمار.',
+                'سواء كنت تسعى لتصدر نتائج البحث العضوية أو إطلاق حملات إعلانية ضخمة على جوجل ومنصات التواصل، فإن فريقنا المتكامل من صناع المحتوى والمحللين يعمل بتناغم لتحقيق أهدافك. نحن نركز على النمو المستدام (Sustainable Growth) الذي يبني قاعدة عملاء مخلصة تدعم نمو شركتك على المدى الطويل، وليس مجرد طفرات مؤقتة في المشاهدات.'
+            ]
         },
         features: {
             title: 'خدمات النمو والمحتوى',
@@ -355,6 +364,12 @@ export default function GrowthContentPage({ params }: { params: { lang: 'ar' | '
                 gradient="from-indigo-600 to-blue-500"
                 ctaText={t.hero.ctaText}
                 ctaLink={t.hero.ctaLink}
+            />
+
+            <ServiceDetails
+                title={(t as any).details?.title}
+                paragraphs={(t as any).details?.paragraphs || []}
+                lang={lang}
             />
 
             <FeatureGrid

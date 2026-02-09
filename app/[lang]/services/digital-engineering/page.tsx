@@ -5,6 +5,7 @@ import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
+import ServiceDetails from '@/components/services/ServiceDetails'
 import { Code, Smartphone, Cloud, Database, Zap, Shield } from 'lucide-react'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
 import { siteConfig } from '@/lib/config'
@@ -13,45 +14,53 @@ import { siteConfig } from '@/lib/config'
 const content = {
     ar: {
         hero: {
-            title: 'الهندسة الرقمية',
-            subtitle: 'تطوير احترافي',
-            description: 'نبني مواقع ويب وتطبيقات جوال متطورة بتقنيات حديثة تحول أفكارك إلى منتجات رقمية ناجحة',
+            title: 'الهندسة الرقمية وتطوير المنصات المخصصة',
+            subtitle: 'تطوير احترافي وحلول برمجية متكاملة',
+            description: 'نحن في نيكسس لوجيك نتخصص في بناء منصات الويب المعقدة وتطبيقات الجوال المتقدمة باستخدام أحدث التقنيات العالمية لضمان تفوق أعمالك في السوق الرقمي المتسارع.',
             ctaText: 'احصل على عرض سعر',
             ctaLink: '/ar/contact'
         },
+        details: {
+            title: 'لماذا تختار الهندسة الرقمية من نيكسس لوجيك؟',
+            paragraphs: [
+                'تعتبر الهندسة الرقمية هي العمود الفقري لأي تحول رقمي ناجح في العصر الحديث. نحن لا نقوم فقط بكتابة الأكواد، بل نقوم بتصميم أنظمة متكاملة قابلة للتوسع تلبي احتياجات نمو أعمالك المستقبلية. نستخدم تقنيات متطورة مثل Next.js 15 و React لضمان أعلى مستويات الأداء والسرعة، مما ينعكس بشكل مباشر على تجربة المستخدم ومعدلات التحويل.',
+                'في سوق مليء بالحلول الجاهزة والمقيدة، تتميز نيكسس لوجيك بتقديم تطوير مخصص بالكامل (Custom Development). هذا يعني أن كل سطر برمج يتم كتابته يتم توجيهه لتحقيق أهدافك التجارية المحددة، سواء كان ذلك تحسين الكفاءة التشغيلية، أو توفير بوابة عملاء آمنة، أو بناء منصة تجارة إلكترونية متطورة تدعم اللغات المتعددة والعملات المختلفة.',
+                'الأمان والخصوصية هما في قمة أولوياتنا. نحن نتبع معايير هندسية صارمة وأفضل ممارسات الصناعة في حماية البيانات وتأمين الواجهات البرمجية (APIs). من خلال الهندسة الرقمية المتقدمة، نضمن أن تكون منصتك ليست فقط جميلة وعصرية، بل قوية ومستقرة وقادرة على التعامل مع آلاف المستخدمين في وقت واحد دون أي تأخير أو انقطاع.'
+            ]
+        },
         features: {
-            title: 'ما نقدمه',
-            subtitle: 'حلول تقنية شاملة لتحويل أعمالك رقمياً',
+            title: 'ما نقدمه في خدمات الهندسة',
+            subtitle: 'حلول تقنية شاملة ومبتكرة لتحويل رؤيتك إلى واقع رقمي ملموس',
             items: [
                 {
                     icon: Code,
-                    title: 'تطوير مواقع الويب',
-                    description: 'مواقع سريعة ومتجاوبة باستخدام Next.js و React مع تصميم عصري وتجربة مستخدم استثنائية'
+                    title: 'تطوير مواقع الويب المتقدمة',
+                    description: 'بناء مواقع ويب سريعة جداً ومتجاوبة بالكامل باستخدام إطار العمل Next.js. نركز على تحسين محركات البحث التقني (Technical SEO) لضمان ظهورك في المراكز الأولى.'
                 },
                 {
                     icon: Smartphone,
-                    title: 'تطبيقات الجوال',
-                    description: 'تطبيقات iOS و Android أصلية أو متعددة المنصات باستخدام React Native و Flutter'
+                    title: 'تطبيقات الجوال العصرية',
+                    description: 'تطوير تطبيقات iOS و Android أصلية أو عابرة للمنصات (Cross-platform) تمنح مستخدميك تجربة سلسة تشبه التطبيقات المثبتة مسبقاً على أجهزتهم.'
                 },
                 {
                     icon: Cloud,
-                    title: 'حلول السحابة',
-                    description: 'بنية تحتية سحابية قابلة للتطوير على AWS و Google Cloud و Azure'
+                    title: 'البنية التحتية السحابية',
+                    description: 'تصميم وإدارة بيئات سحابية متطورة على AWS و Google Cloud لضمان توفر الخدمة بنسبة 99.9% وقابلية التوسع الفوري مع نمو قاعدة المستخدمين.'
                 },
                 {
                     icon: Database,
-                    title: 'قواعد البيانات',
-                    description: 'تصميم وإدارة قواعد بيانات فعالة باستخدام PostgreSQL و MongoDB و Supabase'
+                    title: 'إدارة البيانات الضخمة',
+                    description: 'تصميم قواعد بيانات متطورة تضمن سلامة البيانات وسرعة الوصول إليها ومعالجتها، مع تكامل كامل مع أنظمة التحليلات والذكاء الاصطناعي.'
                 },
                 {
                     icon: Zap,
                     title: 'APIs و Microservices',
-                    description: 'بناء واجهات برمجية قوية وخدمات مصغرة بتقنيات Node.js و Python'
+                    description: 'بناء واجهات برمجية قوية وخدمات مصغرة تتيح لأنظمتك التواصل بسلاسة، مما يسهل عملية الصيانة والتطوير المستقبلي دون الحاجة لإعادة بناء النظام بالكامل.'
                 },
                 {
                     icon: Shield,
-                    title: 'الأمان والحماية',
-                    description: 'تطبيق أفضل ممارسات الأمان السيبراني وحماية البيانات'
+                    title: 'الأمن السيبراني وحماية البيانات',
+                    description: 'تطبيق أحدث بروتوكولات الأمان والتشفير لحماية معلوماتك ومعلومات عملائك من التهديدات السيبرانية المتزايدة، وضمان الامتثال لمعايير الخصوصية العالمية.'
                 }
             ]
         },
@@ -132,11 +141,19 @@ const content = {
     },
     fr: {
         hero: {
-            title: 'Ingénierie Numérique',
-            subtitle: 'Développement Professionnel',
-            description: 'Nous créons des sites web et applications mobiles avancés avec des technologies modernes qui transforment vos idées en produits numériques réussis',
+            title: 'Ingénierie Numérique et Développement de Plateformes',
+            subtitle: 'Développement Professionnel et Solutions Logicielles',
+            description: 'Chez Nexus Logic, nous nous spécialisons dans la création de plateformes web complexes et d\'applications mobiles avancées utilisant les dernières technologies pour garantir votre succès.',
             ctaText: 'Obtenir un Devis',
             ctaLink: '/fr/contact'
+        },
+        details: {
+            title: 'Pourquoi choisir l\'ingénierie numérique de Nexus Logic?',
+            paragraphs: [
+                'L\'ingénierie numérique est le pilier central de toute transformation numérique réussie. Nous ne nous contentons pas d\'écrire du code, nous concevons des systèmes évolutifs qui répondent aux besoins de croissance de votre entreprise.',
+                'Nous utilisons des technologies de pointe comme Next.js 15 et React pour assurer des performances optimales, se traduisant directement par une meilleure expérience utilisateur et des taux de conversion accrus.',
+                'La sécurité et la confidentialité sont nos priorités absolues. Nous suivons des normes d\'ingénierie strictes pour protéger vos données et sécuriser vos APIs, garantissant une plateforme stable et robuste.'
+            ]
         },
         features: {
             title: 'Nos Services',
@@ -239,11 +256,19 @@ const content = {
     },
     en: {
         hero: {
-            title: 'Digital Engineering',
-            subtitle: 'Professional Development',
-            description: 'We build advanced web and mobile applications with modern technologies that transform your ideas into successful digital products',
+            title: 'Digital Engineering and Custom Platform Development',
+            subtitle: 'Professional Software Development Solutions',
+            description: 'At Nexus Logic, we specialize in building complex web platforms and advanced mobile applications using cutting-edge technologies to ensure your market leadership.',
             ctaText: 'Get a Quote',
             ctaLink: '/en/contact'
+        },
+        details: {
+            title: 'Why Choose Digital Engineering from Nexus Logic?',
+            paragraphs: [
+                'Digital engineering is the backbone of any successful digital transformation in the modern era. We don\'t just write code; we design integrated, scalable systems that meet your business growth needs. We use advanced technologies like Next.js 15 and React to ensure top-tier performance and speed, directly impacting user experience and conversion rates.',
+                'In a market full of rigid, off-the-shelf solutions, Nexus Logic stands out by offering fully custom development. This means every line of code is written to achieve your specific business goals, whether it\'s improving operational efficiency, providing a secure customer portal, or building a sophisticated e-commerce platform.',
+                'Security and privacy are our top priorities. We follow strict engineering standards and industry best practices in data protection and API security. Through advanced digital engineering, we ensure your platform is not only beautiful and modern but also powerful, stable, and capable of handling thousands of concurrent users without lag.'
+            ]
         },
         features: {
             title: 'What We Offer',
@@ -365,6 +390,12 @@ export default function DigitalEngineeringPage({ params }: { params: { lang: 'ar
                 gradient="from-blue-600 to-cyan-500"
                 ctaText={t.hero.ctaText}
                 ctaLink={t.hero.ctaLink}
+            />
+
+            <ServiceDetails
+                title={(t as any).details?.title}
+                paragraphs={(t as any).details?.paragraphs || []}
+                lang={lang}
             />
 
             <FeatureGrid

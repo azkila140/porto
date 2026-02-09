@@ -11,9 +11,9 @@ type Locale = 'ar' | 'en' | 'fr'
 // Branding & Identity Metadata
 export function generateBrandingMetadata(lang: Locale): Metadata {
     const titles = {
-        ar: 'تصميم الهوية التجارية الكاملة | التأسيس والشعار | نيكسس لوجيك',
-        en: 'Complete Brand Identity Design | Foundation & Logo | Nexus Logic',
-        fr: 'Design Identité de Marque Complète | Fondation & Logo'
+        ar: 'تصميم الهوية التجارية والعلب الاحترافية | نيكسس لوجيك',
+        en: 'Professional Brand Identity & Packaging Design | Nexus Logic',
+        fr: 'Design Identité de Marque et Packaging Professionnel'
     }
 
     const descriptions = {
@@ -51,9 +51,9 @@ export function generateBrandingMetadata(lang: Locale): Metadata {
 // Digitalization & Google Maps SEO Metadata
 export function generateDigitalizationMetadata(lang: Locale): Metadata {
     const titles = {
-        ar: 'الرقمنة وخرائط جوجل | ظهور محلك في Google Maps | نيكسس لوجيك',
-        en: 'Digitalization & Google Maps | Get Your Business on Google | Nexus Logic',
-        fr: 'Digitalisation & Google Maps | Visibilité sur Google'
+        ar: 'خرائط جوجل والرقمنة وحلول السيو المحلي | نيكسس لوجيك',
+        en: 'Google Maps and Local SEO Digitalization Solutions | Nexus Logic',
+        fr: 'Digitalisation et Solutions SEO Local Google Maps'
     }
 
     const descriptions = {
@@ -91,9 +91,9 @@ export function generateDigitalizationMetadata(lang: Locale): Metadata {
 // Custom Architecture & Platform Engineering Metadata
 export function generateArchitectureMetadata(lang: Locale): Metadata {
     const titles = {
-        ar: 'هندسة المنصات المخصصة | Next.js 16 Development | نيكسس لوجيك',
-        en: 'Custom Platform Engineering | Next.js 16 Enterprise Development | Nexus Logic',
-        fr: 'Ingénierie Plateformes Personnalisées | Développement Next.js'
+        ar: 'الهندسة الرقمية وتطوير المنصات المخصصة | Next.js 16 | نيكسس لوجيك',
+        en: 'Digital Engineering & Custom Platform Development | Next.js 16 | Nexus Logic',
+        fr: 'Ingénierie Numérique et Développement de Plateformes | Next.js 16'
     }
 
     const descriptions = {
@@ -131,9 +131,9 @@ export function generateArchitectureMetadata(lang: Locale): Metadata {
 // Automation Logic & Intelligent Systems Metadata
 export function generateAutomationMetadata(lang: Locale): Metadata {
     const titles = {
-        ar: 'الأتمتة الذكية | أتمتة العمليات التجارية | نيكسس لوجيك',
-        en: 'Intelligent Automation | Business Process Automation | Nexus Logic',
-        fr: 'Automatisation Intelligente | Processus Business'
+        ar: 'الأتمتة الذكية وأتمتة العمليات التجارية n8n | نيكسس لوجيك',
+        en: 'Intelligent Automation & Business Process n8n | Nexus Logic',
+        fr: 'Automatisation Intelligente et Processus Business n8n'
     }
 
     const descriptions = {
@@ -171,9 +171,9 @@ export function generateAutomationMetadata(lang: Locale): Metadata {
 // Growth Studio & Marketing Automation Metadata
 export function generateGrowthMetadata(lang: Locale): Metadata {
     const titles = {
-        ar: 'استوديو النمو | تسويق ومحتوى وGEO | نيكسس لوجيك',
-        en: 'Growth Studio | Marketing, Content & GEO | Nexus Logic',
-        fr: 'Studio de Croissance | Marketing, Contenu & GEO'
+        ar: 'استوديو النمو وصناعة المحتوى الإبداعي | نيكسس لوجيك',
+        en: 'Growth Studio and Creative Content Marketing | Nexus Logic',
+        fr: 'Studio de Croissance et Marketing de Contenu Créatif'
     }
 
     const descriptions = {

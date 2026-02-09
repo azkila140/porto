@@ -5,6 +5,7 @@ import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
+import ServiceDetails from '@/components/services/ServiceDetails'
 import { MapPin, Search, Star, TrendingUp, Users, Award } from 'lucide-react'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
 import { siteConfig } from '@/lib/config'
@@ -12,11 +13,19 @@ import { siteConfig } from '@/lib/config'
 const content = {
     ar: {
         hero: {
-            title: 'خرائط جوجل والسيو المحلي',
-            subtitle: 'ظهور محلي قوي',
-            description: 'نحسن ظهورك على خرائط جوجل ونتائج البحث المحلية لجذب المزيد من العملاء في منطقتك',
+            title: 'خرائط جوجل وحلول السيو المحلي وإدارة الظهور',
+            subtitle: 'تموضع جغرافي ذكي للأعمال',
+            description: 'نحن نضع مشروعك على الخريطة حرفياً. من خلال تحسين ملفك على Google Business وأتمتة الحصول على التقييمات، نضمن تواصلك مع العملاء في لحظة بحثهم.',
             ctaText: 'احصل على عرض سعر',
             ctaLink: '/ar/contact'
+        },
+        details: {
+            title: 'لماذا يعد السيو المحلي هو سر نجاح الأنشطة التجارية المحلية؟',
+            paragraphs: [
+                'في الوقت الحالي، يبدأ أكثر من 80% من العملاء رحلة البحث عن خدمات محلية عبر هواتفهم الذكية باستخدام خرائط جوجل. إذا لم يكن نشاطك التجاري يظهر في "الثلاثة الأوائل" (Local Pack)، فأنت تخسر عملاءك لصالح المنافسين بشكل يومي. نحن في نيكسس لوجيك نتخصص في تحسين ظهورك الجغرافي لضمان تصدرك لعمليات البحث المرتبطة بموقعك الجغرافي.',
+                'السيو المحلي (Local SEO) لا يقتصر فقط على تحديد الموقع، بل يتعلق ببناء المصداقية. ملف Google Business Profile المكتمل والمحدث باستمرار، مع صور احترافية وتقييمات إيجابية حقيقية، يعمل بمثابة "واجهة متجر رقمية" تجذب الزوار. نحن نساعدك على أتمتة طلب التقييمات من العملاء الراضين والرد على الاستفسارات بشكل فوري، مما يرفع من تصنيفك وثقة العملاء بك.',
+                'من خلال دمج استراتيجيات السيو المحلي مع تقنيات GEO (Generative Engine Optimization)، نضمن أن نشاطك التجاري ليس فقط معروفاً لدى محركات البحث التقليدية، بل أيضاً يظهر في توصيات الذكاء الاصطناعي. نحن نبني "الاستشهادات الرقمية" (Digital Citations) في الأدلة المحلية والمنصات التخصصية، مما يخلق شبكة من الروابط التي تؤكد لجوجل أنك الخيار الأفضل والأنسب للعميل في منطقته.'
+            ]
         },
         features: {
             title: 'خدمات السيو المحلي',
@@ -389,6 +398,12 @@ export default function GoogleMapsSEOPage({ params }: { params: { lang: 'ar' | '
                 gradient="from-green-600 to-emerald-500"
                 ctaText={t.hero.ctaText}
                 ctaLink={t.hero.ctaLink}
+            />
+
+            <ServiceDetails
+                title={(t as any).details?.title}
+                paragraphs={(t as any).details?.paragraphs || []}
+                lang={lang}
             />
 
             <FeatureGrid

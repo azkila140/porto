@@ -5,6 +5,7 @@ import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
+import ServiceDetails from '@/components/services/ServiceDetails'
 import { Zap, Workflow, Bot, Link2, GitBranch, Repeat } from 'lucide-react'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
 import { siteConfig } from '@/lib/config'
@@ -12,11 +13,19 @@ import { siteConfig } from '@/lib/config'
 const content = {
     ar: {
         hero: {
-            title: 'الأتمتة والربط',
-            subtitle: 'كفاءة وإنتاجية',
-            description: 'نربط أنظمتك ونؤتمت عملياتك باستخدام n8n، APIs، وشات بوت ذكي لتوفير الوقت وزيادة الإنتاجية',
+            title: 'الأتمتة الذكية وأتمتة العمليات التجارية',
+            subtitle: 'كفاءة وإنتاجية رقمية متكاملة',
+            description: 'نحن نساعد الشركات على تقليل الهدر الزمني من خلال أتمتة المهام المتكررة وربط الأنظمة المشتتة باستخدام تقنيات n8n والذكاء الاصطناعي الأكثر تطوراً.',
             ctaText: 'احصل على عرض سعر',
             ctaLink: '/ar/contact'
+        },
+        details: {
+            title: 'لماذا تعتبر الأتمتة استثماراً حيوياً لشركتك؟',
+            paragraphs: [
+                'في عالم الأعمال المتسارع، لم يعد الوقت مجرد مال، بل هو ميزة تنافسية. تتيح لك الأتمتة الذكية تحويل القوى العاملة لديك من تنفيذ مهام روتينية مملة إلى التركيز على الإبداع والاستراتيجية. نحن نستخدم n8n كأداة قوية للربط بين مئات التطبيقات، مما يضمن تدفق البيانات بسلاسة ودقة متناهية دون الحاجة لتدخل بشري مستمر.',
+                'بدءاً من إدارة علاقات العملاء (CRM) وصولاً إلى أنظمة المحاسبة والفوترة، نقوم ببناء "عقل إلكتروني" لشركتك يراقب العمليات وينفذها بدقة 100%. هذا لا يقلل الأخطاء البشرية فحسب، بل يضمن أيضاً استجابة فورية لعملائك، مما يعزز من سمعة علامتك التجارية واحترافيتها في السوق.',
+                'سواء كنت تمتلك متجراً إلكترونياً يحتاج لمزامنة المخزون، أو شركة خدمات تسعى لأتمتة رحلة العميل من الطلب حتى التسليم، فإن حلولنا المخصصة في الأتمتة توفر لك آلاف ساعات العمل سنوياً. نحن لا نقدم حلاً واحداً للجميع، بل نصمم workflows تعكس دورة عملك الفريدة بالضبط.'
+            ]
         },
         features: {
             title: 'خدمات الأتمتة',
@@ -355,6 +364,12 @@ export default function AutomationPage({ params }: { params: { lang: 'ar' | 'fr'
                 gradient="from-purple-600 to-pink-500"
                 ctaText={t.hero.ctaText}
                 ctaLink={t.hero.ctaLink}
+            />
+
+            <ServiceDetails
+                title={(t as any).details?.title}
+                paragraphs={(t as any).details?.paragraphs || []}
+                lang={lang}
             />
 
             <FeatureGrid

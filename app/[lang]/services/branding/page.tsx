@@ -5,6 +5,7 @@ import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
+import ServiceDetails from '@/components/services/ServiceDetails'
 import { Palette, Sparkles, FileText, Image, Package, Printer } from 'lucide-react'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
 import { siteConfig } from '@/lib/config'
@@ -12,11 +13,19 @@ import { siteConfig } from '@/lib/config'
 const content = {
     ar: {
         hero: {
-            title: 'الهوية والتصميم',
-            subtitle: 'علامتك التجارية',
-            description: 'نصمم هويتك البصرية الاحترافية من الشعار إلى جميع المواد التسويقية لتترك انطباعاً لا يُنسى',
+            title: 'تصميم الهوية التجارية والعلب الاحترافية',
+            subtitle: 'نبني صرح هويتك البصرية',
+            description: 'نحن لا نصمم مجرد شعارات، بل نصمم قصصاً بصرية متكاملة تبدأ من الهوية وتصل إلى تغليف المنتجات لتمنح علامتك التجارية القوة والتميز الذي تستحقه.',
             ctaText: 'احصل على عرض سعر',
             ctaLink: '/ar/contact'
+        },
+        details: {
+            title: 'فن بناء العلامات التجارية العابرة للحدود',
+            paragraphs: [
+                'الهوية التجارية هي البصمة التي تتركه شركتك في أذهان العملاء منذ اللحظة الأولى. في نيكسس لوجيك، نؤمن أن التصميم الاحترافي هو استثمار استراتيجي وليس مجرد تكلفة جمالية. نقوم بدراسة سيكولوجية الألوان وتحليلات السوق لضمان أن كل عنصر بصري نقوم بإنتاجه يعزز من قيمة علامتك التجارية ويجذب الفئة المستهدفة بدقة.',
+                'تتميز خدماتنا بالشمولية، حيث نرافقك من فكرة الشعار (Logo Concept) إلى تصميم دليل الهوية الكامل (Brand Guidelines) الذي يشمل كل تفصيل من الخطوط إلى أساليب التصوير. كما نتخصص في تصميم العلب والتغليف (Packaging) الذي يحول منتجك إلى تحفة فنية تبرز بقوة على رفوف المتاجر وتنافس العلامات العالمية.',
+                'سواء كنت تبحث عن هوية كلاسيكية راقية أو معاصرة وجريئة، فريقنا من المصممين الخبراء يمتلك الأدوات والرؤية لتحويل رؤيتك إلى واقع ملموس. نحن نضمن تناسق هويتك عبر جميع المنصات، من المطبوعات الورقية والقرطاسية إلى الوجود الرقمي على السوشيال ميديا، مما يخلق تجربة متكاملة وموثوقة لعملائك.'
+            ]
         },
         features: {
             title: 'خدمات التصميم',
@@ -390,6 +399,12 @@ export default function BrandingPage({ params }: { params: { lang: 'ar' | 'fr' |
                 gradient="from-orange-600 to-red-500"
                 ctaText={t.hero.ctaText}
                 ctaLink={t.hero.ctaLink}
+            />
+
+            <ServiceDetails
+                title={(t as any).details?.title}
+                paragraphs={(t as any).details?.paragraphs || []}
+                lang={lang}
             />
 
             <FeatureGrid

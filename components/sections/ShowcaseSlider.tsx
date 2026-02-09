@@ -17,6 +17,7 @@ interface ShowcaseItem {
 
 interface ShowcaseSliderProps {
     lang: Locale
+    initialItems?: any[]
 }
 
 const showcaseItems = {
@@ -124,20 +125,26 @@ const showcaseItems = {
     ],
 }
 
-export function ShowcaseSlider({ lang }: ShowcaseSliderProps) {
-    const items = showcaseItems[lang]
+export function ShowcaseSlider({ lang, initialItems = [] }: ShowcaseSliderProps) {
+    const [transformedItems, setTransformedItems] = useState<ShowcaseItem[]>([])
     const [currentIndex, setCurrentIndex] = useState(0)
     const [direction, setDirection] = useState(0)
 
-    // Auto-advance slider
     useEffect(() => {
-        const timer = setInterval(() => {
-            setDirection(1)
-            setCurrentIndex((prev) => (prev + 1) % items.length)
-        }, 5000)
+        if (initialItems && initialItems.length > 0) {
+            const transformed = initialItems.map((item: any) => ({
+                id: item.id,
+                title: item.title,
+                description: item.description,
+                category: item.category,
+                image: item.imageUrl,
+                gradient: item.gradient
+            }))
+            setTransformedItems(transformed)
+        }
+    }, [lang, initialItems])
 
-        return () => clearInterval(timer)
-    }, [items.length])
+    const items = transformedItems.length > 0 ? transformedItems : ((showcaseItems as any)[lang] || showcaseItems.en)
 
     const slideVariants = {
         enter: (direction: number) => ({
@@ -298,7 +305,7 @@ export function ShowcaseSlider({ lang }: ShowcaseSliderProps) {
 
                     {/* Dots Indicator */}
                     <div className="flex justify-center gap-3 mt-8">
-                        {items.map((_, index) => (
+                        {items.map((_: any, index: number) => (
                             <button
                                 key={index}
                                 onClick={() => {

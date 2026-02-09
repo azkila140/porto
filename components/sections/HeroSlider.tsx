@@ -9,10 +9,10 @@ import { useSlider } from '@/lib/contexts/SliderContext'
 
 interface Slide {
     id: number
-    title: { ar: string; fr: string; en: string }
-    subtitle: { ar: string; fr: string; en: string }
-    description: { ar: string; fr: string; en: string }
-    cta: { ar: string; fr: string; en: string }
+    title: string
+    subtitle: string
+    description: string
+    cta: string
     link: string
     icon: any
     gradient: string
@@ -20,66 +20,10 @@ interface Slide {
 }
 
 const iconMap: Record<string, any> = {
-    Code, Zap, Palette, MapPin, TrendingUp
+    Code, Zap, Palette, MapPin, TrendingUp, Code2: Code, Workflow: Zap
 }
 
-const fallbackSlides: Slide[] = [
-    {
-        id: 1,
-        title: { ar: 'الهندسة الرقمية', fr: 'Ingénierie Numérique', en: 'Digital Engineering' },
-        subtitle: { ar: 'نبني أنظمة ويب وتطبيقات متطورة', fr: 'Systèmes web et applications avancées', en: 'Advanced web systems and applications' },
-        description: { ar: 'تطوير مواقع وتطبيقات مخصصة بتقنيات حديثة لتحويل أعمالك رقمياً', fr: 'Développement sur mesure avec technologies modernes pour digitaliser votre entreprise', en: 'Custom development with modern tech to digitalize your business' },
-        cta: { ar: 'استكشف الحلول', fr: 'Découvrir', en: 'Explore Solutions' },
-        link: '/services/digital-engineering',
-        icon: Code,
-        gradient: 'from-blue-600 to-cyan-500',
-        imageUrl: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&q=80'
-    },
-    {
-        id: 2,
-        title: { ar: 'الأتمتة والربط', fr: 'Automatisation', en: 'Automation & Integration' },
-        subtitle: { ar: 'نربط أنظمتك ونؤتمت عملياتك', fr: 'Connectez vos systèmes et automatisez', en: 'Connect systems and automate processes' },
-        description: { ar: 'حلول n8n، ربط APIs، شات بوت ذكي، وأتمتة سير العمل', fr: 'Solutions n8n, APIs, chatbots intelligents et workflows', en: 'n8n solutions, APIs, smart chatbots and workflows' },
-        cta: { ar: 'اكتشف المزيد', fr: 'En savoir plus', en: 'Learn More' },
-        link: '/services/automation',
-        icon: Zap,
-        gradient: 'from-purple-600 to-pink-500',
-        imageUrl: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=1920&q=80'
-    },
-    {
-        id: 3,
-        title: { ar: 'الهوية والتصميم', fr: 'Branding & Design', en: 'Branding & Design' },
-        subtitle: { ar: 'نصمم هويتك البصرية الاحترافية', fr: 'Identité visuelle professionnelle', en: 'Professional visual identity' },
-        description: { ar: 'شعارات، هوية بصرية، تصاميم الافتتاح، وكل ما تحتاجه لعلامتك التجارية', fr: 'Logos, identité visuelle, designs de lancement et plus', en: 'Logos, visual identity, launch designs and more' },
-        cta: { ar: 'شاهد أعمالنا', fr: 'Voir portfolio', en: 'View Portfolio' },
-        link: '/services/branding',
-        icon: Palette,
-        gradient: 'from-orange-600 to-red-500',
-        imageUrl: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1920&q=80'
-    },
-    {
-        id: 4,
-        title: { ar: 'خرائط جوجل والسيو', fr: 'Google Maps & SEO', en: 'Google Maps & SEO' },
-        subtitle: { ar: 'اظهر في نتائج البحث المحلية', fr: 'Apparaissez dans les recherches locales', en: 'Appear in local search results' },
-        description: { ar: 'توثيق خرائط جوجل، تحسين السيو المحلي، والرقمنة الكاملة', fr: 'Certification Google Maps, SEO local et digitalisation', en: 'Google Maps verification, local SEO and digitalization' },
-        cta: { ar: 'ابدأ الآن', fr: 'Commencer', en: 'Get Started' },
-        link: '/services/google-maps-seo',
-        icon: MapPin,
-        gradient: 'from-green-600 to-emerald-500',
-        imageUrl: 'https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=1920&q=80'
-    },
-    {
-        id: 5,
-        title: { ar: 'النمو والمحتوى', fr: 'Croissance & Contenu', en: 'Growth & Content' },
-        subtitle: { ar: 'نساعدك على النمو والانتشار', fr: 'Croissance et visibilité', en: 'Growth and visibility' },
-        description: { ar: 'إنتاج فيديو، إدارة حملات، سيو تقني، وتسويق محتوى', fr: 'Production vidéo, campagnes, SEO technique et marketing', en: 'Video production, campaigns, technical SEO and marketing' },
-        cta: { ar: 'تواصل معنا', fr: 'Contactez-nous', en: 'Contact Us' },
-        link: '/services/growth-content',
-        icon: TrendingUp,
-        gradient: 'from-indigo-600 to-blue-500',
-        imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80'
-    }
-]
+const fallbackSlides: Slide[] = [] // Will be populated in render if needed
 
 interface HeroSliderProps {
     lang: 'ar' | 'fr' | 'en'
@@ -96,14 +40,14 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
         if (initialSlides && initialSlides.length > 0) {
             const transformed = initialSlides.map((d: any) => ({
                 id: d.id,
-                title: { ar: d.title_ar, fr: d.title_fr, en: d.title_en },
-                subtitle: { ar: d.subtitle_ar, fr: d.subtitle_fr, en: d.subtitle_en },
-                description: { ar: d.description_ar, fr: d.description_fr, en: d.description_en },
-                cta: { ar: d.cta_ar, fr: d.cta_fr, en: d.cta_en },
+                title: d.title,
+                subtitle: d.subtitle,
+                description: d.description,
+                cta: d.cta,
                 link: d.link,
-                icon: iconMap[d.icon_name] || Zap,
-                gradient: d.gradient_class,
-                imageUrl: d.image_url
+                icon: iconMap[d.icon] || Zap,
+                gradient: d.gradient,
+                imageUrl: d.imageUrl
             }))
             setTransformedSlides(transformed)
         }
@@ -195,7 +139,7 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
                         >
                             <Image
                                 src={slide.imageUrl}
-                                alt={slide.title[lang]}
+                                alt={slide.title}
                                 width={1920}
                                 height={1080}
                                 sizes="100vw"
@@ -213,16 +157,8 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
                             transition={{ duration: 0.8 }}
                             className="absolute inset-0"
                             style={{
-                                background: currentSlide === 0
-                                    ? 'linear-gradient(135deg, rgba(30, 58, 138, 0.7) 0%, rgba(30, 64, 175, 0.7) 25%, rgba(59, 130, 246, 0.6) 50%, rgba(96, 165, 250, 0.5) 100%)'
-                                    : currentSlide === 1
-                                        ? 'linear-gradient(135deg, rgba(88, 28, 135, 0.7) 0%, rgba(126, 34, 206, 0.7) 25%, rgba(168, 85, 247, 0.6) 50%, rgba(192, 132, 252, 0.5) 100%)'
-                                        : currentSlide === 2
-                                            ? 'linear-gradient(135deg, rgba(154, 52, 18, 0.7) 0%, rgba(234, 88, 12, 0.7) 25%, rgba(249, 115, 22, 0.6) 50%, rgba(251, 146, 60, 0.5) 100%)'
-                                            : currentSlide === 3
-                                                ? 'linear-gradient(135deg, rgba(6, 95, 70, 0.7) 0%, rgba(5, 150, 105, 0.7) 25%, rgba(16, 185, 129, 0.6) 50%, rgba(52, 211, 153, 0.5) 100%)'
-                                                : 'linear-gradient(135deg, rgba(67, 56, 202, 0.7) 0%, rgba(79, 70, 229, 0.7) 25%, rgba(99, 102, 241, 0.6) 50%, rgba(129, 140, 248, 0.5) 100%)'
-                            }}
+                                background: `linear-gradient(135deg, ${slide.gradient.split(' ')[0].replace('from-', '')} 0%, ${slide.gradient.split(' ')[1]?.replace('to-', '') || 'rgba(0,0,0,0.5)'} 100%)`
+                            } as any}
                         />
 
                         {/* Geometric Grid Pattern Overlay */}
@@ -289,17 +225,8 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
                             }}
                             className="absolute top-1/3 left-1/4 w-[36rem] h-[36rem]"
                             style={{
-                                background: currentSlide === 0
-                                    ? 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%)'
-                                    : currentSlide === 1
-                                        ? 'radial-gradient(circle, rgba(192, 132, 252, 0.3) 0%, transparent 70%)'
-                                        : currentSlide === 2
-                                            ? 'radial-gradient(circle, rgba(251, 146, 60, 0.3) 0%, transparent 70%)'
-                                            : currentSlide === 3
-                                                ? 'radial-gradient(circle, rgba(52, 211, 153, 0.3) 0%, transparent 70%)'
-                                                : 'radial-gradient(circle, rgba(129, 140, 248, 0.3) 0%, transparent 70%)',
-                                filter: 'blur(50px)'
-                            }}
+                                background: `radial-gradient(circle, ${slide.gradient.split(' ')[0].replace('from-', '')} 0%, transparent 70%)`
+                            } as any}
                         />
 
                         {/* Dark Vignette Overlay */}
@@ -332,7 +259,7 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
                                 transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
                                 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight"
                             >
-                                {slide.title[lang]}
+                                {slide.title}
                             </motion.h1>
 
                             <motion.p
@@ -341,7 +268,7 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
                                 transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
                                 className="text-2xl md:text-3xl mb-6 font-semibold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
                             >
-                                {slide.subtitle[lang]}
+                                {slide.subtitle}
                             </motion.p>
 
                             <motion.p
@@ -350,7 +277,7 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
                                 transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
                                 className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-90 leading-relaxed"
                             >
-                                {slide.description[lang]}
+                                {slide.description}
                             </motion.p>
 
                             <motion.div
@@ -363,7 +290,7 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
                                     href={slide.link}
                                     className="group relative inline-block px-8 py-4 bg-white text-gray-900 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 active:scale-95 overflow-hidden"
                                 >
-                                    <span className="relative z-10">{slide.cta[lang]}</span>
+                                    <span className="relative z-10">{slide.cta}</span>
                                     <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
                                 </Link>
                                 <Link

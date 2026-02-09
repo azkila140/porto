@@ -4,7 +4,7 @@ import { BentoGrid } from '@/components/sections/BentoGrid'
 import { ShowcaseSlider } from '@/components/sections/ShowcaseSlider'
 import { LeadForm } from '@/components/LeadForm'
 import type { Metadata } from 'next'
-import { getCachedHeroSlides, getCachedServices } from '@/lib/services/dynamicData'
+import { getCachedHeroSlides, getCachedServices, getCachedPortfolio } from '@/lib/services/dynamicData'
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
     const titles = {
@@ -55,16 +55,17 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
 
 export default async function HomePage({ params }: { params: { lang: Locale } }) {
     // Fetch data on the server with caching
-    const [heroSlides, services] = await Promise.all([
-        getCachedHeroSlides(),
-        getCachedServices()
+    const [heroSlides, services, portfolio] = await Promise.all([
+        getCachedHeroSlides(params.lang),
+        getCachedServices(params.lang),
+        getCachedPortfolio(params.lang)
     ])
 
     return (
         <main className="min-h-screen">
             <HeroSlider lang={params.lang} initialSlides={heroSlides} />
             <BentoGrid lang={params.lang} initialServices={services} />
-            <ShowcaseSlider lang={params.lang} />
+            <ShowcaseSlider lang={params.lang} initialItems={portfolio} />
             <LeadForm lang={params.lang} />
         </main>
     )
