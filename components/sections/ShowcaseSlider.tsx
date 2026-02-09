@@ -262,15 +262,17 @@ export function ShowcaseSlider({ lang }: ShowcaseSliderProps) {
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: 0.3 }}
-                                        className="flex-1 w-full flex items-center justify-center relative min-h-[300px]"
+                                        className="flex-1 w-full flex items-center justify-center relative aspect-[4/3]"
                                     >
                                         <Image
                                             src={currentItem.image}
                                             alt={currentItem.title}
-                                            fill
-                                            className="object-cover rounded-xl border-2 border-white/20"
-                                            priority
+                                            width={800}
+                                            height={600}
                                             sizes="(max-width: 768px) 100vw, 50vw"
+                                            className="object-cover rounded-xl border-2 border-white/20 w-full h-full"
+                                            priority
+                                            quality={80}
                                         />
                                     </motion.div>
                                 </div>

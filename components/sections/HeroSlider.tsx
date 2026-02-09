@@ -196,10 +196,12 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
                             <Image
                                 src={slide.imageUrl}
                                 alt={slide.title[lang]}
-                                fill
-                                className="object-cover"
-                                priority={currentSlide === 0}
+                                width={1920}
+                                height={1080}
                                 sizes="100vw"
+                                className="object-cover w-full h-full"
+                                priority={currentSlide === 0}
+                                quality={85}
                             />
                         </motion.div>
 

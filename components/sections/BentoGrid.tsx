@@ -140,6 +140,21 @@ export function BentoGrid({ lang, initialServices = [] }: BentoGridProps) {
                                     </motion.div>
                                     {/* Dark Overlay for Readability */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-900/85 to-slate-950/90" />
+                                    {/* Image Overlay */}
+                                    {item.image && (
+                                        <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                            <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-transparent z-10" />
+                                            <Image
+                                                src={item.image}
+                                                alt={item.title[lang]}
+                                                width={600}
+                                                height={600}
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                                className="object-cover w-full h-full transform scale-100 group-hover:scale-110 transition-transform duration-700"
+                                                quality={75}
+                                            />
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Luxury Gold Glow on Hover */}
