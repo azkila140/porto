@@ -6,6 +6,7 @@ import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import ServiceDetails from '@/components/services/ServiceDetails'
+import RelatedServices from '@/components/services/RelatedServices'
 import { Video, FileText, TrendingUp, Target, BarChart3, Megaphone } from 'lucide-react'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
 import { siteConfig } from '@/lib/config'
@@ -408,6 +409,8 @@ export default async function GrowthContentPage({ params }: { params: Promise<{ 
                 title={t.caseStudies.title}
                 studies={t.caseStudies.items}
             />
+
+            <RelatedServices currentServiceId="growth-content" lang={lang} />
 
             <ServiceCTA
                 title={t.cta.title}

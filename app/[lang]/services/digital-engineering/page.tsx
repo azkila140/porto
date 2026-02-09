@@ -6,6 +6,7 @@ import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import ServiceDetails from '@/components/services/ServiceDetails'
+import RelatedServices from '@/components/services/RelatedServices'
 import { Code, Smartphone, Cloud, Database, Zap, Shield } from 'lucide-react'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
 import { siteConfig } from '@/lib/config'
@@ -425,6 +426,8 @@ export default async function DigitalEngineeringPage({ params }: { params: Promi
                 title={t.caseStudies.title}
                 studies={t.caseStudies.items}
             />
+
+            <RelatedServices currentServiceId="digital-engineering" lang={lang} />
 
             <ServiceCTA
                 title={t.cta.title}
