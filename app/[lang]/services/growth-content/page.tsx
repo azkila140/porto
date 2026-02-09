@@ -1,18 +1,13 @@
+'use client'
 
-import type { Metadata } from 'next'
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import { Video, FileText, TrendingUp, Target, BarChart3, Megaphone } from 'lucide-react'
-import { serviceMetadata } from '@/lib/seo/service-metadata'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
 import { siteConfig } from '@/lib/config'
-
-export async function generateMetadata({ params }: { params: { lang: 'ar' | 'en' | 'fr' } }): Promise<Metadata> {
-    return serviceMetadata.growth(params.lang)
-}
 
 const content = {
     ar: {
