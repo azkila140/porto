@@ -6,7 +6,6 @@ import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import ServiceDetails from '@/components/services/ServiceDetails'
-import { Zap, Workflow, Bot, Link2, GitBranch, Repeat } from 'lucide-react'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
 import { siteConfig } from '@/lib/config'
 
@@ -32,32 +31,32 @@ const content = {
             subtitle: 'حلول ذكية لتبسيط عملياتك وزيادة كفاءتك',
             items: [
                 {
-                    icon: Workflow,
+                    icon: 'Workflow',
                     title: 'سير عمل n8n',
                     description: 'أتمتة المهام المتكررة وربط التطبيقات المختلفة بسيناريوهات ذكية توفر ساعات من العمل اليدوي'
                 },
                 {
-                    icon: Link2,
+                    icon: 'Link2',
                     title: 'ربط APIs',
                     description: 'دمج الأنظمة المختلفة (CRM، محاسبة، مخزون) لتدفق بيانات سلس وآلي'
                 },
                 {
-                    icon: Bot,
+                    icon: 'Bot',
                     title: 'شات بوت ذكي',
                     description: 'روبوتات محادثة تعمل بالذكاء الاصطناعي للرد على العملاء 24/7 وأتمتة الدعم الفني'
                 },
                 {
-                    icon: GitBranch,
+                    icon: 'GitBranch',
                     title: 'تكامل Webhooks',
                     description: 'ربط فوري بين الأنظمة عبر Webhooks لتحديثات لحظية وإشعارات آلية'
                 },
                 {
-                    icon: Repeat,
+                    icon: 'Repeat',
                     title: 'مزامنة البيانات',
                     description: 'مزامنة تلقائية للبيانات بين المنصات المختلفة لضمان التناسق والدقة'
                 },
                 {
-                    icon: Zap,
+                    icon: 'Zap',
                     title: 'أتمتة التسويق',
                     description: 'حملات تسويقية آلية، إرسال بريد إلكتروني مجدول، ومتابعة العملاء المحتملين'
                 }

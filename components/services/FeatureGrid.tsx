@@ -1,10 +1,24 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { type FC } from 'react'
+import {
+    Workflow, Link2, Bot, GitBranch, Repeat, Zap,
+    Palette, Pen, Sparkles, Target, TrendingUp,
+    Code, Database, Cloud, Shield, Smartphone,
+    MapPin, Search, BarChart, MessageSquare, Clock,
+    LucideIcon
+} from 'lucide-react'
+
+// Icon mapping for client-side rendering
+const iconMap: Record<string, LucideIcon> = {
+    Workflow, Link2, Bot, GitBranch, Repeat, Zap,
+    Palette, Pen, Sparkles, Target, TrendingUp,
+    Code, Database, Cloud, Shield, Smartphone,
+    MapPin, Search, BarChart, MessageSquare, Clock,
+}
 
 interface Feature {
-    icon: FC<{ className?: string }>
+    icon: string  // Changed to accept icon name as string
     title: string
     description: string
 }
@@ -26,7 +40,7 @@ export default function FeatureGrid({ features, title, subtitle }: FeatureGridPr
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {features.map((feature, index) => {
-                        const Icon = feature.icon
+                        const Icon = iconMap[feature.icon] || Workflow  // Map string to component
                         return (
                             <motion.div
                                 key={index}
