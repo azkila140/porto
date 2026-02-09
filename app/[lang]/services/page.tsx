@@ -144,20 +144,6 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
     const { lang } = await params
     const t = (content as any)[lang] || content.en
 
-    // Map icons to components for the client
-    const servicesWithIcons = t.services.map((service: any) => {
-        let iconComponent = Code
-        switch (service.icon) {
-            case 'Code': iconComponent = Code; break
-            case 'Zap': iconComponent = Zap; break
-            case 'Palette': iconComponent = Palette; break
-            case 'MapPin': iconComponent = MapPin; break
-            case 'TrendingUp': iconComponent = TrendingUp; break
-        }
-        return { ...service, iconComponent }
-    })
-
-    const dict = { ...t, services: servicesWithIcons }
-
-    return <ServicesClient lang={lang} dict={dict} />
+    // Pass icon names as strings - Client Component will map them to components
+    return <ServicesClient lang={lang} dict={t} />
 }

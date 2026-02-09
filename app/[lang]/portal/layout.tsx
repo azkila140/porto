@@ -24,7 +24,7 @@ export default async function DashboardLayout({
     const { data: { user } } = await supabase.auth.getUser()
 
     if (!user) {
-        redirect(`/${lang}/login`)
+        redirect(`/${lang}/login?redirect=${encodeURIComponent(`/${lang}/portal`)}`)
     }
 
     const navItems = {

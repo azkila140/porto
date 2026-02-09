@@ -1,7 +1,16 @@
 'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Code, Zap, Palette, MapPin, TrendingUp, LucideIcon } from 'lucide-react'
+
+// Icon mapping for client-side rendering
+const iconMap: Record<string, LucideIcon> = {
+    Code,
+    Zap,
+    Palette,
+    MapPin,
+    TrendingUp,
+}
 
 interface ServicesClientProps {
     lang: string
@@ -35,7 +44,7 @@ export default function ServicesClient({ lang, dict }: ServicesClientProps) {
                 <div className="container mx-auto max-w-7xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {dict.services.map((service: any, index: number) => {
-                            const Icon = service.icon
+                            const Icon = iconMap[service.icon] || Code
                             return (
                                 <motion.div
                                     key={service.id}
@@ -45,7 +54,7 @@ export default function ServicesClient({ lang, dict }: ServicesClientProps) {
                                     className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-emerald/50 transition-all duration-300"
                                 >
                                     <div className="mb-6 inline-block p-4 rounded-xl bg-brand-emerald/10 text-brand-emerald group-hover:scale-110 transition-transform duration-300">
-                                        <service.iconComponent className="w-8 h-8" />
+                                        <Icon className="w-8 h-8" />
                                     </div>
                                     <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-brand-emerald transition-colors">
                                         {service.title}

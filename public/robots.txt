@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://porto-two-blue.vercel.app/sitemap.xml
+Sitemap: https://nexuslogic.online/sitemap.xml

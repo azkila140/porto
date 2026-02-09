@@ -1,0 +1,175 @@
+﻿
+> nexus-logic@1.0.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.35
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully
+   Linting and checking validity of types ...
+
+./components/admin/HeroSectionEditor.tsx
+40:8  Warning: React Hook useEffect has a missing dependency: 'fetchSlides'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./components/admin/ServicesEditor.tsx
+29:8  Warning: React Hook useEffect has a missing dependency: 'fetchServices'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./components/sections/HeroSlider.tsx
+178:8  Warning: React Hook useEffect has a missing dependency: 'activeSlides'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./components/services/CaseStudies.tsx
+42:37  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+   Collecting page data ...
+   Generating static pages (0/133) ...
+   Generating static pages (33/133) 
+   Generating static pages (66/133) 
+   Generating static pages (99/133) 
+ Ô£ô Generating static pages (133/133)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                               Size     First Load JS
+Ôöî Ôùï /_not-found                           876 B          88.2 kB
+Ôö£ ÔùÅ /[lang]                               23.7 kB         165 kB
+Ôö£   Ôö£ /ar
+Ôö£   Ôö£ /fr
+Ôö£   Ôöö /en
+Ôö£ ÔùÅ /[lang]/about                         4.82 kB         137 kB
+Ôö£   Ôö£ /ar/about
+Ôö£   Ôö£ /fr/about
+Ôö£   Ôöö /en/about
+Ôö£ ÔùÅ /[lang]/admin                         179 B          87.5 kB
+Ôö£   Ôö£ /ar/admin
+Ôö£   Ôö£ /fr/admin
+Ôö£   Ôöö /en/admin
+Ôö£ ÔùÅ /[lang]/admin/hero                    4.54 kB         151 kB
+Ôö£   Ôö£ /ar/admin/hero
+Ôö£   Ôö£ /fr/admin/hero
+Ôö£   Ôöö /en/admin/hero
+Ôö£ ÔùÅ /[lang]/admin/services                4.07 kB         151 kB
+Ôö£   Ôö£ /ar/admin/services
+Ôö£   Ôö£ /fr/admin/services
+Ôö£   Ôöö /en/admin/services
+Ôö£ ÔùÅ /[lang]/contact                       187 B          96.1 kB
+Ôö£   Ôö£ /ar/contact
+Ôö£   Ôö£ /fr/contact
+Ôö£   Ôöö /en/contact
+Ôö£ ÔùÅ /[lang]/dashboard                     179 B          87.5 kB
+Ôö£   Ôö£ /ar/dashboard
+Ôö£   Ôö£ /fr/dashboard
+Ôö£   Ôöö /en/dashboard
+Ôö£ ÔùÅ /[lang]/dashboard/invoices            179 B          87.5 kB
+Ôö£   Ôö£ /ar/dashboard/invoices
+Ôö£   Ôö£ /fr/dashboard/invoices
+Ôö£   Ôöö /en/dashboard/invoices
+Ôö£ ÔùÅ /[lang]/dashboard/projects            179 B          87.5 kB
+Ôö£   Ôö£ /ar/dashboard/projects
+Ôö£   Ôö£ /fr/dashboard/projects
+Ôö£   Ôöö /en/dashboard/projects
+Ôö£ ÔùÅ /[lang]/dashboard/support             2.67 kB          90 kB
+Ôö£   Ôö£ /ar/dashboard/support
+Ôö£   Ôö£ /fr/dashboard/support
+Ôö£   Ôöö /en/dashboard/support
+Ôö£ ÔùÅ /[lang]/login                         3.02 kB         193 kB
+Ôö£   Ôö£ /ar/login
+Ôö£   Ôö£ /fr/login
+Ôö£   Ôöö /en/login
+Ôö£ ÔùÅ /[lang]/portal                        179 B          87.5 kB
+Ôö£   Ôö£ /ar/portal
+Ôö£   Ôö£ /fr/portal
+Ôö£   Ôöö /en/portal
+Ôö£ ÔùÅ /[lang]/portal/invoices               179 B          87.5 kB
+Ôö£   Ôö£ /ar/portal/invoices
+Ôö£   Ôö£ /fr/portal/invoices
+Ôö£   Ôöö /en/portal/invoices
+Ôö£ ÔùÅ /[lang]/portal/projects               179 B          87.5 kB
+Ôö£   Ôö£ /ar/portal/projects
+Ôö£   Ôö£ /fr/portal/projects
+Ôö£   Ôöö /en/portal/projects
+Ôö£ ÔùÅ /[lang]/portal/support                2.67 kB          90 kB
+Ôö£   Ôö£ /ar/portal/support
+Ôö£   Ôö£ /fr/portal/support
+Ôö£   Ôöö /en/portal/support
+Ôö£ ÔùÅ /[lang]/privacy                       545 B          87.9 kB
+Ôö£   Ôö£ /ar/privacy
+Ôö£   Ôö£ /fr/privacy
+Ôö£   Ôöö /en/privacy
+Ôö£ ÔùÅ /[lang]/services                      3.03 kB         139 kB
+Ôö£   Ôö£ /ar/services
+Ôö£   Ôö£ /fr/services
+Ôö£   Ôöö /en/services
+Ôö£ ÔùÅ /[lang]/services/automation           6.25 kB         147 kB
+Ôö£   Ôö£ /ar/services/automation
+Ôö£   Ôö£ /fr/services/automation
+Ôö£   Ôöö /en/services/automation
+Ôö£ ÔùÅ /[lang]/services/branding             6.61 kB         147 kB
+Ôö£   Ôö£ /ar/services/branding
+Ôö£   Ôö£ /fr/services/branding
+Ôö£   Ôöö /en/services/branding
+Ôö£ ÔùÅ /[lang]/services/digital-engineering  7.53 kB         148 kB
+Ôö£   Ôö£ /ar/services/digital-engineering
+Ôö£   Ôö£ /fr/services/digital-engineering
+Ôö£   Ôöö /en/services/digital-engineering
+Ôö£ ÔùÅ /[lang]/services/google-maps-seo      6.29 kB         147 kB
+Ôö£   Ôö£ /ar/services/google-maps-seo
+Ôö£   Ôö£ /fr/services/google-maps-seo
+Ôö£   Ôöö /en/services/google-maps-seo
+Ôö£ ÔùÅ /[lang]/services/growth-content       6.59 kB         147 kB
+Ôö£   Ôö£ /ar/services/growth-content
+Ôö£   Ôö£ /fr/services/growth-content
+Ôö£   Ôöö /en/services/growth-content
+Ôö£ ÔùÅ /[lang]/solutions                     2.49 kB         138 kB
+Ôö£   Ôö£ /ar/solutions
+Ôö£   Ôö£ /fr/solutions
+Ôö£   Ôöö /en/solutions
+Ôö£ ÔùÅ /[lang]/solutions/[industry]          19.7 kB         157 kB
+Ôö£   Ôö£ /ar/solutions/medical
+Ôö£   Ôö£ /ar/solutions/real-estate
+Ôö£   Ôö£ /ar/solutions/restaurants
+Ôö£   Ôöö [+39 more paths]
+Ôö£ ÔùÅ /[lang]/solutions/enterprise          1.84 kB         137 kB
+Ôö£   Ôö£ /ar/solutions/enterprise
+Ôö£   Ôö£ /fr/solutions/enterprise
+Ôö£   Ôöö /en/solutions/enterprise
+Ôö£ ÔùÅ /[lang]/solutions/healthcare          1.81 kB         137 kB
+Ôö£   Ôö£ /ar/solutions/healthcare
+Ôö£   Ôö£ /fr/solutions/healthcare
+Ôö£   Ôöö /en/solutions/healthcare
+Ôö£ ÔùÅ /[lang]/solutions/logistics           1.95 kB         138 kB
+Ôö£   Ôö£ /ar/solutions/logistics
+Ôö£   Ôö£ /fr/solutions/logistics
+Ôö£   Ôöö /en/solutions/logistics
+Ôö£ ÔùÅ /[lang]/solutions/real-estate         1.72 kB         137 kB
+Ôö£   Ôö£ /ar/solutions/real-estate
+Ôö£   Ôö£ /fr/solutions/real-estate
+Ôö£   Ôöö /en/solutions/real-estate
+Ôö£ ÔùÅ /[lang]/terms                         542 B          87.9 kB
+Ôö£   Ôö£ /ar/terms
+Ôö£   Ôö£ /fr/terms
+Ôö£   Ôöö /en/terms
+Ôö£ ÔùÅ /[lang]/work                          2.87 kB         130 kB
+Ôö£   Ôö£ /ar/work
+Ôö£   Ôö£ /fr/work
+Ôö£   Ôöö /en/work
+Ôö£ ãÆ /api/send                             0 B                0 B
+Ôö£ ãÆ /api/strapi/hero-slides               0 B                0 B
+Ôö£ ãÆ /api/strapi/portfolio                 0 B                0 B
+Ôö£ ãÆ /api/strapi/services                  0 B                0 B
+Ôö£ ãÆ /auth/signout                         0 B                0 B
+Ôö£ Ôùï /robots.txt                           0 B                0 B
+Ôöö Ôùï /sitemap.xml                          0 B                0 B
++ First Load JS shared by all             87.3 kB
+  Ôö£ chunks/2117-3a8a9ff104366216.js       31.7 kB
+  Ôö£ chunks/fd9d1056-d280917f29ebddc0.js   53.6 kB
+  Ôöö other shared chunks (total)           2.04 kB
+
+
+ãÆ Middleware                              74.6 kB
+
+Ôùï  (Static)   prerendered as static content
+ÔùÅ  (SSG)      prerendered as static HTML (uses getStaticProps)
+ãÆ  (Dynamic)  server-rendered on demand
+
