@@ -1,218 +1,208 @@
-import type { Metadata } from 'next'
+import { Metadata } from 'next'
 import { siteConfig } from '@/lib/config'
 
-type Locale = 'ar' | 'en' | 'fr'
+type ServiceMetadata = {
+    ar: {
+        title: string
+        description: string
+    }
+    en: {
+        title: string
+        description: string
+    }
+    fr: {
+        title: string
+        description: string
+    }
+}
+
+// Service-specific metadata optimized for SEO
+export const serviceMetadata: Record<string, ServiceMetadata> = {
+    branding: {
+        ar: {
+            title: 'تصميم الهوية التجارية والشعار الاحترافي',
+            description: 'تصميم هوية بصرية كاملة وشعار احترافي | نيكسس لوجيك. خدمات برندينغ متكاملة: تصميم لوجو، دليل هوية، تغليف منتجات. احصل على عرض سعر'
+        },
+        en: {
+            title: 'Brand Identity & Professional Logo Design',
+            description: 'Complete visual identity design & professional logo | Nexus Logic. Branding services in Riyadh/Dubai: Logo, brand guidelines, packaging. Get a quote'
+        },
+        fr: {
+            title: 'Design d\'Identité de Marque & Logo Professionnel',
+            description: 'Design d\'identité visuelle complète | Nexus Logic. Services de branding à Riyadh/Dubai : Logo, charte graphique, packaging. Devis gratuit'
+        }
+    },
+    'google-maps-seo': {
+        ar: {
+            title: 'توثيق موقع في خرائط جوجل - مسك كلمات جوجل',
+            description: 'توثيق موقع في خرائط جوجل | نيكسس لوجيك. خدمات مسك كلمات جوجل وتحسين ظهور النشاط التجاري. احصل على استشارة مجانية الآن'
+        },
+        en: {
+            title: 'Google Maps Verification & Local SEO Services',
+            description: 'Google Maps verification & local SEO | Nexus Logic. Optimize your business presence in KSA/UAE. Free consultation available'
+        },
+        fr: {
+            title: 'Vérification Google Maps & SEO Local',
+            description: 'Vérification Google Maps & SEO local | Nexus Logic. Optimisez votre présence locale. Consultation gratuite'
+        }
+    },
+    'digital-engineering': {
+        ar: {
+            title: 'تصميم متجر إلكتروني خاص وبرمجة تطبيقات',
+            description: 'تصميم متجر إلكتروني خاص وبرمجة تطبيقات | نيكسس لوجيك. حلول Next.js، SaaS، ERP. شركة برمجة في الرياض. احصل على تطوير احترافي'
+        },
+        en: {
+            title: 'Custom E-commerce & App Development Services',
+            description: 'Custom e-commerce & app development | Nexus Logic. Next.js, SaaS, ERP solutions in KSA/UAE. Professional development services. Get a quote'
+        },
+        fr: {
+            title: 'Développement E-commerce & Applications Sur Mesure',
+            description: 'Développement e-commerce & applications sur mesure | Nexus Logic. Solutions Next.js, SaaS, ERP. Devis gratuit'
+        }
+    },
+    automation: {
+        ar: {
+            title: 'ربط المتجر بالواتساب وأتمتة خدمة العملاء',
+            description: 'ربط المتجر بالواتساب وأتمتة خدمة العملاء | نيكسس لوجيك. خدمات n8n، API Integration، أتمتة العمليات التجارية. وفر 70% من التكاليف'
+        },
+        en: {
+            title: 'WhatsApp Business Automation & Workflow Services',
+            description: 'WhatsApp Business automation & workflow services | Nexus Logic. n8n, API integration, business automation in KSA. Save 70% on operational costs'
+        },
+        fr: {
+            title: 'Automatisation WhatsApp Business & Workflows',
+            description: 'Automatisation WhatsApp Business & workflows | Nexus Logic. Services n8n, intégration API. Réduisez vos coûts de 70%'
+        }
+    },
+    'growth-content': {
+        ar: {
+            title: 'إعلانات تيك توك وإنتاج فيديو ريلز إعلاني',
+            description: 'إعلانات تيك توك وإنتاج فيديو ريلز إعلاني | نيكسس لوجيك. خدمات UGC، تسويق أداء، محتوى فيروسي. زد مبيعاتك الآن'
+        },
+        en: {
+            title: 'TikTok Ads & Viral Video Production Services',
+            description: 'TikTok ads & viral video production | Nexus Logic. UGC content, performance marketing agency in KSA/UAE. Boost your sales now'
+        },
+        fr: {
+            title: 'Publicités TikTok & Production Vidéo Virale',
+            description: 'Publicités TikTok & production vidéo | Nexus Logic. Contenu UGC, marketing de performance. Boostez vos ventes'
+        }
+    }
+}
 
 /**
- * Service Page SEO Metadata Generator
- * Generates comprehensive metadata for all service pillar pages
+ * Generate SEO-optimized metadata for service pages
+ * @param serviceName - The service identifier (e.g., 'branding', 'automation')
+ * @param lang - Language code ('ar' | 'en' | 'fr')
+ * @param ogImage - Optional custom OG image path
+ * @returns Complete Metadata object for Next.js
  */
+export function generateServiceMetadata(
+    serviceName: keyof typeof serviceMetadata,
+    lang: 'ar' | 'en' | 'fr',
+    ogImage?: string
+): Metadata {
+    const service = serviceMetadata[serviceName]
+    const metadata = service[lang]
 
-// Branding & Identity Metadata
-export function generateBrandingMetadata(lang: Locale): Metadata {
-    const titles = {
-        ar: 'تصميم الهوية التجارية والعلب الاحترافية | نيكسس لوجيك',
-        en: 'Professional Brand Identity & Packaging Design | Nexus Logic',
-        fr: 'Design Identité de Marque et Packaging Professionnel'
-    }
+    const serviceSlug = serviceName
+    const url = `${siteConfig.url}/${lang}/services/${serviceSlug}`
+    const defaultOgImage = ogImage || `${siteConfig.url}/og-${serviceSlug}.jpg`
 
-    const descriptions = {
-        ar: 'نبني هويتك التجارية من الصفر: تصميم شعار احترافي، دليل هوية كامل، قرطاسية، ومواد الافتتاح. خدماتتصميم متكاملة للمحلات الجديدة في السعودية والإمارات والمغرب وقطر.',
-        en: 'We build your brand identity from scratch: professional logo design, complete brand guidelines, stationery, and launch materials. Integrated design services for new businesses in KSA, UAE, Morocco & Qatar.',
-        fr: 'Nous construisons votre identité de marque de zéro: logo professionnel, directives complètes, papeterie, et supports de lancement pour le Maroc et le Golfe.'
-    }
-
-    return {
-        title: titles[lang],
-        description: descriptions[lang],
-        keywords: [
-            'تصميم هوية تجارية كاملة',
-            'تصميم شعار احترافي',
-            'Brand Identity Design KSA',
-            'Logo Design Dubai',
-            'دليل هوية بصرية',
-            'Brand Guidelines',
-            'تصميم القرطاسية',
-            'Business Stationery Design',
-            'مواد افتتاح محل',
-            'Launch Materials Design'
-        ],
-        alternates: {
-            canonical: `${siteConfig.url}/${lang}/services/branding`,
-            languages: {
-                'ar-SA': '/ar/services/branding',
-                'en-US': '/en/services/branding',
-                'fr-FR': '/fr/services/branding',
-            }
-        }
-    }
-}
-
-// Digitalization & Google Maps SEO Metadata
-export function generateDigitalizationMetadata(lang: Locale): Metadata {
-    const titles = {
-        ar: 'خرائط جوجل والرقمنة وحلول السيو المحلي | نيكسس لوجيك',
-        en: 'Google Maps and Local SEO Digitalization Solutions | Nexus Logic',
-        fr: 'Digitalisation et Solutions SEO Local Google Maps'
-    }
-
-    const descriptions = {
-        ar: 'نساعدك في إنشاء ملف Google Business Profile احترافي، تحسين الظهور في خرائط جوجل، وإدارة التقييمات. حلول الرقمنة الأساسية للمحلات والعيادات والمطاعم في السعودية والإمارات.',
-        en: 'We help create professional Google Business Profile, optimize Google Maps visibility, and manage reviews. Essential digitalization solutions for stores, clinics, and restaurants in KSA, UAE, Morocco & Qatar.',
-        fr: 'Nous créons votre profil Google Business, optimisons visibilité Google Maps, et gérons avis pour le Maroc et le Golfe.'
+    const localeMap = {
+        ar: 'ar_SA',
+        en: 'en_US',
+        fr: 'fr_FR'
     }
 
     return {
-        title: titles[lang],
-        description: descriptions[lang],
-        keywords: [
-            'إنشاء Google Business Profile',
-            'تحسين ظهور محلي',
-            'Google Maps Optimization',
-            'خرائط جوجل للمحلات',
-            'Local SEO KSA',
-            'إدارة التقييمات',
-            'Review Management',
-            'Google My Business السعودية',
-            'ظهور في خرائط جوجل',
-            'Local Search Optimization'
-        ],
+        title: metadata.title,
+        description: metadata.description,
+        openGraph: {
+            title: metadata.title,
+            description: metadata.description,
+            url,
+            siteName: siteConfig.name,
+            images: [{
+                url: defaultOgImage,
+                width: 1200,
+                height: 630,
+                alt: metadata.title
+            }],
+            locale: localeMap[lang],
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: metadata.title,
+            description: metadata.description,
+            images: [defaultOgImage],
+        },
         alternates: {
-            canonical: `${siteConfig.url}/${lang}/services/google-maps-seo`,
+            canonical: url,
             languages: {
-                'ar-SA': '/ar/services/google-maps-seo',
-                'en-US': '/en/services/google-maps-seo',
-                'ar-FR': '/fr/services/google-maps-seo',
+                'ar': `${siteConfig.url}/ar/services/${serviceSlug}`,
+                'en': `${siteConfig.url}/en/services/${serviceSlug}`,
+                'fr': `${siteConfig.url}/fr/services/${serviceSlug}`,
             }
-        }
+        },
+        robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                'max-video-preview': -1,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
+            },
+        },
     }
 }
 
-// Custom Architecture & Platform Engineering Metadata
-export function generateArchitectureMetadata(lang: Locale): Metadata {
-    const titles = {
-        ar: 'الهندسة الرقمية وتطوير المنصات المخصصة | Next.js 16 | نيكسس لوجيك',
-        en: 'Digital Engineering & Custom Platform Development | Next.js 16 | Nexus Logic',
-        fr: 'Ingénierie Numérique et Développement de Plateformes | Next.js 16'
-    }
-
-    const descriptions = {
-        ar: 'نبني منصات ويب مخصصة بالكامل باستخدام Next.js 16، React، وأحدث التقنيات. حلول للمؤسسات التي تحتاج بوابات عملاء، منصات حجز، أو أنظمة مخصصة في السعودية والإمارات.',
-        en: 'We build fully custom web platforms using Next.js 16, React, and modern technologies. Solutions for enterprises needing customer portals, booking platforms, or custom systems in KSA, UAE, Morocco & Qatar.',
-        fr: 'Nous construisons plateformes web personnalisées avec Next.js 16 pour le Maroc et le Golfe.'
-    }
-
-    return {
-        title: titles[lang],
-        description: descriptions[lang],
-        keywords: [
-            'Next.js 16 Development KSA',
-            'Custom Web Platform',
-            'هندسة منصات ويب',
-            'Enterprise Web Development',
-            'React Development UAE',
-            'منصات حجز مخصصة',
-            'Custom Booking Platform',
-            'بوابات عملاء',
-            'Customer Portal Development',
-            'منصات ويب للمؤسسات'
+/**
+ * Get keywords for a specific service from the site config
+ * @param serviceName - The service identifier
+ * @returns Array of relevant keywords
+ */
+export function getServiceKeywords(serviceName: keyof typeof serviceMetadata): string[] {
+    const keywordMap: Record<keyof typeof serviceMetadata, string[]> = {
+        branding: [
+            'تصميم هوية بصرية كاملة',
+            'تصميم شعار شركة احترافي',
+            'Branding Agency Riyadh',
+            'Branding Agency Dubai',
+            'Corporate identity design KSA',
         ],
-        alternates: {
-            canonical: `${siteConfig.url}/${lang}/services/digital-engineering`,
-            languages: {
-                'ar-SA': '/ar/services/digital-engineering',
-                'en-US': '/en/services/digital-engineering',
-                'fr-FR': '/fr/services/digital-engineering',
-            }
-        }
-    }
-}
-
-// Automation Logic & Intelligent Systems Metadata
-export function generateAutomationMetadata(lang: Locale): Metadata {
-    const titles = {
-        ar: 'الأتمتة الذكية وأتمتة العمليات التجارية n8n | نيكسس لوجيك',
-        en: 'Intelligent Automation & Business Process n8n | Nexus Logic',
-        fr: 'Automatisation Intelligente et Processus Business n8n'
-    }
-
-    const descriptions = {
-        ar: 'أتمتة العمليات المتكررة، تكامل أنظمة CRM وERP، أتمتة الفوترة والمحاسبة، و workflows ذكية لتوفير الوقت وتقليل الأخطاء. حلول أتمتة للشركات في السعودية والإمارات.',
-        en: 'Automate repetitive processes, integrate CRM and ERP systems, automate invoicing and accounting, and intelligent workflows to save time and reduce errors. Automation solutions for businesses in KSA, UAE, Morocco & Qatar.',
-        fr: 'Automatisation processus, intégration CRM/ERP, facturation automatique pour le Maroc et le Golfe.'
-    }
-
-    return {
-        title: titles[lang],
-        description: descriptions[lang],
-        keywords: [
-            'أتمتة العمليات التجارية',
-            'Business Process Automation',
-            'تكامل CRM وERP',
-            'CRM ERP Integration',
-            'أتمتة الفوترة',
-            'Invoice Automation',
-            'Workflow Automation KSA',
-            'أتمتة ذكية',
-            'Intelligent Automation UAE',
-            'تقليل الأخطاء البشرية'
+        'google-maps-seo': [
+            'توثيق موقع في خرائط جوجل',
+            'مسك كلمات جوجل',
+            'Google Business Profile management',
+            'Local SEO services KSA',
+            'تحسين ظهور النشاط التجاري',
         ],
-        alternates: {
-            canonical: `${siteConfig.url}/${lang}/services/automation`,
-            languages: {
-                'ar-SA': '/ar/services/automation',
-                'en-US': '/en/services/automation',
-                'fr-FR': '/fr/services/automation',
-            }
-        }
-    }
-}
-
-// Growth Studio & Marketing Automation Metadata
-export function generateGrowthMetadata(lang: Locale): Metadata {
-    const titles = {
-        ar: 'استوديو النمو وصناعة المحتوى الإبداعي | نيكسس لوجيك',
-        en: 'Growth Studio and Creative Content Marketing | Nexus Logic',
-        fr: 'Studio de Croissance et Marketing de Contenu Créatif'
-    }
-
-    const descriptions = {
-        ar: 'خدمات تسويق متكاملة: إنشاء المحتوى، إدارة السوشيال ميديا، حملات إعلانية، وتحسين محركات البحث (SEO/GEO). استراتيجيات نمو للشركات في السعودية، الإمارات، المغرب وقطر.',
-        en: 'Integrated marketing services: content creation, social media management, ad campaigns and search engine optimization (SEO/GEO). Growth strategies for businesses in KSA, UAE, Morocco & Qatar.',
-        fr: 'Services marketing intégrés: création contenu, gestion réseaux sociaux, campagnes publicitaires et SEO/GEO pour le Maroc et le Golfe.'
-    }
-
-    return {
-        title: titles[lang],
-        description: descriptions[lang],
-        keywords: [
-            'خدمات تسويق متكاملة',
-            'Integrated Marketing Services',
-            'إنشاء محتوى احترافي',
-            'Content Creation KSA',
-            'إدارة سوشيال ميديا',
-            'Social Media Management',
-            'GEO Services',
-            'تحسين محركات البحث',
-            'SEO & Content Marketing',
-            'استراتيجيات نمو'
+        'digital-engineering': [
+            'تصميم متجر إلكتروني خاص',
+            'برمجة تطبيق توصيل طلبات',
+            'شركات برمجة في الرياض',
+            'Next.js development agency',
+            'Custom e-commerce development',
         ],
-        alternates: {
-            canonical: `${siteConfig.url}/${lang}/services/growth-content`,
-            languages: {
-                'ar-SA': '/ar/services/growth-content',
-                'en-US': '/en/services/growth-content',
-                'fr-FR': '/fr/services/growth-content',
-            }
-        }
+        automation: [
+            'ربط المتجر بالواتساب',
+            'WhatsApp Business API automation',
+            'أتمتة خدمة العملاء',
+            'n8n workflow services',
+            'Business Automation KSA',
+        ],
+        'growth-content': [
+            'إعلانات تيك توك للمتاجر',
+            'إنتاج فيديو ريلز إعلاني',
+            'UGC content creation',
+            'Performance marketing agency KSA',
+            'TikTok ads agency UAE',
+        ],
     }
-}
 
-// Export all metadata generators
-export const serviceMetadata = {
-    branding: generateBrandingMetadata,
-    digitalization: generateDigitalizationMetadata,
-    architecture: generateArchitectureMetadata,
-    automation: generateAutomationMetadata,
-    growth: generateGrowthMetadata,
+    return keywordMap[serviceName] || []
 }

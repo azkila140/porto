@@ -1,13 +1,23 @@
 import { MetadataRoute } from 'next'
-import { siteConfig } from '@/lib/config'
 
 export default function robots(): MetadataRoute.Robots {
     return {
-        rules: {
-            userAgent: '*',
-            allow: '/',
-            disallow: ['/portal/', '/api/'],
-        },
-        sitemap: `${siteConfig.url}/sitemap.xml`,
+        rules: [
+            {
+                userAgent: '*',
+                allow: '/',
+                disallow: [
+                    '/admin/',
+                    '/api/',
+                    '/dashboard/',
+                    '/portal/',
+                    '/login',
+                    '/ar/admin/',
+                    '/en/admin/',
+                    '/fr/admin/',
+                ],
+            },
+        ],
+        sitemap: 'https://nexuslogic.online/sitemap.xml',
     }
 }
