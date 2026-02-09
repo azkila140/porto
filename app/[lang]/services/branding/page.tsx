@@ -1,11 +1,20 @@
 'use client'
 
+import type { Metadata } from 'next'
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
 import ProcessTimeline from '@/components/services/ProcessTimeline'
 import CaseStudies from '@/components/services/CaseStudies'
 import ServiceCTA from '@/components/services/ServiceCTA'
 import { Palette, Sparkles, FileText, Image, Package, Printer } from 'lucide-react'
+import { serviceMetadata } from '@/lib/seo/service-metadata'
+import { getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas'
+import { siteConfig } from '@/lib/config'
+
+// SEO Metadata
+export async function generateMetadata({ params }: { params: { lang: 'ar' | 'en' | 'fr' } }): Promise<Metadata> {
+    return serviceMetadata.branding(params.lang)
+}
 
 const content = {
     ar: {
@@ -112,6 +121,16 @@ const content = {
                 }
             ]
         },
+        faq: [
+            {
+                q: 'كم تكلفة تصميم الهوية التجارية الكاملة؟',
+                a: 'تبدأ الأسعار من 5,000 ريال للشعار الأساسي، 12,000 ريال للباقة الاحترافية (دليل 30 صفحة + قوالب)، و25,000 ريال للباقة الشاملة التي تشمل دليل 50+ صفحة ومنيو/كتالوج.'
+            },
+            {
+                q: 'كم يستغرق تصميم الهوية التجارية؟',
+                a: 'عادة 3-4 أسابيع من البداية حتى التسليم النهائي. الباقة الأساسية (شعار فقط) تستغرق أسبوع واحد، بينما الباقة الشاملة تحتاج 4-6 أسابيع.'
+            }
+        ],
         cta: {
             title: 'جاهز لبناء هويتك البصرية؟',
             description: 'احصل على استشارة تصميم مجانية ومفاهيم أولية لشعارك'
@@ -221,6 +240,12 @@ const content = {
                 }
             ]
         },
+        faq: [
+            {
+                q: 'Combien coûte le design d\'identité de marque complet?',
+                a: 'Les prix démarrent à 5 000 SAR pour logo basique, 12 000 SAR pour pack professionnel (guide 30 pages), et 25 000 SAR pour pack complet.'
+            }
+        ],
         cta: {
             title: 'Prêt à Construire Votre Identité Visuelle?',
             description: 'Obtenez une consultation design gratuite et des concepts initiaux pour votre logo'
@@ -330,6 +355,16 @@ const content = {
                 }
             ]
         },
+        faq: [
+            {
+                q: 'How much does complete brand identity design cost?',
+                a: 'Pricing starts from 5,000 SAR for basic logo, 12,000 SAR for professional package (30-page guidelines + templates), and 25,000 SAR for complete package including 50+ page guidelines and menu/catalog.'
+            },
+            {
+                q: 'How long does brand identity design take?',
+                a: 'Typically 3-4 weeks from start to final delivery. Basic package (logo only) takes 1 week, while complete package needs 4-6 weeks.'
+            }
+        ],
         cta: {
             title: 'Ready to Build Your Visual Identity?',
             description: 'Get a free design consultation and initial concepts for your logo'
@@ -341,8 +376,20 @@ export default function BrandingPage({ params }: { params: { lang: 'ar' | 'fr' |
     const { lang } = params
     const t = content[lang]
 
+    // JSON-LD Schemas
+    const breadcrumbSchema = getBreadcrumbSchema([
+        { name: lang === 'ar' ? 'الرئيسية' : 'Home', url: `${siteConfig.url}/${lang}` },
+        { name: lang === 'ar' ? 'الخدمات' : 'Services', url: `${siteConfig.url}/${lang}/services` },
+        { name: lang === 'ar' ? 'الهوية التجارية' : 'Branding', url: `${siteConfig.url}/${lang}/services/branding` },
+    ])
+    const faqSchema = getFAQSchema(t.faq.map((item: any) => ({ question: item.q, answer: item.a })))
+
     return (
         <main>
+            {/* JSON-LD Structured Data */}
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
             <ServiceHero
                 title={t.hero.title}
                 subtitle={t.hero.subtitle}
