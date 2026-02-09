@@ -333,8 +333,6 @@ export default function EnterpriseSolutionPage({ params }: EnterpriseSolutionPro
     ])
     const faqSchema = getFAQSchema(t.faq.map(item => ({ question: item.q, answer: item.a })))
 
-    const iconMap: Record<string, any> = { Shield, Cloud, FileCheck, Settings }
-
     return (
         <>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(enterpriseSchema) }} />
@@ -414,7 +412,7 @@ export default function EnterpriseSolutionPage({ params }: EnterpriseSolutionPro
                         <h2 className="text-3xl font-bold text-center mb-12 text-white">{t.compliance.title}</h2>
                         <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
                             {t.compliance.items.map((item, i) => {
-                                const Icon = iconMap[item.icon.name]
+                                const Icon = item.icon
                                 return (
                                     <div key={i} className="text-center">
                                         <div className="w-16 h-16 mx-auto rounded-xl bg-purple-500/20 flex items-center justify-center mb-4">
