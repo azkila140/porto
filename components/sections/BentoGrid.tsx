@@ -61,28 +61,17 @@ const fallbackServices = {
 export function BentoGrid({ lang, initialServices = [] }: BentoGridProps) {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-100px' })
-    const [transformedServices, setTransformedServices] = useState<any[]>([])
-    const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(() => {
-        if (initialServices && initialServices.length > 0) {
-            const transformed = initialServices.map((s: any) => ({
-                icon: iconMap[s.icon] || Code2,
-                title: s.title,
-                description: s.description,
-                gradient: s.gradient,
-                imageUrl: s.imageUrl
-            }))
-            setTransformedServices(transformed)
-            setIsLoading(false)
-        } else {
-            const staticData = (fallbackServices as any)[lang] || fallbackServices.en
-            setTransformedServices(staticData)
-            setIsLoading(false)
-        }
-    }, [lang, initialServices])
-
-    const services = transformedServices
+    // Immediate transformation for SSR
+    const services = (initialServices && initialServices.length > 0)
+        ? initialServices.map((s: any) => ({
+            icon: iconMap[s.icon] || Code2,
+            title: s.title,
+            description: s.description,
+            gradient: s.gradient,
+            imageUrl: s.imageUrl
+        }))
+        : ((fallbackServices as any)[lang] || fallbackServices.en)
 
     return (
         <section ref={ref} className="py-24 px-4 bg-slate-950 relative overflow-hidden">
@@ -112,7 +101,7 @@ export function BentoGrid({ lang, initialServices = [] }: BentoGridProps) {
 
                 {/* 6 Equal Premium Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {services.map((item, index) => {
+                    {services.map((item: any, index: number) => {
                         const Icon = item.icon
                         return (
                             <motion.div

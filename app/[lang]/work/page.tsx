@@ -1,12 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, use } from 'react'
 import type { Locale } from '@/lib/i18n/config'
 import { ExternalLink, Github } from 'lucide-react'
 
 interface WorkPageProps {
-    params: { lang: Locale }
+    params: Promise<{ lang: Locale }>
 }
 
 const projects = {
@@ -181,8 +181,9 @@ const projects = {
 }
 
 export default function WorkPage({ params }: WorkPageProps) {
+    const { lang } = use(params)
     const [filter, setFilter] = useState<string>('all')
-    const currentProjects = projects[params.lang]
+    const currentProjects = (projects as any)[lang]
 
     const categories = {
         ar: ['الكل', 'قطاع طبي', 'عقارات', 'مطاعم وفنادق', 'تجارة إلكترونية', 'تعليم', 'لوجستيات'],
@@ -190,9 +191,9 @@ export default function WorkPage({ params }: WorkPageProps) {
         en: ['All', 'Medical Sector', 'Real Estate', 'Hospitality', 'E-commerce', 'Education', 'Logistics'],
     }
 
-    const filteredProjects = filter === 'all' || filter === categories[params.lang][0]
+    const filteredProjects = filter === 'all' || filter === (categories as any)[lang][0]
         ? currentProjects
-        : currentProjects.filter(p => p.category === filter)
+        : currentProjects.filter((p: any) => p.category === filter)
 
     return (
         <main className="min-h-screen bg-brand-dark">
@@ -206,12 +207,12 @@ export default function WorkPage({ params }: WorkPageProps) {
                         className="text-center mb-16"
                     >
                         <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                            {params.lang === 'ar' ? 'أعمالنا' : params.lang === 'fr' ? 'Nos Projets' : 'Our Work'}
+                            {lang === 'ar' ? 'أعمالنا' : lang === 'fr' ? 'Nos Projets' : 'Our Work'}
                         </h1>
                         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-                            {params.lang === 'ar'
+                            {lang === 'ar'
                                 ? 'مشاريع نفخر بإنجازها عبر مختلف الصناعات'
-                                : params.lang === 'fr'
+                                : lang === 'fr'
                                     ? 'Projets dont nous sommes fiers dans divers secteurs'
                                     : 'Projects we\'re proud of across various industries'}
                         </p>
@@ -224,13 +225,13 @@ export default function WorkPage({ params }: WorkPageProps) {
                         transition={{ delay: 0.2, duration: 0.6 }}
                         className="flex flex-wrap justify-center gap-3 mb-12"
                     >
-                        {categories[params.lang].map((category, index) => (
+                        {(categories as any)[lang].map((category: string, index: number) => (
                             <button
                                 key={index}
                                 onClick={() => setFilter(index === 0 ? 'all' : category)}
                                 className={`px-6 py-2 rounded-full font-medium transition-all ${(filter === 'all' && index === 0) || filter === category
-                                        ? 'bg-brand-emerald text-white'
-                                        : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                                    ? 'bg-brand-emerald text-white'
+                                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
                                     }`}
                             >
                                 {category}
@@ -240,7 +241,7 @@ export default function WorkPage({ params }: WorkPageProps) {
 
                     {/* Projects Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {filteredProjects.map((project, index) => (
+                        {filteredProjects.map((project: any, index: number) => (
                             <motion.div
                                 key={project.id}
                                 initial={{ opacity: 0, y: 30 }}
@@ -273,7 +274,7 @@ export default function WorkPage({ params }: WorkPageProps) {
 
                                     {/* Tags */}
                                     <div className="flex flex-wrap gap-2 mb-4">
-                                        {project.tags.map((tag, idx) => (
+                                        {project.tags.map((tag: string, idx: number) => (
                                             <span
                                                 key={idx}
                                                 className="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300"
@@ -287,7 +288,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                                     <div className="flex gap-3">
                                         <button className="flex items-center gap-2 px-4 py-2 bg-brand-emerald/20 hover:bg-brand-emerald/30 rounded-lg text-sm font-medium text-brand-emerald transition-colors">
                                             <ExternalLink className="w-4 h-4" />
-                                            {params.lang === 'ar' ? 'عرض المشروع' : params.lang === 'fr' ? 'Voir le projet' : 'View Project'}
+                                            {lang === 'ar' ? 'عرض المشروع' : lang === 'fr' ? 'Voir le projet' : 'View Project'}
                                         </button>
                                     </div>
                                 </div>

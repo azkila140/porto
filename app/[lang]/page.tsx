@@ -3,10 +3,12 @@ import HeroSlider from '@/components/sections/HeroSlider'
 import { BentoGrid } from '@/components/sections/BentoGrid'
 import { ShowcaseSlider } from '@/components/sections/ShowcaseSlider'
 import { LeadForm } from '@/components/LeadForm'
+import { SEOIntroduction } from '@/components/sections/SEOIntroduction'
 import type { Metadata } from 'next'
 import { getCachedHeroSlides, getCachedServices, getCachedPortfolio } from '@/lib/services/dynamicData'
 
-export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+    const { lang } = await params
     const titles = {
         ar: 'Nexus Logic - الوكالة المتكاملة للتسويق والحلول الرقمية',
         fr: 'Nexus Logic - Agence de Marketing et Solutions Digitales',
@@ -23,14 +25,14 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
         en: 'web development, digital marketing, branding, automation, SEO, growth hacking, Tunisia, digital agency'
     }
 
-    const baseUrl = 'https://porto-two-blue.vercel.app'
+    const baseUrl = 'https://nexuslogic.online'
 
     return {
-        title: titles[params.lang],
-        description: descriptions[params.lang],
-        keywords: keywords[params.lang],
+        title: titles[lang],
+        description: descriptions[lang],
+        keywords: keywords[lang],
         alternates: {
-            canonical: `${baseUrl}/${params.lang}`,
+            canonical: `${baseUrl}/${lang}`,
             languages: {
                 en: `${baseUrl}/en`,
                 ar: `${baseUrl}/ar`,
@@ -38,35 +40,37 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
             },
         },
         openGraph: {
-            title: titles[params.lang],
-            description: descriptions[params.lang],
-            url: `${baseUrl}/${params.lang}`,
+            title: titles[lang],
+            description: descriptions[lang],
+            url: `${baseUrl}/${lang}`,
             siteName: 'Nexus Logic',
-            locale: params.lang === 'ar' ? 'ar_TN' : params.lang === 'fr' ? 'fr_FR' : 'en_US',
+            locale: lang === 'ar' ? 'ar_TN' : lang === 'fr' ? 'fr_FR' : 'en_US',
             type: 'website',
         },
         twitter: {
             card: 'summary_large_image',
-            title: titles[params.lang],
-            description: descriptions[params.lang],
+            title: titles[lang],
+            description: descriptions[lang],
         },
     }
 }
 
-export default async function HomePage({ params }: { params: { lang: Locale } }) {
+export default async function HomePage({ params }: { params: Promise<{ lang: Locale }> }) {
+    const { lang } = await params
     // Fetch data on the server with caching
     const [heroSlides, services, portfolio] = await Promise.all([
-        getCachedHeroSlides(params.lang),
-        getCachedServices(params.lang),
-        getCachedPortfolio(params.lang)
+        getCachedHeroSlides(lang),
+        getCachedServices(lang),
+        getCachedPortfolio(lang)
     ])
 
     return (
         <main className="min-h-screen">
-            <HeroSlider lang={params.lang} initialSlides={heroSlides} />
-            <BentoGrid lang={params.lang} initialServices={services} />
-            <ShowcaseSlider lang={params.lang} initialItems={portfolio} />
-            <LeadForm lang={params.lang} />
+            <HeroSlider lang={lang} initialSlides={heroSlides} />
+            <SEOIntroduction lang={lang} />
+            <BentoGrid lang={lang} initialServices={services} />
+            <ShowcaseSlider lang={lang} initialItems={portfolio} />
+            <LeadForm lang={lang} />
         </main>
     )
 }

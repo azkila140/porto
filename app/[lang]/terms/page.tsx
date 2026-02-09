@@ -1,13 +1,14 @@
 'use client'
 
+import { use } from 'react'
 import type { Locale } from '@/lib/i18n/config'
 
 interface TermsPageProps {
-    params: { lang: Locale }
+    params: Promise<{ lang: Locale }>
 }
 
 export default function TermsPage({ params }: TermsPageProps) {
-    const { lang } = params
+    const { lang } = use(params)
     return (
         <div className="min-h-screen bg-slate-950 py-20 px-4">
             <div className="container mx-auto max-w-4xl text-white">

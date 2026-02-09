@@ -4,18 +4,27 @@ import type { Locale } from '@/lib/i18n/config'
 import Link from 'next/link'
 import { LayoutDashboard, FolderKanban, FileText, MessageSquare, LogOut, Menu } from 'lucide-react'
 
+export async function generateStaticParams() {
+    return [
+        { lang: 'ar' as const },
+        { lang: 'fr' as const },
+        { lang: 'en' as const },
+    ]
+}
+
 export default async function DashboardLayout({
     children,
     params,
 }: {
     children: React.ReactNode
-    params: { lang: Locale }
-}) {
-    const supabase = createClient()
+    params: Promise<{ lang: 'ar' | 'fr' | 'en' }>
+}): Promise<React.ReactElement> {
+    const { lang } = await params
+    const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
 
     if (!user) {
-        redirect(`/${params.lang}/login`)
+        redirect(`/${lang}/login`)
     }
 
     const navItems = {
@@ -39,15 +48,15 @@ export default async function DashboardLayout({
         ],
     }
 
-    const currentNav = navItems[params.lang]
+    const currentNav = (navItems as any)[lang]
 
     return (
-        <div className="min-h-screen bg-brand-dark" dir={params.lang === 'ar' ? 'rtl' : 'ltr'}>
+        <div className="min-h-screen bg-brand-dark" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
             {/* Header */}
             <header className="bg-slate-900 border-b border-white/10 sticky top-0 z-50">
                 <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                     {/* Logo */}
-                    <Link href={`/${params.lang}`} className="flex items-center gap-2">
+                    <Link href={`/${lang}`} className="flex items-center gap-2">
                         <h1 className="text-xl font-bold text-white">Nexus Logic</h1>
                     </Link>
 
@@ -60,7 +69,7 @@ export default async function DashboardLayout({
                             <button
                                 type="submit"
                                 className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
-                                title={params.lang === 'ar' ? 'تسجيل الخروج' : params.lang === 'fr' ? 'Déconnexion' : 'Logout'}
+                                title={lang === 'ar' ? 'تسجيل الخروج' : lang === 'fr' ? 'Déconnexion' : 'Logout'}
                             >
                                 <LogOut className="w-5 h-5 text-gray-400" />
                             </button>
@@ -73,7 +82,7 @@ export default async function DashboardLayout({
                 {/* Sidebar */}
                 <aside className="w-64 bg-slate-900 border-r border-white/10 min-h-[calc(100vh-73px)] p-4">
                     <nav className="space-y-2">
-                        {currentNav.map((item) => {
+                        {currentNav.map((item: any) => {
                             const Icon = item.icon
                             return (
                                 <Link

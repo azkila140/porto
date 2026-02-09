@@ -5,9 +5,10 @@ import { Users, LayoutDashboard, CheckCircle, Clock } from 'lucide-react'
 export default async function AdminDashboardPage({
     params
 }: {
-    params: { lang: Locale }
+    params: Promise<{ lang: Locale }>
 }) {
-    const supabase = createClient()
+    const { lang } = await params
+    const supabase = await createClient()
 
     // Fetch some quick stats
     const { count: leadsCount } = await supabase.from('leads').select('*', { count: 'exact', head: true })
@@ -24,7 +25,7 @@ export default async function AdminDashboardPage({
         <div className="space-y-8">
             <header>
                 <h2 className="text-3xl font-bold text-white mb-2">
-                    {params.lang === 'ar' ? 'نظرة عامة' : params.lang === 'fr' ? 'Tableau de bord' : 'Dashboard Overview'}
+                    {lang === 'ar' ? 'نظرة عامة' : lang === 'fr' ? 'Tableau de bord' : 'Dashboard Overview'}
                 </h2>
                 <p className="text-gray-400">Manage your agency content and monitor performance.</p>
             </header>

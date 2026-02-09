@@ -2,8 +2,9 @@ import type { Locale } from '@/lib/i18n/config'
 import { getDictionary } from '@/lib/i18n/dictionaries'
 import Link from 'next/link'
 
-export default async function ContactPage({ params }: { params: { lang: Locale } }) {
-    const dict = await getDictionary(params.lang)
+export default async function ContactPage({ params }: { params: Promise<{ lang: Locale }> }) {
+    const { lang } = await params
+    const dict = await getDictionary(lang)
 
     const content = {
         ar: {
@@ -41,7 +42,7 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
         },
     }
 
-    const current = content[params.lang]
+    const current = content[lang]
 
     return (
         <main className="min-h-screen bg-brand-dark">
@@ -103,17 +104,17 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
                             <div className="text-center p-12 rounded-2xl bg-gradient-to-br from-brand-emerald/20 to-blue-500/20 border border-brand-emerald/30">
                                 <h3 className="text-3xl font-bold mb-4 text-white">{current.cta}</h3>
                                 <p className="text-gray-300 mb-8">
-                                    {params.lang === 'ar'
+                                    {lang === 'ar'
                                         ? 'انتقل إلى الصفحة الرئيسية لملء نموذج الاتصال'
-                                        : params.lang === 'fr'
+                                        : lang === 'fr'
                                             ? 'Accédez à la page d\'accueil pour remplir le formulaire de contact'
                                             : 'Go to the homepage to fill out the contact form'}
                                 </p>
                                 <Link
-                                    href={`/${params.lang}`}
+                                    href={`/${lang}`}
                                     className="inline-block px-8 py-4 bg-brand-emerald rounded-lg font-semibold text-lg hover:bg-emerald-600 transition-all"
                                 >
-                                    {params.lang === 'ar' ? 'إلى الصفحة الرئيسية' : params.lang === 'fr' ? 'Page d\'accueil' : 'Go to Homepage'}
+                                    {lang === 'ar' ? 'إلى الصفحة الرئيسية' : lang === 'fr' ? 'Page d\'accueil' : 'Go to Homepage'}
                                 </Link>
                             </div>
                         </div>

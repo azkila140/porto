@@ -46,7 +46,7 @@ export async function submitLead(data: LeadFormData) {
         const validatedData = leadSchema.parse(data)
 
         // Create Supabase client
-        const supabase = createClient()
+        const supabase = await createClient()
 
         // Insert into Supabase
         const { data: leadData, error: dbError } = await supabase

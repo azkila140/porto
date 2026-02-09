@@ -137,29 +137,24 @@ interface HeroSliderProps {
 }
 
 export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps) {
-    const [currentSlide, setCurrentSlide] = useState(0)
-    const [direction, setDirection] = useState(0)
-    const [transformedSlides, setTransformedSlides] = useState<Slide[]>([])
-    const { setCurrentGradient } = useSlider()
-
-    useEffect(() => {
-        if (initialSlides && initialSlides.length > 0) {
-            const transformed = initialSlides.map((d: any) => ({
-                id: d.id,
-                title: d.title,
-                subtitle: d.subtitle,
-                description: d.description,
-                cta: d.cta,
-                link: d.link,
-                icon: iconMap[d.icon] || Zap,
-                gradient: d.gradient,
-                imageUrl: d.imageUrl
-            }))
-            setTransformedSlides(transformed)
-        }
-    }, [initialSlides])
+    // Immediate transformation for SSR
+    const transformedSlides: Slide[] = (initialSlides || []).map((d: any) => ({
+        id: d.id,
+        title: d.title,
+        subtitle: d.subtitle,
+        description: d.description,
+        cta: d.cta,
+        link: d.link,
+        icon: iconMap[d.icon] || Zap,
+        gradient: d.gradient,
+        imageUrl: d.imageUrl
+    }))
 
     const activeSlides = transformedSlides.length > 0 ? transformedSlides : (fallbackSlides[lang] || fallbackSlides.en)
+
+    const [currentSlide, setCurrentSlide] = useState(0)
+    const [direction, setDirection] = useState(0)
+    const { setCurrentGradient } = useSlider()
 
     useEffect(() => {
         if (activeSlides && activeSlides.length > 0) {
@@ -171,7 +166,7 @@ export default function HeroSlider({ lang, initialSlides = [] }: HeroSliderProps
         if (!activeSlides || activeSlides.length === 0) return
         const timer = setInterval(() => {
             setDirection(1)
-            setCurrentSlide((prev) => (prev + 1) % activeSlides.length)
+            setCurrentSlide((prev: number) => (prev + 1) % activeSlides.length)
         }, 5000)
 
         return () => clearInterval(timer)

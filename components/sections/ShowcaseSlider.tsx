@@ -126,25 +126,20 @@ const showcaseItems = {
 }
 
 export function ShowcaseSlider({ lang, initialItems = [] }: ShowcaseSliderProps) {
-    const [transformedItems, setTransformedItems] = useState<ShowcaseItem[]>([])
     const [currentIndex, setCurrentIndex] = useState(0)
     const [direction, setDirection] = useState(0)
 
-    useEffect(() => {
-        if (initialItems && initialItems.length > 0) {
-            const transformed = initialItems.map((item: any) => ({
-                id: item.id,
-                title: item.title,
-                description: item.description,
-                category: item.category,
-                image: item.imageUrl,
-                gradient: item.gradient
-            }))
-            setTransformedItems(transformed)
-        }
-    }, [lang, initialItems])
-
-    const items = transformedItems.length > 0 ? transformedItems : ((showcaseItems as any)[lang] || showcaseItems.en)
+    // Immediate transformation for SSR
+    const items = (initialItems && initialItems.length > 0)
+        ? initialItems.map((item: any) => ({
+            id: item.id,
+            title: item.title,
+            description: item.description,
+            category: item.category,
+            image: item.imageUrl,
+            gradient: item.gradient
+        }))
+        : ((showcaseItems as any)[lang] || showcaseItems.en)
 
     const slideVariants = {
         enter: (direction: number) => ({

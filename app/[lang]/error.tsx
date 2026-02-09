@@ -52,7 +52,7 @@ export default function Error({
                         {dict.common.tryAgain}
                     </button>
                     <Link
-                        href={`/${params.lang}`}
+                        href={`/${lang}`}
                         className="flex items-center justify-center gap-2 px-8 py-3 rounded-lg bg-white/10 text-white font-bold hover:bg-white/20 transition-all"
                     >
                         <Home className="w-5 h-5" />

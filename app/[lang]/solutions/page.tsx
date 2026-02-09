@@ -1,12 +1,13 @@
 'use client'
 
+import { use } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, Building2, Hospital, Store, Utensils } from 'lucide-react'
 import type { Locale } from '@/lib/i18n/config'
 
 interface SolutionsPageProps {
-    params: { lang: Locale }
+    params: Promise<{ lang: Locale }>
 }
 
 const content = {
@@ -106,7 +107,8 @@ const content = {
 }
 
 export default function SolutionsPage({ params }: SolutionsPageProps) {
-    const t = content[params.lang]
+    const { lang } = use(params)
+    const t = (content as any)[lang]
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
@@ -135,7 +137,7 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
             <section className="py-16">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {t.industries.map((industry, index) => (
+                        {t.industries.map((industry: any, index: number) => (
                             <motion.div
                                 key={industry.slug}
                                 initial={{ opacity: 0, y: 20 }}
@@ -143,7 +145,7 @@ export default function SolutionsPage({ params }: SolutionsPageProps) {
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
                             >
                                 <Link
-                                    href={`/${params.lang}/solutions/${industry.slug}`}
+                                    href={`/${lang}/solutions/${industry.slug}`}
                                     className="group block h-full"
                                 >
                                     <div className="h-full p-6 rounded-2xl bg-slate-900/50 border border-white/10 backdrop-blur-sm hover:border-brand-emerald/50 transition-all duration-300 flex flex-col">

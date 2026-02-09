@@ -1,4 +1,4 @@
-'use client'
+import type { Metadata } from 'next'
 
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
@@ -348,8 +348,20 @@ const content = {
     }
 }
 
-export default function GrowthContentPage({ params }: { params: { lang: 'ar' | 'fr' | 'en' } }) {
-    const { lang } = params
+export async function generateMetadata({ params }: { params: Promise<{ lang: 'ar' | 'fr' | 'en' }> }): Promise<Metadata> {
+    const { lang } = await params
+    const t = content[lang]
+    return {
+        title: `${t.hero.title} | ${siteConfig.name}`,
+        description: t.hero.description,
+        alternates: {
+            canonical: `${siteConfig.url}/${lang}/services/growth-content`,
+        }
+    }
+}
+
+export default async function GrowthContentPage({ params }: { params: Promise<{ lang: 'ar' | 'fr' | 'en' }> }) {
+    const { lang } = await params
     const t = content[lang]
     const breadcrumbSchema = getBreadcrumbSchema([{ name: lang === 'ar' ? 'الرئيسية' : 'Home', url: `${siteConfig.url}/${lang}` }, { name: lang === 'ar' ? 'الخدمات' : 'Services', url: `${siteConfig.url}/${lang}/services` }, { name: lang === 'ar' ? 'النمو والمحتوى' : 'Growth', url: `${siteConfig.url}/${lang}/services/growth-content` }])
     const faqSchema = getFAQSchema(t.faq.map((item: any) => ({ question: item.q, answer: item.a })))

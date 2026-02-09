@@ -1,4 +1,4 @@
-'use client'
+import type { Metadata } from 'next'
 
 import ServiceHero from '@/components/services/ServiceHero'
 import FeatureGrid from '@/components/services/FeatureGrid'
@@ -374,8 +374,20 @@ const content = {
     }
 }
 
-export default function BrandingPage({ params }: { params: { lang: 'ar' | 'fr' | 'en' } }) {
-    const { lang } = params
+export async function generateMetadata({ params }: { params: Promise<{ lang: 'ar' | 'fr' | 'en' }> }): Promise<Metadata> {
+    const { lang } = await params
+    const t = content[lang]
+    return {
+        title: `${t.hero.title} | ${siteConfig.name}`,
+        description: t.hero.description,
+        alternates: {
+            canonical: `${siteConfig.url}/${lang}/services/branding`,
+        }
+    }
+}
+
+export default async function BrandingPage({ params }: { params: Promise<{ lang: 'ar' | 'fr' | 'en' }> }) {
+    const { lang } = await params
     const t = content[lang]
 
     // JSON-LD Schemas

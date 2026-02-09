@@ -2,8 +2,9 @@ import { createClient } from '@/lib/supabase/server'
 import type { Locale } from '@/lib/i18n/config'
 import { Download, AlertCircle, CheckCircle2, Clock } from 'lucide-react'
 
-export default async function InvoicesPage({ params }: { params: { lang: Locale } }) {
-    const supabase = createClient()
+export default async function InvoicesPage({ params }: { params: Promise<{ lang: Locale }> }) {
+    const { lang } = await params
+    const supabase = await createClient()
 
     // Fetch user's invoices
     const { data: invoices } = await supabase
@@ -70,7 +71,7 @@ export default async function InvoicesPage({ params }: { params: { lang: Locale 
         },
     }
 
-    const dict = content[params.lang]
+    const dict = (content as any)[lang]
 
     const getStatusBadge = (status: string) => {
         const badges = {
@@ -100,11 +101,11 @@ export default async function InvoicesPage({ params }: { params: { lang: Locale 
 
     const formatDate = (dateString: string) => {
         const date = new Date(dateString)
-        return date.toLocaleDateString(params.lang === 'ar' ? 'ar-SA' : params.lang === 'fr' ? 'fr-FR' : 'en-US')
+        return date.toLocaleDateString(lang === 'ar' ? 'ar-SA' : lang === 'fr' ? 'fr-FR' : 'en-US')
     }
 
     const formatAmount = (amount: number, currency: string = 'USD') => {
-        return new Intl.NumberFormat(params.lang === 'ar' ? 'ar-SA' : params.lang === 'fr' ? 'fr-FR' : 'en-US', {
+        return new Intl.NumberFormat(lang === 'ar' ? 'ar-SA' : lang === 'fr' ? 'fr-FR' : 'en-US', {
             style: 'currency',
             currency,
         }).format(amount)

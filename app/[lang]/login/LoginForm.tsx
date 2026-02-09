@@ -9,7 +9,7 @@ import { Mail, Lock, AlertCircle, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 
 interface LoginFormProps {
-    params: { lang: Locale }
+    lang: Locale
 }
 
 const content = {
@@ -63,10 +63,10 @@ const content = {
     },
 }
 
-export default function LoginForm({ params }: LoginFormProps) {
+export default function LoginForm({ lang }: LoginFormProps) {
     const router = useRouter()
     const searchParams = useSearchParams()
-    const dict = content[params.lang]
+    const dict = (content as any)[lang]
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -99,7 +99,7 @@ export default function LoginForm({ params }: LoginFormProps) {
             }
 
             if (data.user) {
-                const redirectTo = searchParams.get('redirect') || `/${params.lang}/portal`
+                const redirectTo = searchParams.get('redirect') || `/${lang}/portal`
                 router.push(redirectTo)
                 router.refresh()
             }
@@ -118,7 +118,7 @@ export default function LoginForm({ params }: LoginFormProps) {
                 className="w-full max-w-md"
             >
                 <div className="text-center mb-8">
-                    <Link href={`/${params.lang}`} className="inline-block">
+                    <Link href={`/${lang}`} className="inline-block">
                         <h1 className="text-3xl font-bold text-white mb-2">Nexus Logic</h1>
                     </Link>
                     <p className="text-gray-400">{dict.subtitle}</p>
@@ -196,12 +196,12 @@ export default function LoginForm({ params }: LoginFormProps) {
                     <div className="mt-6 text-center space-y-3">
                         <p className="text-gray-400 text-sm">
                             {dict.noAccount}{' '}
-                            <Link href={`/${params.lang}/contact`} className="text-brand-emerald hover:underline">
+                            <Link href={`/${lang}/contact`} className="text-brand-emerald hover:underline">
                                 {dict.contactUs}
                             </Link>
                         </p>
                         <Link
-                            href={`/${params.lang}`}
+                            href={`/${lang}`}
                             className="text-gray-500 hover:text-gray-300 text-sm inline-block transition-colors"
                         >
                             ← {dict.backHome}
@@ -216,9 +216,9 @@ export default function LoginForm({ params }: LoginFormProps) {
                     className="mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg"
                 >
                     <p className="text-blue-400 text-sm text-center">
-                        {params.lang === 'ar'
+                        {lang === 'ar'
                             ? '💡 للتجربة: استخدم بيانات الاعتماد التي تم إنشاؤها في Supabase'
-                            : params.lang === 'fr'
+                            : lang === 'fr'
                                 ? '💡 Démo: Utilisez les identifiants créés dans Supabase'
                                 : '💡 Demo: Use credentials created in Supabase'}
                     </p>

@@ -3,7 +3,7 @@ import { industries } from '@/lib/data/solutions'
 import SolutionContent from '@/components/solutions/SolutionContent'
 
 interface SolutionPageProps {
-    params: { lang: Locale; industry: string }
+    params: Promise<{ lang: Locale; industry: string }>
 }
 
 export async function generateStaticParams() {
@@ -19,8 +19,8 @@ export async function generateStaticParams() {
     return params
 }
 
-export default function SolutionPage({ params }: SolutionPageProps) {
-    const { lang, industry } = params
+export default async function SolutionPage({ params }: SolutionPageProps) {
+    const { lang, industry } = await params
 
     return <SolutionContent lang={lang} industry={industry} />
 }

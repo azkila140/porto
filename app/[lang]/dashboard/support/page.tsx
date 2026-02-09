@@ -1,10 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, use } from 'react'
 import type { Locale } from '@/lib/i18n/config'
 import { MessageSquare, Plus, AlertCircle, CheckCircle2, Clock, X } from 'lucide-react'
 
-export default function SupportPage({ params }: { params: { lang: Locale } }) {
+interface SupportPageProps {
+    params: Promise<{ lang: Locale }>
+}
+
+export default function SupportPage({ params }: SupportPageProps) {
+    const { lang } = use(params)
     const [showNewTicket, setShowNewTicket] = useState(false)
     const [subject, setSubject] = useState('')
     const [description, setDescription] = useState('')
@@ -88,7 +93,7 @@ export default function SupportPage({ params }: { params: { lang: Locale } }) {
         },
     }
 
-    const dict = content[params.lang]
+    const dict = (content as any)[lang]
 
     // Demo tickets
     const tickets = []

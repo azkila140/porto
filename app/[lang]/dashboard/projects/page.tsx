@@ -2,8 +2,9 @@ import { createClient } from '@/lib/supabase/server'
 import type { Locale } from '@/lib/i18n/config'
 import { ExternalLink, Clock, CheckCircle2, Pause } from 'lucide-react'
 
-export default async function ProjectsPage({ params }: { params: { lang: Locale } }) {
-    const supabase = createClient()
+export default async function ProjectsPage({ params }: { params: Promise<{ lang: Locale }> }) {
+    const { lang } = await params
+    const supabase = await createClient()
 
     // Fetch user's projects
     const { data: projects } = await supabase
@@ -56,7 +57,7 @@ export default async function ProjectsPage({ params }: { params: { lang: Locale 
         },
     }
 
-    const dict = content[params.lang]
+    const dict = (content as any)[lang]
 
     const getStatusIcon = (status: string) => {
         switch (status) {

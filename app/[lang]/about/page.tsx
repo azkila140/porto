@@ -1,12 +1,11 @@
-'use client'
-
+import { use } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Users, Rocket, Award, Globe, ArrowRight } from 'lucide-react'
 import type { Locale } from '@/lib/i18n/config'
 
 interface AboutPageProps {
-    params: { lang: Locale }
+    params: Promise<{ lang: Locale }>
 }
 
 const content = {
@@ -139,8 +138,8 @@ const content = {
 }
 
 export default function AboutPage({ params }: AboutPageProps) {
-    const { lang } = params
-    const t = content[lang] || content.en
+    const { lang } = use(params)
+    const t = (content as any)[lang] || content.en
 
     return (
         <div className="min-h-screen bg-slate-950">
@@ -174,7 +173,7 @@ export default function AboutPage({ params }: AboutPageProps) {
 
                     {/* Stats Grid */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 border-t border-white/10 pt-12">
-                        {t.stats.map((stat, index) => {
+                        {t.stats.map((stat: any, index: number) => {
                             const Icon = stat.icon
                             return (
                                 <motion.div
@@ -283,7 +282,7 @@ export default function AboutPage({ params }: AboutPageProps) {
                         <h2 className="text-3xl font-bold text-white mb-4">{t.values.title}</h2>
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {t.values.items.map((item, index) => (
+                        {t.values.items.map((item: any, index: number) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, y: 20 }}

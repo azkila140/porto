@@ -6,6 +6,7 @@ import { siteConfig } from '@/lib/config'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { SliderProvider } from '@/lib/contexts/SliderContext'
+import { GoogleTagManager } from '@next/third-parties/google'
 import '@/app/globals.css'
 
 const tajawal = Tajawal({
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
     authors: [{ name: siteConfig.name }],
     creator: siteConfig.name,
     publisher: siteConfig.name,
-    metadataBase: new URL(siteConfig.url),
+    metadataBase: new URL('https://nexuslogic.online'),
     icons: {
         icon: [
             { url: '/favicon.jpg', type: 'image/jpeg' },
@@ -82,15 +83,15 @@ export const metadata: Metadata = {
         type: 'website',
         locale: 'ar_SA', // Arabic Saudi as primary for MENA markets
         url: siteConfig.url,
-        siteName: 'Nexus Logic - Digital Transformation Partner',
+        siteName: siteConfig.name,
         title: 'Nexus Logic | شريك التحول الرقمي في السعودية، الإمارات، المغرب وقطر',
         description: 'نبني النظام البيئي الرقمي لمؤسستك في الأسواق العربية. حلول Enterprise شاملة من التأسيس إلى الأتمتة الذكية والنمو المستدام.',
         images: [
             {
-                url: `${siteConfig.url}/og-image.png`,
+                url: '/og-image.png', // Relative path is automatically resolved by metadataBase
                 width: 1200,
                 height: 630,
-                alt: 'Nexus Logic - شريك التحول الرقمي للمؤسسات',
+                alt: 'Nexus Logic - Digital Transformation Partner',
                 type: 'image/png',
             },
         ],
@@ -118,17 +119,18 @@ export const metadata: Metadata = {
     },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
     params,
 }: {
     children: React.ReactNode
-    params: { lang: Locale }
+    params: Promise<{ lang: Locale }>
 }) {
-    const direction = isRTL(params.lang) ? 'rtl' : 'ltr'
+    const { lang } = await params
+    const direction = isRTL(lang) ? 'rtl' : 'ltr'
 
     return (
-        <html lang={params.lang} dir={direction} className={tajawal.variable}>
+        <html lang={lang} dir={direction} className={tajawal.variable}>
             <head>
                 <link rel="preconnect" href="https://res.cloudinary.com" />
                 <link rel="preconnect" href="https://images.unsplash.com" />
@@ -160,12 +162,13 @@ export default function RootLayout({
                 />
             </head>
             <body className="min-h-screen bg-brand-dark font-sans antialiased">
+                <GoogleTagManager gtmId="GTM-55WCVMFN" />
                 <SliderProvider>
-                    <Header lang={params.lang} />
+                    <Header lang={lang} />
                     <main className="pt-20">
                         {children}
                     </main>
-                    <Footer lang={params.lang} />
+                    <Footer lang={lang} />
                 </SliderProvider>
             </body>
         </html>
