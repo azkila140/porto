@@ -141,32 +141,32 @@ const content = {
             subtitle: 'Solutions intelligentes pour simplifier vos opérations et augmenter votre efficacité',
             items: [
                 {
-                    icon: Workflow,
+                    icon: 'Workflow',
                     title: 'Workflows n8n',
                     description: 'Automatisation des tâches répétitives et connexion d\'applications avec des scénarios intelligents qui économisent des heures de travail manuel'
                 },
                 {
-                    icon: Link2,
+                    icon: 'Link2',
                     title: 'Intégration APIs',
                     description: 'Intégration de systèmes différents (CRM, comptabilité, inventaire) pour un flux de données fluide et automatique'
                 },
                 {
-                    icon: Bot,
+                    icon: 'Bot',
                     title: 'Chatbot Intelligent',
                     description: 'Robots conversationnels alimentés par l\'IA pour répondre aux clients 24/7 et automatiser le support technique'
                 },
                 {
-                    icon: GitBranch,
+                    icon: 'GitBranch',
                     title: 'Intégration Webhooks',
                     description: 'Connexion instantanée entre systèmes via Webhooks pour des mises à jour en temps réel et notifications automatiques'
                 },
                 {
-                    icon: Repeat,
+                    icon: 'Repeat',
                     title: 'Synchronisation Données',
                     description: 'Synchronisation automatique des données entre différentes plateformes pour garantir cohérence et précision'
                 },
                 {
-                    icon: Zap,
+                    icon: 'Zap',
                     title: 'Automatisation Marketing',
                     description: 'Campagnes marketing automatisées, envoi d\'emails planifiés et suivi des prospects'
                 }
@@ -248,32 +248,32 @@ const content = {
             subtitle: 'Smart solutions to simplify your operations and increase efficiency',
             items: [
                 {
-                    icon: Workflow,
+                    icon: 'Workflow',
                     title: 'n8n Workflows',
                     description: 'Automate repetitive tasks and connect different applications with intelligent scenarios that save hours of manual work'
                 },
                 {
-                    icon: Link2,
+                    icon: 'Link2',
                     title: 'API Integration',
                     description: 'Integrate different systems (CRM, accounting, inventory) for smooth and automatic data flow'
                 },
                 {
-                    icon: Bot,
+                    icon: 'Bot',
                     title: 'Smart Chatbot',
                     description: 'AI-powered conversational robots to respond to customers 24/7 and automate technical support'
                 },
                 {
-                    icon: GitBranch,
+                    icon: 'GitBranch',
                     title: 'Webhook Integration',
                     description: 'Instant connection between systems via Webhooks for real-time updates and automatic notifications'
                 },
                 {
-                    icon: Repeat,
+                    icon: 'Repeat',
                     title: 'Data Synchronization',
                     description: 'Automatic data synchronization between different platforms to ensure consistency and accuracy'
                 },
                 {
-                    icon: Zap,
+                    icon: 'Zap',
                     title: 'Marketing Automation',
                     description: 'Automated marketing campaigns, scheduled email sending, and lead tracking'
                 }
